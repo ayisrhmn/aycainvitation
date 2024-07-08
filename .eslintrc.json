@@ -1,0 +1,55 @@
+{
+  "root": true,
+  "env": { "browser": true, "es2021": true },
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:sonar/recommended",
+    "plugin:react/recommended", // Assuming you're using React
+    "prettier"
+  ],
+  "ignorePatterns": ["dist", "**/*.js"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "sonar", "react", "unused-imports"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/explicit-function-return-type": [
+      "off",
+      { "allowExpressions": true }
+    ],
+    "no-template-curly-in-string": "error",
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreUrls": true
+      }
+    ],
+    "no-console": "warn",
+    "prefer-const": "error",
+    "react/react-in-jsx-scope": "off",
+    "unused-imports/no-unused-vars": "warn",
+    "sonar/no-dead-store": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "warn",
+    "jsx-quotes": "off",
+    "quotes": "off",
+    "max-lines": [
+      "error",
+      { "max": 600, "skipBlankLines": true, "skipComments": true }
+    ]
+  }
+}
