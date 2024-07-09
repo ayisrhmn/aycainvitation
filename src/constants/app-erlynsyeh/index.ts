@@ -2,6 +2,7 @@ export const APP_ERLYNSYEH = {
   title: 'The Wedding of Erlyn & Syeh - Aycavite',
   prefix: 'erlynsyehwedding',
   content: {
+    headerImages: ['header-1.jpg', 'header-2.jpg', 'header-3.jpg'],
     couple: {
       bride: {
         name: 'Erlyn Elmayanti Widya Susanti',
