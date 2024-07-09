@@ -1,5 +1,6 @@
 export const APP_ERLYNSYEH = {
   title: 'The Wedding of Erlyn & Syeh - Aycavite',
+  prefix: 'erlynsyehwedding',
   content: {
     couple: {
       bride: {
@@ -17,25 +18,25 @@ export const APP_ERLYNSYEH = {
     },
     event: {
       akad: {
-        dateStr: 'Rabu, 14 Agustus 2024',
-        startTimeStr: '09.00',
-        endTimeStr: 'Selesai',
+        date: new Date('2024-08-14'),
+        startTime: '09.00',
+        endTime: null,
         location: 'Masjid Agung Al Munawar',
         street: 'Jl. K.H Wahid Hasyim No.2B',
         detailStreet: 'Kauman, Tulungagung, Jawa Timur'
       },
       resepsi1: {
-        dateStr: 'Sabtu, 17 Agustus 2024',
-        startTimeStr: '10.00',
-        endTimeStr: '12.00',
+        date: new Date('2024-08-17'),
+        startTime: '10.00',
+        endTime: '12.00',
         location: 'Gedung Graha Lestari',
         street: 'Jl. Pahlawan No.8',
         detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur'
       },
       resepsi2: {
-        dateStr: 'Sabtu, 17 Agustus 2024',
-        startTimeStr: '12.00',
-        endTimeStr: '13.30',
+        date: new Date('2024-08-17'),
+        startTime: '12.00',
+        endTime: '13.30',
         location: 'Gedung Graha Lestari',
         street: 'Jl. Pahlawan No.8',
         detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur'
