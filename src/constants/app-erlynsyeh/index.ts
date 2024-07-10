@@ -6,15 +6,19 @@ export const APP_ERLYNSYEH = {
     couple: {
       bride: {
         name: 'Erlyn Elmayanti Widya Susanti',
-        child_prefix: 'Ketiga',
+        child_prefix: 'ketiga',
         father: 'Imam Sairodji',
-        mother: 'Wahyuti'
+        mother: 'Wahyuti',
+        images: ['bride-1.jpg', 'bride-2.jpg'],
+        instagram: 'erlynsusanti'
       },
       groom: {
         name: 'Syeh Danial',
-        child_prefix: 'Keempat',
+        child_prefix: 'keempat',
         father: 'Tantowi Husein',
-        mother: 'Nur Telmy Usman'
+        mother: 'Nur Telmy Usman',
+        images: ['groom-1.jpg', 'groom-2.jpg'],
+        instagram: 'syehdanial'
       }
     },
     event: {

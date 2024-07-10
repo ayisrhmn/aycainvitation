@@ -1,6 +1,7 @@
 import { CountdownTimer } from '@/components/molecules';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
+import { Noto_Kufi_Arabic } from 'next/font/google';
 import { useEffect, useState } from 'react';
 
 interface HeaderProps {
@@ -13,6 +14,8 @@ interface HeaderProps {
   };
   eventDate: Date;
 }
+
+const notoKufiArabic = Noto_Kufi_Arabic({ subsets: ['latin'] });
 
 export default function Header({
   prefixImageUrl,
@@ -41,14 +44,19 @@ export default function Header({
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            backgroundImage: `url(${imageUrl(prefixImageUrl, image)})`
+            backgroundImage: `url(${imageUrl(prefixImageUrl, image, 'Background')})`
           }}
         />
       ))}
-      <div className='absolute inset-0 bg-black opacity-15' />
+      <div className='absolute inset-0 bg-black opacity-25' />
       <div className='relative z-10 flex flex-col items-center justify-end h-full text-white py-28'>
         <div className='text-center'>
-          <p className='text-4xl mb-4 font-semibold'>
+          <p
+            className={cn(
+              'text-4xl mb-6 font-medium',
+              notoKufiArabic.className
+            )}
+          >
             {coupleNick.bride} & {coupleNick.groom}
           </p>
           <CountdownTimer targetDate={eventDate.toISOString()} />

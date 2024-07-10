@@ -8,3 +8,19 @@ body {
   width: 100vw;
   background: transparent;
 }
+
+@keyframes blip {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.blip {
+  animation: blip 1.5s infinite;
+}

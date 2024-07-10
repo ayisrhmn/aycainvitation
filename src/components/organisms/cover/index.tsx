@@ -3,6 +3,7 @@ import { DEFAULT_DATE_FORMAT } from '@/constants';
 import { dateFormat } from '@/helpers';
 import { cn } from '@/utils';
 import { EnvelopeOpen } from '@phosphor-icons/react';
+import { Noto_Kufi_Arabic } from 'next/font/google';
 import { useEffect, useState } from 'react';
 
 interface CoverProps {
@@ -14,6 +15,8 @@ interface CoverProps {
   eventDate: Date;
   to: string;
 }
+
+const notoKufiArabic = Noto_Kufi_Arabic({ subsets: ['latin'] });
 
 export default function Cover({
   bgUrl,
@@ -50,8 +53,13 @@ export default function Cover({
       <div className='absolute inset-0 bg-black opacity-25' />
       <div className='relative z-10 flex flex-col items-center justify-between h-full text-white py-28'>
         <div className='text-center'>
-          <p className='text-md mb-4'>The Wedding of</p>
-          <p className='text-4xl mb-8'>
+          <p className='text-md uppercase mb-4'>The Wedding of</p>
+          <p
+            className={cn(
+              'text-4xl mb-6 font-medium',
+              notoKufiArabic.className
+            )}
+          >
             {coupleNick.bride} & {coupleNick.groom}
           </p>
           <p className='text-md'>
@@ -60,17 +68,24 @@ export default function Cover({
         </div>
         <div className='text-center'>
           {to && (
-            <>
+            <div className='mb-6'>
               <p className='text-md mb-2'>Kepada Yth.</p>
-              <p className='text-2xl font-semibold mb-4'>{to}</p>
-            </>
+              <p
+                className={cn(
+                  'text-3xl font-medium mb-4',
+                  notoKufiArabic.className
+                )}
+              >
+                {to}
+              </p>
+            </div>
           )}
           <Button
             variant='outlined'
-            className='rounded-full'
+            className='rounded-lg blip'
             onClick={() => setOpenInvite(true)}
           >
-            <EnvelopeOpen size={18} />
+            <EnvelopeOpen size={20} />
             <p className='text-md'>Buka Undangan</p>
           </Button>
         </div>

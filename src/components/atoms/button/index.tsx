@@ -14,8 +14,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'py-2 px-6 rounded-lg flex flex-row items-center gap-2 transition duration-300',
           variant === 'default'
-            ? 'text-black bg-white hover:bg-slate-300'
-            : 'border text-white hover:text-black bg-transparent hover:bg-white',
+            ? 'text-lime-900 bg-white hover:bg-slate-300'
+            : 'border text-white hover:text-lime-900 bg-transparent hover:bg-white',
           className,
           props.disabled ? 'opacity-30' : ''
         )}
