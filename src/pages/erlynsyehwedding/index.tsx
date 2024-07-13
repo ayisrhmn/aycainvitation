@@ -36,7 +36,10 @@ export default function ErlynSyehWedding() {
         eventDate={APP_ERLYNSYEH.content.event.akad.date}
       />
       <Pray />
-      <Couple />
+      <Couple
+        prefixImageUrl={APP_ERLYNSYEH.prefix}
+        content={APP_ERLYNSYEH.content}
+      />
     </main>
   );
 }

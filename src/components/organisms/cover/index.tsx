@@ -8,10 +8,7 @@ import { useEffect, useState } from 'react';
 
 interface CoverProps {
   bgUrl: string;
-  coupleNick: {
-    bride: string;
-    groom: string;
-  };
+  coupleNick: CoupleNickProps;
   eventDate: Date;
   to: string;
 }
@@ -50,7 +47,7 @@ export default function Cover({
         className='absolute inset-0 bg-cover bg-center'
         style={{ backgroundImage: `url(${bgUrl})` }}
       />
-      <div className='absolute inset-0 bg-black opacity-25' />
+      <div className='absolute inset-0 bg-black opacity-20' />
       <div className='relative z-10 flex flex-col items-center justify-between h-full text-white py-28'>
         <div className='text-center'>
           <p className='text-md uppercase mb-4'>The Wedding of</p>

@@ -8,10 +8,7 @@ interface HeaderProps {
   prefixImageUrl: string;
   images: string[];
   duration: number;
-  coupleNick: {
-    bride: string;
-    groom: string;
-  };
+  coupleNick: CoupleNickProps;
   eventDate: Date;
 }
 
@@ -48,7 +45,7 @@ export default function Header({
           }}
         />
       ))}
-      <div className='absolute inset-0 bg-black opacity-25' />
+      <div className='absolute inset-0 bg-black opacity-20' />
       <div className='relative z-10 flex flex-col items-center justify-end h-full text-white py-28'>
         <div className='text-center'>
           <p
