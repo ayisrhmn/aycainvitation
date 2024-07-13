@@ -10,7 +10,9 @@ export const APP_ERLYNSYEH = {
         father: 'Imam Sairodji',
         mother: 'Wahyuti',
         images: ['bride-1.jpg', 'bride-2.jpg'],
-        instagram: 'erlynsusanti'
+        instagram: 'erlynsusanti',
+        quotes: `"Whatever our souls are made of, his and mine are the same."`,
+        quotesBy: 'Emily Bronte'
       },
       groom: {
         name: 'Syeh Danial',
@@ -18,7 +20,9 @@ export const APP_ERLYNSYEH = {
         father: 'Tantowi Husein',
         mother: 'Nur Telmy Usman',
         images: ['groom-1.jpg', 'groom-2.jpg'],
-        instagram: 'syehdanial'
+        instagram: 'syehdanial',
+        quotes: `"Whatever our souls are made of, his and mine are the same."`,
+        quotesBy: 'F. Scott Fitzgerald'
       }
     },
     event: {
