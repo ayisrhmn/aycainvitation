@@ -1,7 +1,7 @@
 import { Playfair_Display } from 'next/font/google';
 import Head from 'next/head';
 import { APP_ERLYNSYEH } from '@/constants';
-import { Couple, Cover, Event, Header } from '@/components/organisms';
+import { Couple, Cover, Event, Header, Rsvp } from '@/components/organisms';
 import { imageUrl } from '@/helpers';
 import { useAycavite } from '@/hooks';
 import { Pray } from '@/components/atoms';
@@ -43,6 +43,11 @@ const ErlynSyehWedding = () => {
       <Event
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         content={APP_ERLYNSYEH.content}
+      />
+      <Rsvp
+        prefixImageUrl={APP_ERLYNSYEH.prefix}
+        images={APP_ERLYNSYEH.content.headerImages}
+        duration={3000}
       />
     </main>
   );
