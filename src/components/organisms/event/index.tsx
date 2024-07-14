@@ -67,7 +67,7 @@ const EventSection = ({
   );
 };
 
-export default function Event({ prefixImageUrl, content }: EventProps) {
+const Event = ({ prefixImageUrl, content }: EventProps) => {
   return (
     <div className='bg-lime-50 px-4 py-8'>
       <p
@@ -91,4 +91,6 @@ export default function Event({ prefixImageUrl, content }: EventProps) {
       <EventSection type='resepsi1' content={content} />
     </div>
   );
-}
+};
+
+export default Event;

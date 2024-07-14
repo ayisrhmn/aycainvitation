@@ -8,7 +8,7 @@ import { Pray } from '@/components/atoms';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
-export default function ErlynSyehWedding() {
+const ErlynSyehWedding = () => {
   const { to } = useAycavite();
 
   return (
@@ -46,4 +46,6 @@ export default function ErlynSyehWedding() {
       />
     </main>
   );
-}
+};
+
+export default ErlynSyehWedding;

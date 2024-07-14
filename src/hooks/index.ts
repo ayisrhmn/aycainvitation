@@ -1,3 +1,4 @@
 import { useAycavite } from './aycavite';
+import { useImageSlideshow } from './image-slide-show';
 
-export { useAycavite };
+export { useAycavite, useImageSlideshow };

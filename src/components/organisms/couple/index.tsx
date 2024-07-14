@@ -87,7 +87,7 @@ const CoupleSection = ({
   );
 };
 
-export default function Couple({ prefixImageUrl, content }: CoupleProps) {
+const Couple = ({ prefixImageUrl, content }: CoupleProps) => {
   const items = ['bride', 'groom'];
   return (
     <div className='px-4 py-8 shadow-md relative z-10'>
@@ -110,4 +110,6 @@ export default function Couple({ prefixImageUrl, content }: CoupleProps) {
       ))}
     </div>
   );
-}
+};
+
+export default Couple;

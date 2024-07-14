@@ -1,7 +1,7 @@
 import { imageUrl } from '@/helpers';
+import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
 import Image from 'next/legacy/image';
-import { useEffect, useState } from 'react';
 
 interface CoupleImageSlideProps {
   prefixImageUrl: string;
@@ -9,20 +9,13 @@ interface CoupleImageSlideProps {
   duration: number;
 }
 
-export default function CoupleImageSlide({
+const CoupleImageSlide = ({
   prefixImageUrl,
   images,
   duration
-}: CoupleImageSlideProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+}: CoupleImageSlideProps) => {
+  const { currentImageIndex } = useImageSlideshow(images, duration);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, duration);
-
-    return () => clearInterval(timer);
-  }, [images, duration]);
   return (
     <div className='relative w-full h-[500px] shadow-lg'>
       <div className='absolute top-0 z-10 w-full h-[250px] p-2.5'>
@@ -47,4 +40,6 @@ export default function CoupleImageSlide({
       ))}
     </div>
   );
-}
+};
+
+export default CoupleImageSlide;

@@ -4,7 +4,7 @@ interface CountdownTimerProps {
   targetDate: string;
 }
 
-export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
+const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(targetDate) - +new Date();
     let timeLeft = {
@@ -67,4 +67,6 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
       </div>
     </div>
   );
-}
+};
+
+export default CountdownTimer;

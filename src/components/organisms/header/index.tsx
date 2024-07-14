@@ -1,8 +1,8 @@
 import { CountdownTimer } from '@/components/molecules';
 import { imageUrl } from '@/helpers';
+import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useEffect, useState } from 'react';
 
 interface HeaderProps {
   prefixImageUrl: string;
@@ -17,22 +17,14 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-export default function Header({
+const Header = ({
   prefixImageUrl,
   images,
   duration,
   coupleNick,
   eventDate
-}: HeaderProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, duration);
-
-    return () => clearInterval(timer);
-  }, [images, duration]);
+}: HeaderProps) => {
+  const { currentImageIndex } = useImageSlideshow(images, duration);
 
   return (
     <div className='h-screen relative'>
@@ -59,4 +51,6 @@ export default function Header({
       </div>
     </div>
   );
-}
+};
+
+export default Header;

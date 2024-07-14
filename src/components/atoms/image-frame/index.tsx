@@ -6,7 +6,7 @@ interface ImageFrameProps {
   image: string;
 }
 
-export default function ImageFrame({ prefixImageUrl, image }: ImageFrameProps) {
+const ImageFrame = ({ prefixImageUrl, image }: ImageFrameProps) => {
   return (
     <div className='relative w-full h-[500px] rounded-t-full shadow-lg'>
       <div className='absolute top-0 z-10 w-full h-[500px]'>
@@ -22,4 +22,6 @@ export default function ImageFrame({ prefixImageUrl, image }: ImageFrameProps) {
       />
     </div>
   );
-}
+};
+
+export default ImageFrame;

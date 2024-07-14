@@ -5,7 +5,7 @@ import { APP } from '@/constants';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
-export default function Home() {
+const Home = () => {
   return (
     <main id='home'>
       <Head>
@@ -22,4 +22,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;

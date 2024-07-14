@@ -18,12 +18,7 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-export default function Cover({
-  bgUrl,
-  coupleNick,
-  eventDate,
-  to
-}: CoverProps) {
+const Cover = ({ bgUrl, coupleNick, eventDate, to }: CoverProps) => {
   const [openInvite, setOpenInvite] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
@@ -82,4 +77,6 @@ export default function Cover({
       </div>
     </div>
   );
-}
+};
+
+export default Cover;

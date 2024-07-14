@@ -1,6 +1,6 @@
 import { Bird } from '@phosphor-icons/react';
 
-export default function PraySection() {
+const PraySection = () => {
   return (
     <div className='bg-lime-50 px-7 py-14 flex flex-col items-center justify-center shadow-md'>
       <Bird size={56} weight='fill' className='text-lime-900 opacity-50' />
@@ -16,4 +16,6 @@ export default function PraySection() {
       </p>
     </div>
   );
-}
+};
+
+export default PraySection;
