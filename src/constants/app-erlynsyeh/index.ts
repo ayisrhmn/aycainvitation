@@ -58,6 +58,15 @@ export const APP_ERLYNSYEH = {
       bankName: 'BCA',
       noRek: '1234567890',
       accName: 'Erlyn Elmayanti Widya Susanti'
-    }
+    },
+    gallery: [
+      'cover.jpg',
+      'header-1.jpg',
+      'header-2.jpg',
+      'header-3.jpg',
+      'groom-1.jpg',
+      'bride-1.jpg',
+      'event.jpg'
+    ]
   }
 };

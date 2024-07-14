@@ -5,6 +5,7 @@ import {
   Couple,
   Cover,
   Event,
+  Gallery,
   Gift,
   Header,
   Rsvp,
@@ -60,6 +61,10 @@ const ErlynSyehWedding = () => {
       <Gift
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         content={APP_ERLYNSYEH.content}
+      />
+      <Gallery
+        prefixImageUrl={APP_ERLYNSYEH.prefix}
+        images={APP_ERLYNSYEH.content.gallery}
       />
       <Wish />
     </main>

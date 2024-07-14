@@ -36,7 +36,7 @@ const Wish = () => {
   };
 
   return (
-    <div className='px-4 py-8'>
+    <div className='bg-lime-50 px-4 py-8'>
       <p
         className={cn(
           'text-3xl text-lime-900 text-center mb-4',
@@ -46,7 +46,7 @@ const Wish = () => {
         Wish
       </p>
       <div className='mb-8'>
-        <p className='text-sm italic text-lime-900 text-center opacity-80 mb-2'>
+        <p className='text-sm italic text-lime-900 text-center opacity-60 mb-2'>
           Berikan ucapan dan do`a untuk kami.
         </p>
       </div>
