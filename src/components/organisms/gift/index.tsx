@@ -25,7 +25,7 @@ const Gift = ({ prefixImageUrl, content }: GiftProps) => {
   }, [copied]);
 
   return (
-    <div className='bg-lime-50 px-4 py-8'>
+    <div className='bg-lime-50 px-4 py-8 shadow-md'>
       <div className='mb-10'>
         <ImageFrame prefixImageUrl={prefixImageUrl} image='event.jpg' />
       </div>

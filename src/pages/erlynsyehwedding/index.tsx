@@ -7,7 +7,8 @@ import {
   Event,
   Gift,
   Header,
-  Rsvp
+  Rsvp,
+  Wish
 } from '@/components/organisms';
 import { imageUrl } from '@/helpers';
 import { useAycavite } from '@/hooks';
@@ -60,6 +61,7 @@ const ErlynSyehWedding = () => {
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         content={APP_ERLYNSYEH.content}
       />
+      <Wish />
     </main>
   );
 };
