@@ -53,6 +53,11 @@ export const APP_ERLYNSYEH = {
         detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur',
         link: 'https://maps.app.goo.gl/DXyY86N5jLQPqjdd9'
       }
+    },
+    gift: {
+      bankName: 'BCA',
+      noRek: '1234567890',
+      accName: 'Erlyn Elmayanti Widya Susanti'
     }
   }
 };

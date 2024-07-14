@@ -79,7 +79,7 @@ const Event = ({ prefixImageUrl, content }: EventProps) => {
         Wedding Event
       </p>
       <div className='mb-8'>
-        <p className='text-sm italic text-black text-center opacity-60 mb-2'>
+        <p className='text-sm italic text-lime-900 text-center opacity-60 mb-2'>
           Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i
           untuk menghadiri acara pernikahan kami.
         </p>

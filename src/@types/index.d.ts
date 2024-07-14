@@ -39,4 +39,9 @@ interface ContentProps {
     resepsi1: EventInfo;
     resepsi2: EventInfo;
   };
+  gift: {
+    bankName: string;
+    noRek: string;
+    accName: string;
+  };
 }
