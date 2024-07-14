@@ -2,18 +2,19 @@ import { Button } from '@/components/atoms';
 import { CoupleImageSlide } from '@/components/molecules';
 import { cn } from '@/utils';
 import { InstagramLogo } from '@phosphor-icons/react';
-import { Noto_Kufi_Arabic } from 'next/font/google';
+import { Playfair_Display_SC } from 'next/font/google';
 
 interface CoupleProps {
   prefixImageUrl: string;
   content: ContentProps;
 }
 
-type CoupleType = 'bride' | 'groom';
+const playfairDisplaySc = Playfair_Display_SC({
+  subsets: ['latin'],
+  weight: '400'
+});
 
-const notoKufiArabic = Noto_Kufi_Arabic({ subsets: ['latin'] });
-
-const RenderCoupleSection = ({
+const CoupleSection = ({
   prefixImageUrl,
   content,
   type
@@ -30,7 +31,7 @@ const RenderCoupleSection = ({
         duration={3000}
       />
       <div className='px-6 mt-4 mb-12'>
-        <p className='text-sm italic text-black text-center opacity-45 mb-2'>
+        <p className='text-sm italic text-black text-center opacity-60 mb-2'>
           {content.couple[type].quotes}
         </p>
         <p className='text-sm italic text-lime-900 text-center opacity-80'>
@@ -39,11 +40,11 @@ const RenderCoupleSection = ({
       </div>
       <div className='flex flex-col justify-center items-center text-center'>
         <div className='relative w-full mb-3'>
-          <div className='absolute w-full -top-8 -z-10 opacity-10'>
+          <div className='absolute w-full -top-9 -z-10 opacity-10'>
             <p
               className={cn(
                 'text-6xl font-medium text-lime-600 capitalize',
-                notoKufiArabic.className
+                playfairDisplaySc.className
               )}
             >
               The {type}
@@ -52,7 +53,7 @@ const RenderCoupleSection = ({
           <p
             className={cn(
               'text-2xl font-medium text-lime-900',
-              notoKufiArabic.className
+              playfairDisplaySc.className
             )}
           >
             {content.couple[type].name}
@@ -64,25 +65,23 @@ const RenderCoupleSection = ({
             {content.couple[type].child_prefix} dari
           </p>
           <p className='text-sm text-lime-900 font-light'>
-            Bapak {content.couple[type].father} &<br />
-            Ibu {content.couple[type].mother}
+            Bapak {content.couple[type].father} & Ibu{' '}
+            {content.couple[type].mother}
           </p>
         </div>
-        <a
-          href={`https://instagram.com/${content.couple[type].instagram}`}
-          target='_blank'
-          rel='noreferrer'
+        <Button
+          variant='outlined'
+          className='rounded-full border-lime-900 hover:bg-lime-900 text-lime-900 hover:text-white transition duration-300 flex gap-1 items-center justify-center my-6'
+          onClick={() => {
+            const url = `https://instagram.com/${content.couple[type].instagram}`;
+            window.open(url, '_blank');
+          }}
         >
-          <Button
-            variant='outlined'
-            className='rounded-full border-lime-900 hover:bg-lime-900 text-lime-900 hover:text-white transition duration-300 flex gap-1 items-center justify-center my-6'
-          >
-            <InstagramLogo size={20} />
-            <p className='text-md font-medium'>
-              {content.couple[type].instagram}
-            </p>
-          </Button>
-        </a>
+          <InstagramLogo size={18} />
+          <p className='text-sm font-medium'>
+            {content.couple[type].instagram}
+          </p>
+        </Button>
       </div>
     </div>
   );
@@ -91,11 +90,18 @@ const RenderCoupleSection = ({
 export default function Couple({ prefixImageUrl, content }: CoupleProps) {
   const items = ['bride', 'groom'];
   return (
-    <div className='px-4 py-8'>
-      <p className='text-3xl text-lime-900 text-center mb-8'>The Wedding Of</p>
+    <div className='px-4 py-8 shadow-md relative z-10'>
+      <p
+        className={cn(
+          'text-3xl text-lime-900 text-center mb-8',
+          playfairDisplaySc.className
+        )}
+      >
+        The Wedding Of
+      </p>
       {/* the bride & groom */}
       {items.map((item, i) => (
-        <RenderCoupleSection
+        <CoupleSection
           key={i}
           prefixImageUrl={prefixImageUrl}
           content={content}

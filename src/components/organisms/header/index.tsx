@@ -1,7 +1,7 @@
 import { CountdownTimer } from '@/components/molecules';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
-import { Noto_Kufi_Arabic } from 'next/font/google';
+import { Playfair_Display_SC } from 'next/font/google';
 import { useEffect, useState } from 'react';
 
 interface HeaderProps {
@@ -12,7 +12,10 @@ interface HeaderProps {
   eventDate: Date;
 }
 
-const notoKufiArabic = Noto_Kufi_Arabic({ subsets: ['latin'] });
+const playfairDisplaySc = Playfair_Display_SC({
+  subsets: ['latin'],
+  weight: '400'
+});
 
 export default function Header({
   prefixImageUrl,
@@ -48,12 +51,7 @@ export default function Header({
       <div className='absolute inset-0 bg-black opacity-20' />
       <div className='relative z-10 flex flex-col items-center justify-end h-full text-white py-28'>
         <div className='text-center'>
-          <p
-            className={cn(
-              'text-4xl mb-6 font-medium',
-              notoKufiArabic.className
-            )}
-          >
+          <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
             {coupleNick.bride} & {coupleNick.groom}
           </p>
           <CountdownTimer targetDate={eventDate.toISOString()} />

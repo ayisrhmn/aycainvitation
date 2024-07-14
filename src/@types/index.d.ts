@@ -3,7 +3,7 @@ interface CoupleNickProps {
   groom: string;
 }
 
-interface InfoCouple {
+interface CoupleInfo {
   name: string;
   child_prefix: string;
   father: string;
@@ -14,10 +14,29 @@ interface InfoCouple {
   quotesBy: string;
 }
 
+type CoupleType = 'bride' | 'groom';
+
+interface EventInfo {
+  date: Date;
+  startTime: string;
+  endTime: string | null;
+  location: string;
+  street: string;
+  detailStreet: string;
+  link: string;
+}
+
+type EventType = 'akad' | 'resepsi1' | 'resepsi2';
+
 interface ContentProps {
   headerImages: string[];
   couple: {
-    bride: InfoCouple;
-    groom: InfoCouple;
+    bride: CoupleInfo;
+    groom: CoupleInfo;
+  };
+  event: {
+    akad: EventInfo;
+    resepsi1: EventInfo;
+    resepsi2: EventInfo;
   };
 }

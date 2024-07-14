@@ -32,23 +32,26 @@ export const APP_ERLYNSYEH = {
         endTime: null,
         location: 'Masjid Agung Al Munawar',
         street: 'Jl. K.H Wahid Hasyim No.2B',
-        detailStreet: 'Kauman, Tulungagung, Jawa Timur'
+        detailStreet: 'Kauman, Tulungagung, Jawa Timur',
+        link: 'https://maps.app.goo.gl/QV43Jc1bm3agJyyy8'
       },
       resepsi1: {
         date: new Date('2024-08-17'),
         startTime: '10.00',
         endTime: '12.00',
-        location: 'Gedung Graha Lestari',
+        location: 'Gedung GRHA Lestari',
         street: 'Jl. Pahlawan No.8',
-        detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur'
+        detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur',
+        link: 'https://maps.app.goo.gl/DXyY86N5jLQPqjdd9'
       },
       resepsi2: {
         date: new Date('2024-08-17'),
         startTime: '12.00',
         endTime: '13.30',
-        location: 'Gedung Graha Lestari',
+        location: 'Gedung GRHA Lestari',
         street: 'Jl. Pahlawan No.8',
-        detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur'
+        detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur',
+        link: 'https://maps.app.goo.gl/DXyY86N5jLQPqjdd9'
       }
     }
   }
