@@ -1,3 +1,9 @@
+interface RsvpData {
+  name: string;
+  isAttend: boolean;
+  invitationBy: string;
+}
+
 interface WishesData {
   name: string;
   wish: string;
