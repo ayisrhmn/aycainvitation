@@ -1,7 +1,7 @@
 export const APP = {
-  title: 'This site is under construction! - Aycavite',
+  title: 'This site is under construction! - Aycainvitation',
   content: {
     title: 'This site is under construction!',
-    subTitle: '#WelcomeToAycavite'
+    subTitle: '#WelcomeToAycainvitation'
   }
 };
