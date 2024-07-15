@@ -1,4 +1,4 @@
-import { useAycavite } from './aycavite';
 import { useImageSlideshow } from './image-slide-show';
+import { useAudio } from './audio';
 
-export { useAycavite, useImageSlideshow };
+export { useImageSlideshow, useAudio };

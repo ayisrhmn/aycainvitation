@@ -11,6 +11,8 @@ interface CoverProps {
   coupleNick: CoupleNickProps;
   eventDate: Date;
   to: string;
+  openInvite: boolean;
+  handleOpenInvite: () => void;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -18,8 +20,14 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Cover = ({ bgUrl, coupleNick, eventDate, to }: CoverProps) => {
-  const [openInvite, setOpenInvite] = useState(false);
+const Cover = ({
+  bgUrl,
+  coupleNick,
+  eventDate,
+  to,
+  openInvite,
+  handleOpenInvite
+}: CoverProps) => {
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
@@ -68,7 +76,7 @@ const Cover = ({ bgUrl, coupleNick, eventDate, to }: CoverProps) => {
           <Button
             variant='outlined'
             className='rounded-lg blip'
-            onClick={() => setOpenInvite(true)}
+            onClick={handleOpenInvite}
           >
             <EnvelopeOpen size={20} />
             <p className='text-md'>Buka Undangan</p>

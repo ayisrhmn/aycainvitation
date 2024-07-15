@@ -12,16 +12,28 @@ import {
   Wish
 } from '@/components/organisms';
 import { imageUrl } from '@/helpers';
-import { useAycavite } from '@/hooks';
-import { Pray } from '@/components/atoms';
+import { MusicToggle, Pray } from '@/components/atoms';
+import { useRouter } from 'next/router';
+import { useAudio } from '@/hooks';
+import { cn } from '@/utils';
+import { useState } from 'react';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 const ErlynSyehWedding = () => {
-  const { to } = useAycavite();
+  const router = useRouter();
+  const { to } = router.query;
+
+  const [openInvite, setOpenInvite] = useState(false);
+
+  const { playing, setPlaying, toggle }: AudioProps =
+    useAudio('/main-music.mp3');
 
   return (
-    <main id={APP_ERLYNSYEH.prefix} className={playfairDisplay.className}>
+    <main
+      id={APP_ERLYNSYEH.prefix}
+      className={cn('relative', playfairDisplay.className)}
+    >
       <Head>
         <title>{APP_ERLYNSYEH.title}</title>
       </Head>
@@ -33,6 +45,11 @@ const ErlynSyehWedding = () => {
         }}
         eventDate={APP_ERLYNSYEH.content.event.resepsi1.date}
         to={to as string}
+        openInvite={openInvite}
+        handleOpenInvite={() => {
+          setOpenInvite(true);
+          setPlaying(true);
+        }}
       />
       <Header
         prefixImageUrl={APP_ERLYNSYEH.prefix}
@@ -71,6 +88,7 @@ const ErlynSyehWedding = () => {
           groom: APP_ERLYNSYEH.content.couple.groom.name.split(' ')[0]
         }}
       />
+      {openInvite && <MusicToggle toggle={toggle} playing={playing} />}
     </main>
   );
 };

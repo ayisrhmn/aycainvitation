@@ -45,3 +45,9 @@ interface ContentProps {
     accName: string;
   };
 }
+
+interface AudioProps {
+  playing: boolean;
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  toggle: () => void;
+}
