@@ -1,6 +1,5 @@
-import { Button } from '@/components/atoms';
+import { Button, WishCard } from '@/components/atoms';
 import { cn } from '@/utils';
-import { Heart } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
 import { FormEvent, useState } from 'react';
 
@@ -8,22 +7,6 @@ const playfairDisplaySc = Playfair_Display_SC({
   subsets: ['latin'],
   weight: '400'
 });
-
-const WishCard = ({ sender, message }: { sender: string; message: string }) => {
-  return (
-    <div className='flex gap-3 mb-3'>
-      <div className='flex flex-row items-start justify-center'>
-        <div className='bg-red-500 p-1.5 rounded-full'>
-          <Heart weight='fill' size={24} className='text-white' />
-        </div>
-      </div>
-      <div className='w-full border shadow p-2 rounded-lg text-sm text-lime-900'>
-        <p className='text-md font-semibold mb-1'>{sender}</p>
-        <p className='text-md'>{message}</p>
-      </div>
-    </div>
-  );
-};
 
 const Wish = () => {
   const [name, setName] = useState('');
