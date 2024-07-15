@@ -6,3 +6,4 @@ export { default as Rsvp } from './rsvp';
 export { default as Gift } from './gift';
 export { default as Gallery } from './gallery';
 export { default as Wish } from './wish';
+export { default as Footer } from './footer';

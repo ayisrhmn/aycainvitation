@@ -5,8 +5,8 @@ import {
   Couple,
   Cover,
   Event,
+  Footer,
   Gallery,
-  Gift,
   Header,
   Rsvp,
   Wish
@@ -58,15 +58,18 @@ const ErlynSyehWedding = () => {
         images={APP_ERLYNSYEH.content.headerImages}
         duration={3000}
       />
-      <Gift
-        prefixImageUrl={APP_ERLYNSYEH.prefix}
-        content={APP_ERLYNSYEH.content}
-      />
       <Gallery
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         images={APP_ERLYNSYEH.content.gallery}
       />
       <Wish />
+      <Footer
+        prefixImageUrl={APP_ERLYNSYEH.prefix}
+        coupleNick={{
+          bride: APP_ERLYNSYEH.content.couple.bride.name.split(' ')[0],
+          groom: APP_ERLYNSYEH.content.couple.groom.name.split(' ')[0]
+        }}
+      />
     </main>
   );
 };
