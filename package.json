@@ -12,15 +12,18 @@
     "@phosphor-icons/react": "^2.1.7",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
+    "mongoose": "^8.5.1",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hot-toast": "^2.4.1",
     "react-photo-view": "^1.2.6",
     "react-responsive-masonry": "^2.2.1",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

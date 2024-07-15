@@ -13,7 +13,7 @@ const WishCard = ({ sender, message }: WishCardProps) => {
           <Heart weight='fill' size={24} className='text-white' />
         </div>
       </div>
-      <div className='w-full border shadow p-2 rounded-lg text-sm text-lime-900'>
+      <div className='w-full bg-white border shadow p-2 rounded-lg text-sm text-lime-900'>
         <p className='text-md font-semibold mb-1'>{sender}</p>
         <p className='text-md'>{message}</p>
       </div>

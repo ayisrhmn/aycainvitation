@@ -57,12 +57,13 @@ const ErlynSyehWedding = () => {
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         images={APP_ERLYNSYEH.content.headerImages}
         duration={3000}
+        to={to as string}
       />
       <Gallery
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         images={APP_ERLYNSYEH.content.gallery}
       />
-      <Wish />
+      <Wish to={to as string} prefix={APP_ERLYNSYEH.prefix} />
       <Footer
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         coupleNick={{

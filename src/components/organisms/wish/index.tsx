@@ -1,22 +1,75 @@
 import { Button, WishCard } from '@/components/atoms';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+
+interface WishProps {
+  to: string;
+  prefix: string;
+}
 
 const playfairDisplaySc = Playfair_Display_SC({
   subsets: ['latin'],
   weight: '400'
 });
 
-const Wish = () => {
+const Wish = ({ to, prefix }: WishProps) => {
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
-  const [wishes, setWishes] = useState('');
+  const [wish, setWish] = useState('');
+  const [wishes, setWishes] = useState<WishesData[]>([]);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const fetchWishes = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/${prefix}/wishes`);
+      const data = await response.json();
+      if (data.success) {
+        setLoading(false);
+        setWishes(data.data);
+      } else {
+        setLoading(false);
+        toast.error(`Failed to fetch examples: ${data.error}`);
+      }
+    } catch (err) {
+      setLoading(false);
+      toast.error(`Error fetching data: ${err}`);
+    }
+  }, [prefix]);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Name', name);
-    console.log('Wishes', wishes);
+    try {
+      const response = await fetch(`/api/${prefix}/wishes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          wish,
+          createdBy: to,
+          invitationBy: prefix
+        })
+      });
+      const data = await response.json();
+      if (data.success) {
+        setName('');
+        setWish('');
+        toast.success('Thank you for the wishes!');
+        fetchWishes();
+      } else {
+        toast.error(`Failed to send wishes: ${data.error}`);
+      }
+    } catch (err) {
+      toast.error(`Error posting data: ${err}`);
+    }
   };
+
+  useEffect(() => {
+    fetchWishes();
+  }, [fetchWishes]);
 
   return (
     <div className='bg-lime-50 px-4 py-8'>
@@ -47,14 +100,14 @@ const Wish = () => {
           <textarea
             className='shadow appearance-none border rounded-lg w-full py-2 px-3 text-lime-900 leading-tight focus:outline-none focus:shadow-outline'
             rows={4}
-            placeholder='Wishes'
-            value={wishes}
-            onChange={(e) => setWishes(e.target.value)}
+            placeholder='Wish'
+            value={wish}
+            onChange={(e) => setWish(e.target.value)}
           />
         </div>
         <div className='flex items-center justify-between mb-6'>
           <Button
-            disabled={name.length === 0 || wishes.length === 0}
+            disabled={name.length === 0 || wish.length === 0 || loading}
             className='bg-lime-900 hover:bg-lime-700 text-white hover:text-white rounded-full transition duration-300'
             type='submit'
           >
@@ -62,12 +115,23 @@ const Wish = () => {
           </Button>
         </div>
       </form>
-      {/* if wish > 3, set height to 280px */}
-      <div className='h-auto overflow-auto no-scrollbar'>
-        <WishCard
-          sender='John Doe'
-          message='Happy Wedding! Lorem ipsum dolor sit amet.'
-        />
+      <div
+        className={cn(
+          'overflow-auto no-scrollbar',
+          wishes?.length > 3 ? 'h-[280px]' : 'h-auto'
+        )}
+      >
+        {loading ? (
+          <p className='text-sm text-center italic text-lime-900 opacity-60'>
+            Loading wishes...
+          </p>
+        ) : (
+          <>
+            {wishes?.map((wish, i) => (
+              <WishCard key={i} sender={wish?.name} message={wish?.wish} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
