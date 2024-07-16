@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useImageSlideshow = (images: string[], duration: number) => {
+const useImageSlideshow = (images: string[], duration: number) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -13,3 +13,5 @@ export const useImageSlideshow = (images: string[], duration: number) => {
 
   return { currentImageIndex };
 };
+
+export default useImageSlideshow;

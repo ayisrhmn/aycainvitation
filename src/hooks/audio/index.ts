@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
 
-export const useAudio = (urlAudio: string) => {
+const useAudio = (urlAudio: string) => {
   const audio = useRef<HTMLAudioElement | undefined>(
     typeof Audio !== 'undefined' ? new Audio(urlAudio) : undefined
   );
@@ -32,3 +32,5 @@ export const useAudio = (urlAudio: string) => {
 
   return { playing, setPlaying, toggle };
 };
+
+export default useAudio;

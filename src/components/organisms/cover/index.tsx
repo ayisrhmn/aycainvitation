@@ -1,4 +1,4 @@
-import { Button } from '@/components/atoms';
+import { AnimatedSection, Button } from '@/components/atoms';
 import { DEFAULT_DATE_FORMAT } from '@/constants';
 import { dateFormat } from '@/helpers';
 import { cn } from '@/utils';
@@ -55,23 +55,27 @@ const Cover = ({
       />
       <div className='absolute inset-0 bg-black opacity-20' />
       <div className='relative z-10 flex flex-col items-center justify-between h-full text-white py-28'>
-        <div className='text-center'>
-          <p className='text-md mb-4'>The Wedding of</p>
-          <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
-            {coupleNick.bride} & {coupleNick.groom}
-          </p>
-          <p className='text-md'>
-            {dateFormat(eventDate, DEFAULT_DATE_FORMAT)}
-          </p>
-        </div>
+        <AnimatedSection>
+          <div className='text-center'>
+            <p className='text-md mb-4'>The Wedding of</p>
+            <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
+              {coupleNick.bride} & {coupleNick.groom}
+            </p>
+            <p className='text-md'>
+              {dateFormat(eventDate, DEFAULT_DATE_FORMAT)}
+            </p>
+          </div>
+        </AnimatedSection>
         <div className='text-center'>
           {to && (
-            <div className='mb-6'>
-              <p className='text-md mb-2'>Kepada Yth.</p>
-              <p className={cn('text-3xl mb-4', playfairDisplaySc.className)}>
-                {to}
-              </p>
-            </div>
+            <AnimatedSection>
+              <div className='mb-6'>
+                <p className='text-md mb-2'>Kepada Yth.</p>
+                <p className={cn('text-3xl mb-4', playfairDisplaySc.className)}>
+                  {to}
+                </p>
+              </div>
+            </AnimatedSection>
           )}
           <Button
             variant='outlined'

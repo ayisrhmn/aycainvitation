@@ -1,7 +1,6 @@
 import { imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
-import Image from 'next/legacy/image';
 
 interface CoupleImageSlideProps {
   prefixImageUrl: string;
@@ -25,17 +24,14 @@ const CoupleImageSlide = ({
         <div className='bg-transparent w-full h-full border-b-2 border-r-2 border-white'></div>
       </div>
       {images.map((image, i) => (
-        <Image
+        <img
           key={i}
           className={cn(
-            'transition-opacity duration-1000',
+            'transition-opacity duration-1000 w-full h-full object-cover absolute',
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           src={`${imageUrl(prefixImageUrl, image, 'Content')}`}
           alt='This is couple image'
-          layout='fill'
-          objectFit='cover'
-          priority
         />
       ))}
     </div>

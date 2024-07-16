@@ -1,5 +1,4 @@
 import { imageUrl } from '@/helpers';
-import Image from 'next/legacy/image';
 
 interface ImageFrameProps {
   prefixImageUrl: string;
@@ -12,13 +11,10 @@ const ImageFrame = ({ prefixImageUrl, image }: ImageFrameProps) => {
       <div className='absolute top-0 z-10 w-full h-[500px]'>
         <div className='bg-transparent w-full h-full border-[16px] border-white rounded-t-full'></div>
       </div>
-      <Image
-        className='rounded-t-full'
+      <img
+        className='rounded-t-full w-full h-full object-cover'
         src={`${imageUrl(prefixImageUrl, image, 'Content')}`}
         alt='This is image'
-        layout='fill'
-        objectFit='cover'
-        priority
       />
     </div>
   );

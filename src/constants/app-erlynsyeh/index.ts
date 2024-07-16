@@ -21,7 +21,7 @@ export const APP_ERLYNSYEH = {
         mother: 'Nur Telmy Usman',
         images: ['groom-1.jpg', 'groom-2.jpg'],
         instagram: 'syehdanial',
-        quotes: `"Whatever our souls are made of, his and mine are the same."`,
+        quotes: `"I love her and that's the beginning and end of everything"`,
         quotesBy: 'F. Scott Fitzgerald'
       }
     },
@@ -55,18 +55,18 @@ export const APP_ERLYNSYEH = {
       }
     },
     gift: {
-      bankName: 'BCA',
-      noRek: '1234567890',
-      accName: 'Erlyn Elmayanti Widya Susanti'
+      bankName: '',
+      noRek: '',
+      accName: ''
     },
     gallery: [
-      'cover.jpg',
-      'header-1.jpg',
-      'header-2.jpg',
-      'header-3.jpg',
-      'groom-1.jpg',
-      'bride-1.jpg',
-      'event.jpg'
+      'gallery-1.jpg',
+      'gallery-2.jpg',
+      'gallery-3.jpg',
+      'gallery-4.jpg',
+      'gallery-5.jpg',
+      'gallery-6.jpg',
+      'gallery-7.jpg'
     ]
   }
 };

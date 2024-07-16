@@ -36,7 +36,7 @@ const Header = ({
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            backgroundImage: `url(${imageUrl(prefixImageUrl, image, 'Background')})`
+            backgroundImage: `url(${imageUrl(prefixImageUrl, image, 'Background')}${i === 0 && '&cx=600'})`
           }}
         />
       ))}

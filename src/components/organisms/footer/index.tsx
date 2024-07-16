@@ -1,3 +1,4 @@
+import { AnimatedSection } from '@/components/atoms';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
@@ -23,17 +24,21 @@ const Footer = ({ prefixImageUrl, coupleNick }: FooterProps) => {
       />
       <div className='absolute inset-0 bg-black opacity-20' />
       <div className='w-full h-full relative z-10 flex flex-col items-center justify-between'>
-        <div>
-          <p className='text-center text-md uppercase text-white'>Thank You</p>
-          <p
-            className={cn(
-              'text-3xl text-white text-center',
-              playfairDisplaySc.className
-            )}
-          >
-            {coupleNick.bride} & {coupleNick.groom}
-          </p>
-        </div>
+        <AnimatedSection>
+          <div>
+            <p className='text-center text-md uppercase text-white'>
+              Thank You
+            </p>
+            <p
+              className={cn(
+                'text-3xl text-white text-center',
+                playfairDisplaySc.className
+              )}
+            >
+              {coupleNick.bride} & {coupleNick.groom}
+            </p>
+          </div>
+        </AnimatedSection>
         <div>
           <p className='text-center text-sm text-white font-medium'>
             Build with &hearts; | &copy;{' '}

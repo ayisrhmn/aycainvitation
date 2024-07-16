@@ -22,7 +22,7 @@ const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 const ErlynSyehWedding = () => {
   const router = useRouter();
-  const { to } = router.query;
+  const { to, session } = router.query;
 
   const [openInvite, setOpenInvite] = useState(false);
 
@@ -69,6 +69,7 @@ const ErlynSyehWedding = () => {
       <Event
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         content={APP_ERLYNSYEH.content}
+        session={session as string}
       />
       <Rsvp
         prefixImageUrl={APP_ERLYNSYEH.prefix}

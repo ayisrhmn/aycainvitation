@@ -1,4 +1,4 @@
-import { ImageFrame } from '@/components/atoms';
+import { AnimatedSection, ImageFrame } from '@/components/atoms';
 import { EventSection } from '@/components/molecules';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
@@ -6,6 +6,7 @@ import { Playfair_Display_SC } from 'next/font/google';
 interface EventProps {
   prefixImageUrl: string;
   content: ContentProps;
+  session: string;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -13,7 +14,7 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Event = ({ prefixImageUrl, content }: EventProps) => {
+const Event = ({ prefixImageUrl, content, session }: EventProps) => {
   return (
     <div className='bg-lime-50 px-4 py-8'>
       <p
@@ -31,10 +32,19 @@ const Event = ({ prefixImageUrl, content }: EventProps) => {
         </p>
       </div>
       <div className='mb-8'>
-        <ImageFrame prefixImageUrl={prefixImageUrl} image='event.jpg' />
+        <AnimatedSection>
+          <ImageFrame prefixImageUrl={prefixImageUrl} image='event.jpg' />
+        </AnimatedSection>
       </div>
-      <EventSection type='akad' content={content} noTime noLocation />
-      <EventSection type='resepsi1' content={content} />
+      <AnimatedSection>
+        <EventSection type='akad' content={content} noTime noLocation />
+      </AnimatedSection>
+      <AnimatedSection>
+        <EventSection
+          type={session === '1' ? 'resepsi1' : 'resepsi2'}
+          content={content}
+        />
+      </AnimatedSection>
     </div>
   );
 };
