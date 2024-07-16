@@ -128,7 +128,13 @@ const Wish = ({ to, prefix }: WishProps) => {
         ) : (
           <>
             {wishes?.map((wish, i) => (
-              <WishCard key={i} sender={wish?.name} message={wish?.wish} />
+              <WishCard
+                key={i}
+                sender={wish?.name}
+                message={wish?.wish}
+                createdBy={wish?.createdBy}
+                createdAt={wish?.createdAt}
+              />
             ))}
           </>
         )}

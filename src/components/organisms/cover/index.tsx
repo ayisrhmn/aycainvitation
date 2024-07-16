@@ -66,7 +66,7 @@ const Cover = ({
             </p>
           </div>
         </AnimatedSection>
-        <div className='text-center'>
+        <div className='flex flex-col items-center text-center'>
           {to && (
             <AnimatedSection>
               <div className='mb-6'>

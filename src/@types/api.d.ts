@@ -2,6 +2,8 @@ interface RsvpData {
   name: string;
   isAttend: boolean;
   invitationBy: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface WishesData {
@@ -9,6 +11,8 @@ interface WishesData {
   wish: string;
   createdBy: string;
   invitationBy: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface Data<T> {

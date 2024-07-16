@@ -1,11 +1,14 @@
-import { Heart } from '@phosphor-icons/react';
+import { dateFormatDistance } from '@/helpers/date-format.helper';
+import { Heart, SealCheck } from '@phosphor-icons/react';
 
 interface WishCardProps {
   sender: string;
   message: string;
+  createdBy: string;
+  createdAt: string;
 }
 
-const WishCard = ({ sender, message }: WishCardProps) => {
+const WishCard = ({ sender, message, createdBy, createdAt }: WishCardProps) => {
   return (
     <div className='flex gap-3 mb-3'>
       <div className='flex flex-row items-start justify-center'>
@@ -14,8 +17,16 @@ const WishCard = ({ sender, message }: WishCardProps) => {
         </div>
       </div>
       <div className='w-full bg-white border shadow p-2 rounded-lg text-sm text-lime-900'>
-        <p className='text-md font-semibold mb-1'>{sender}</p>
-        <p className='text-md'>{message}</p>
+        <div className='flex gap-1'>
+          <p className='text-md font-semibold mb-1'>{sender}</p>
+          {['Aycainvitation']?.includes(createdBy) && (
+            <SealCheck weight='fill' size={17} className='text-blue-500' />
+          )}
+        </div>
+        <p className='text-md mb-2'>{message}</p>
+        <p className='text-xs font-medium opacity-60'>
+          {dateFormatDistance(new Date(createdAt))}
+        </p>
       </div>
     </div>
   );
