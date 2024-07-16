@@ -38,7 +38,7 @@ const ErlynSyehWedding = () => {
         <title>{APP_ERLYNSYEH.title}</title>
       </Head>
       <Cover
-        bgUrl={`${imageUrl(APP_ERLYNSYEH.prefix, 'cover.jpg', 'Background')}&cx=190`}
+        bgUrl={`${imageUrl(APP_ERLYNSYEH.prefix, 'cover.jpg', 'Background')}`}
         coupleNick={{
           bride: APP_ERLYNSYEH.content.couple.bride.name.split(' ')[0],
           groom: APP_ERLYNSYEH.content.couple.groom.name.split(' ')[0]

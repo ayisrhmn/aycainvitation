@@ -35,7 +35,7 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
                   key={i}
                   src={imageUrl(prefixImageUrl, image, 'Content')}
                   alt={'image of gallery'}
-                  className='w-full h-full object-cover shadow-md rounded'
+                  className='w-full h-full object-cover shadow-md rounded cursor-pointer'
                 />
               </PhotoView>
             </AnimatedSection>
