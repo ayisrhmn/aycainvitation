@@ -14,7 +14,7 @@ export default async function handler(
       try {
         const wishes = await Wishes.find({
           invitationBy: APP_ERLYNSYEH.prefix
-        });
+        }).sort({ createdAt: -1 });
         res.status(200).json({ success: true, data: wishes });
       } catch (error) {
         res
