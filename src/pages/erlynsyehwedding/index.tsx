@@ -73,7 +73,7 @@ const ErlynSyehWedding = () => {
       />
       <Rsvp
         prefixImageUrl={APP_ERLYNSYEH.prefix}
-        images={APP_ERLYNSYEH.content.headerImages}
+        images={APP_ERLYNSYEH.content.rsvpImages}
         duration={3000}
         to={to as string}
       />

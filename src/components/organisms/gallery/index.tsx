@@ -29,16 +29,16 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
       <div>
         <Masonry columnsCount={2} gutter='8px'>
           {images.map((image, i) => (
-            <PhotoView key={i} src={imageUrl(prefixImageUrl, image, 'Content')}>
-              <AnimatedSection>
+            <AnimatedSection key={i}>
+              <PhotoView src={imageUrl(prefixImageUrl, image, 'Content')}>
                 <img
                   key={i}
                   src={imageUrl(prefixImageUrl, image, 'Content')}
                   alt={'image of gallery'}
                   className='w-full h-full object-cover shadow-md rounded'
                 />
-              </AnimatedSection>
-            </PhotoView>
+              </PhotoView>
+            </AnimatedSection>
           ))}
         </Masonry>
       </div>

@@ -54,6 +54,7 @@ export const APP_ERLYNSYEH = {
         link: 'https://maps.app.goo.gl/DXyY86N5jLQPqjdd9'
       }
     },
+    rsvpImages: ['gallery-2.jpg', 'gallery-5.jpg', 'gallery-6.jpg'],
     gift: {
       bankName: '',
       noRek: '',

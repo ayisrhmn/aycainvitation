@@ -7,11 +7,10 @@ const PraySection = () => {
       <Bird size={56} weight='fill' className='text-lime-900 opacity-50' />
       <AnimatedSection>
         <p className='mt-6 mb-4 text-sm text-center text-lime-900 opacity-80'>
-          “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
-          isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa
-          tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan
-          sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat
-          tanda-tanda bagi kaum yang berfikir.”
+          “And among His signs is that He created for you from yourselves mates
+          that you may find tranquility in them, and He placed between you
+          affection and mercy. Indeed in that are signs for a people who give
+          thought.”
         </p>
         <p className='text-sm text-center font-semibold text-lime-900 mb-4'>
           (QS. Ar-Rum: 21)
