@@ -107,6 +107,7 @@ const ErlynSyehWedding = () => {
         images={APP_ERLYNSYEH.content.rsvpImages}
         duration={3000}
         to={to as string}
+        session={session as string}
       />
       <Gallery
         prefixImageUrl={APP_ERLYNSYEH.prefix}

@@ -10,6 +10,10 @@ const Rsvp = new mongoose.Schema(
       type: Boolean,
       require: [true, 'isAttend is required!']
     },
+    session: {
+      type: Number,
+      default: null
+    },
     invitationBy: {
       type: String,
       require: [true, 'invitationBy is required!']

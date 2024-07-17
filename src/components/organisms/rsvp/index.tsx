@@ -12,6 +12,7 @@ interface RsvpProps {
   images: string[];
   duration: number;
   to: string;
+  session: string;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -19,7 +20,7 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Rsvp = ({ prefixImageUrl, images, duration, to }: RsvpProps) => {
+const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
   const [rsvpData, setRsvpData] = useState<RsvpData[]>([]);
@@ -50,6 +51,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to }: RsvpProps) => {
         body: JSON.stringify({
           name: to,
           isAttend,
+          session: parseInt(session) || null,
           invitationBy: prefix
         })
       });

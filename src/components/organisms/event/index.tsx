@@ -2,6 +2,7 @@ import { AnimatedSection, ImageFrame } from '@/components/atoms';
 import { EventSection } from '@/components/molecules';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
+import { useMemo } from 'react';
 
 interface EventProps {
   prefixImageUrl: string;
@@ -15,6 +16,22 @@ const playfairDisplaySc = Playfair_Display_SC({
 });
 
 const Event = ({ prefixImageUrl, content, session }: EventProps) => {
+  const sessionType = useMemo(() => {
+    switch (session) {
+      case '1':
+        return 'resepsi1';
+        break;
+
+      case '2':
+        return 'resepsi2';
+        break;
+
+      default:
+        return 'resepsi1';
+        break;
+    }
+  }, [session]);
+
   return (
     <div className='bg-lime-50 px-4 py-8'>
       <p
@@ -40,10 +57,7 @@ const Event = ({ prefixImageUrl, content, session }: EventProps) => {
         <EventSection type='akad' content={content} noTime noLocation />
       </AnimatedSection>
       <AnimatedSection>
-        <EventSection
-          type={session === '1' ? 'resepsi1' : 'resepsi2'}
-          content={content}
-        />
+        <EventSection type={sessionType} content={content} />
       </AnimatedSection>
     </div>
   );

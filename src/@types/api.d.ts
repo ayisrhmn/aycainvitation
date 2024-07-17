@@ -1,6 +1,7 @@
 interface RsvpData {
   name: string;
   isAttend: boolean;
+  session: number;
   invitationBy: string;
   createdAt: string;
   updatedAt: string;
