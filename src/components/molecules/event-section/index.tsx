@@ -37,7 +37,7 @@ const EventSection = ({
         {dateFormat(content.event[type].date, DEFAULT_DATE_FORMAT)}
       </p>
       {!noTime && (
-        <p className='text-md text-lime-900 opacity-60 mb-6'>
+        <p className='text-lg text-lime-900 opacity-80 mb-6'>
           Pukul {content.event[type].startTime} WIB -{' '}
           {content.event[type].endTime} WIB
         </p>

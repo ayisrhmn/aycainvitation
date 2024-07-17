@@ -34,9 +34,40 @@ const ErlynSyehWedding = () => {
       id={APP_ERLYNSYEH.prefix}
       className={cn('relative', playfairDisplay.className)}
     >
+      {/* #region Head */}
       <Head>
         <title>{APP_ERLYNSYEH.title}</title>
+
+        {/* #region Open Graph */}
+        <meta
+          property='og:url'
+          content={`https://aycainvitation.vercel.app/${APP_ERLYNSYEH.prefix}`}
+          key='ogurl'
+        />
+        <meta
+          property='og:image'
+          content={imageUrl(APP_ERLYNSYEH.prefix, 'gallery-5.jpg', 'Content')}
+          key='ogimage'
+        />
+        <meta
+          property='og:site_name'
+          content={'Wedding Invitation'}
+          key='ogsitename'
+        />
+        <meta
+          property='og:title'
+          content={'This is Our Wedding'}
+          key='ogtitle'
+        />
+        <meta
+          property='og:description'
+          content={'We invited you to celebrate our wedding!'}
+          key='ogdesc'
+        />
+        {/* #endregion Open Graph */}
       </Head>
+      {/* #endregion Head */}
+
       <Cover
         bgUrl={`${imageUrl(APP_ERLYNSYEH.prefix, 'cover.jpg', 'Background')}`}
         coupleNick={{
