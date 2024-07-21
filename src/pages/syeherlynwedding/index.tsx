@@ -102,13 +102,15 @@ const ErlynSyehWedding = () => {
         content={APP_SYEHERLYN.content}
         session={session as string}
       />
-      <Rsvp
-        prefixImageUrl={APP_SYEHERLYN.prefix}
-        images={APP_SYEHERLYN.content.rsvpImages}
-        duration={3000}
-        to={to as string}
-        session={session as string}
-      />
+      {to && (
+        <Rsvp
+          prefixImageUrl={APP_SYEHERLYN.prefix}
+          images={APP_SYEHERLYN.content.rsvpImages}
+          duration={3000}
+          to={to as string}
+          session={session as string}
+        />
+      )}
       <Gallery
         prefixImageUrl={APP_SYEHERLYN.prefix}
         images={APP_SYEHERLYN.content.gallery}
