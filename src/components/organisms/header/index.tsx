@@ -44,7 +44,7 @@ const Header = ({
       <div className='relative z-10 flex flex-col items-center justify-end h-full text-white py-28'>
         <div className='text-center'>
           <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
-            {coupleNick.bride} & {coupleNick.groom}
+            {coupleNick.groom} & {coupleNick.bride}
           </p>
           <CountdownTimer targetDate={eventDate.toISOString()} />
         </div>

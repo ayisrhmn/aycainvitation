@@ -35,7 +35,7 @@ const Footer = ({ prefixImageUrl, coupleNick }: FooterProps) => {
                 playfairDisplaySc.className
               )}
             >
-              {coupleNick.bride} & {coupleNick.groom}
+              {coupleNick.groom} & {coupleNick.bride}
             </p>
           </div>
         </AnimatedSection>

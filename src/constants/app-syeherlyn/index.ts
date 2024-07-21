@@ -36,22 +36,22 @@ const APP_SYEHERLYN = {
         link: 'https://maps.app.goo.gl/QV43Jc1bm3agJyyy8'
       },
       resepsi1: {
-        date: new Date('2024-08-17'),
-        startTime: '10.00',
-        endTime: '12.00',
-        location: 'Gedung GRHA Lestari',
-        street: 'Jl. Pahlawan No.8',
-        detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur',
-        link: 'https://maps.app.goo.gl/DXyY86N5jLQPqjdd9'
+        date: new Date('2024-08-18'),
+        startTime: '09.30',
+        endTime: null,
+        location: 'Resto & Cafe Semilir',
+        street: 'Jl. Mayor Sujadi No.73, Jepun',
+        detailStreet: 'Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur',
+        link: 'https://maps.app.goo.gl/po1AgwQMSDdQKY7k6'
       },
       resepsi2: {
-        date: new Date('2024-08-17'),
-        startTime: '12.00',
-        endTime: '13.30',
-        location: 'Gedung GRHA Lestari',
-        street: 'Jl. Pahlawan No.8',
-        detailStreet: 'Kedungwaru, Tulungagung, Jawa Timur',
-        link: 'https://maps.app.goo.gl/DXyY86N5jLQPqjdd9'
+        date: new Date('2024-08-18'),
+        startTime: '09.30',
+        endTime: null,
+        location: 'Resto & Cafe Semilir',
+        street: 'Jl. Mayor Sujadi No.73, Jepun',
+        detailStreet: 'Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur',
+        link: 'https://maps.app.goo.gl/po1AgwQMSDdQKY7k6'
       }
     },
     rsvpImages: ['gallery-2.jpg', 'gallery-5.jpg', 'gallery-6.jpg'],
@@ -67,7 +67,9 @@ const APP_SYEHERLYN = {
       'gallery-4.jpg',
       'gallery-5.jpg',
       'gallery-6.jpg',
-      'gallery-7.jpg'
+      'gallery-7.jpg',
+      'gallery-8.jpg',
+      'gallery-9.jpg'
     ]
   }
 };

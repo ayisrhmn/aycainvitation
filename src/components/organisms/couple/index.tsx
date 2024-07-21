@@ -13,7 +13,7 @@ const playfairDisplaySc = Playfair_Display_SC({
 });
 
 const Couple = ({ prefixImageUrl, content }: CoupleProps) => {
-  const items = ['bride', 'groom'];
+  const items = ['groom', 'bride'];
   return (
     <div className='px-4 py-8 shadow-md relative z-10'>
       <p

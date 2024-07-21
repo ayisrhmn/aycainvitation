@@ -38,8 +38,10 @@ const EventSection = ({
       </p>
       {!noTime && (
         <p className='text-lg text-lime-900 opacity-80 mb-6'>
-          Pukul {content.event[type].startTime} WIB -{' '}
-          {content.event[type].endTime} WIB
+          Pukul {`${content.event[type].startTime} WIB`} -{' '}
+          {content.event[type].endTime
+            ? `${content.event[type].endTime} WIB`
+            : 'Selesai'}
         </p>
       )}
       {!noLocation && (

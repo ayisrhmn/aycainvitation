@@ -59,7 +59,7 @@ const Cover = ({
           <div className='text-center'>
             <p className='text-md mb-4'>The Wedding of</p>
             <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
-              {coupleNick.bride} & {coupleNick.groom}
+              {coupleNick.groom} & {coupleNick.bride}
             </p>
             <p className='text-md'>
               {dateFormat(eventDate, DEFAULT_DATE_FORMAT)}
