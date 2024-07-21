@@ -1,6 +1,6 @@
-const APP_ERLYNSYEH = {
-  title: 'The Wedding of Erlyn & Syeh - Aycainvitation',
-  prefix: 'erlynsyehwedding',
+const APP_SYEHERLYN = {
+  title: 'The Wedding of Syeh & Erlyn - Aycainvitation',
+  prefix: 'syeherlynwedding',
   content: {
     headerImages: ['header-1.jpg', 'header-2.jpg', 'header-3.jpg'],
     couple: {
@@ -72,4 +72,4 @@ const APP_ERLYNSYEH = {
   }
 };
 
-export default APP_ERLYNSYEH;
+export default APP_SYEHERLYN;
