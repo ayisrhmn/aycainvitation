@@ -6,6 +6,7 @@ import { Playfair_Display_SC } from 'next/font/google';
 interface FooterProps {
   prefixImageUrl: string;
   coupleNick: CoupleNickProps;
+  isGroomEvent?: boolean;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -13,7 +14,7 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Footer = ({ prefixImageUrl, coupleNick }: FooterProps) => {
+const Footer = ({ prefixImageUrl, coupleNick, isGroomEvent }: FooterProps) => {
   return (
     <div className='h-[500px] relative px-4 pt-8 pb-4 flex justify-center items-center'>
       <div
@@ -29,14 +30,25 @@ const Footer = ({ prefixImageUrl, coupleNick }: FooterProps) => {
             <p className='text-center text-md uppercase text-white'>
               Thank You
             </p>
-            <p
-              className={cn(
-                'text-3xl text-white text-center',
-                playfairDisplaySc.className
-              )}
-            >
-              {coupleNick.groom} & {coupleNick.bride}
-            </p>
+            {!isGroomEvent ? (
+              <p
+                className={cn(
+                  'text-3xl text-white text-center',
+                  playfairDisplaySc.className
+                )}
+              >
+                {coupleNick.bride} & {coupleNick.groom}
+              </p>
+            ) : (
+              <p
+                className={cn(
+                  'text-3xl text-white text-center',
+                  playfairDisplaySc.className
+                )}
+              >
+                {coupleNick.groom} & {coupleNick.bride}
+              </p>
+            )}
           </div>
         </AnimatedSection>
         <div>

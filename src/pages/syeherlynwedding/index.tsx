@@ -81,6 +81,7 @@ const ErlynSyehWedding = () => {
           setOpenInvite(true);
           setPlaying(true);
         }}
+        isGroomEvent
       />
       <Header
         prefixImageUrl={APP_SYEHERLYN.prefix}
@@ -91,11 +92,13 @@ const ErlynSyehWedding = () => {
           groom: APP_SYEHERLYN.content.couple.groom.name.split(' ')[0]
         }}
         eventDate={APP_SYEHERLYN.content.event.resepsi1.date}
+        isGroomEvent
       />
       <Pray />
       <Couple
         prefixImageUrl={APP_SYEHERLYN.prefix}
         content={APP_SYEHERLYN.content}
+        isGroomEvent
       />
       <Event
         prefixImageUrl={APP_SYEHERLYN.prefix}
@@ -122,6 +125,7 @@ const ErlynSyehWedding = () => {
           bride: APP_SYEHERLYN.content.couple.bride.name.split(' ')[0],
           groom: APP_SYEHERLYN.content.couple.groom.name.split(' ')[0]
         }}
+        isGroomEvent
       />
       {openInvite && <MusicToggle toggle={toggle} playing={playing} />}
     </main>

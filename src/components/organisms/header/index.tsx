@@ -10,6 +10,7 @@ interface HeaderProps {
   duration: number;
   coupleNick: CoupleNickProps;
   eventDate: Date;
+  isGroomEvent?: boolean;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -22,7 +23,8 @@ const Header = ({
   images,
   duration,
   coupleNick,
-  eventDate
+  eventDate,
+  isGroomEvent = false
 }: HeaderProps) => {
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
@@ -43,9 +45,15 @@ const Header = ({
       <div className='absolute inset-0 bg-black opacity-20' />
       <div className='relative z-10 flex flex-col items-center justify-end h-full text-white py-28'>
         <div className='text-center'>
-          <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
-            {coupleNick.groom} & {coupleNick.bride}
-          </p>
+          {!isGroomEvent ? (
+            <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
+              {coupleNick.bride} & {coupleNick.groom}
+            </p>
+          ) : (
+            <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
+              {coupleNick.groom} & {coupleNick.bride}
+            </p>
+          )}
           <CountdownTimer targetDate={eventDate.toISOString()} />
         </div>
       </div>

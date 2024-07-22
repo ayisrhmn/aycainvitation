@@ -13,6 +13,7 @@ interface CoverProps {
   to: string;
   openInvite: boolean;
   handleOpenInvite: () => void;
+  isGroomEvent?: boolean;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -26,7 +27,8 @@ const Cover = ({
   eventDate,
   to,
   openInvite,
-  handleOpenInvite
+  handleOpenInvite,
+  isGroomEvent = false
 }: CoverProps) => {
   const [isHidden, setIsHidden] = useState(false);
 
@@ -58,9 +60,15 @@ const Cover = ({
         <AnimatedSection>
           <div className='text-center'>
             <p className='text-md mb-4'>The Wedding of</p>
-            <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
-              {coupleNick.groom} & {coupleNick.bride}
-            </p>
+            {!isGroomEvent ? (
+              <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
+                {coupleNick.bride} & {coupleNick.groom}
+              </p>
+            ) : (
+              <p className={cn('text-4xl mb-6', playfairDisplaySc.className)}>
+                {coupleNick.groom} & {coupleNick.bride}
+              </p>
+            )}
             <p className='text-md'>
               {dateFormat(eventDate, DEFAULT_DATE_FORMAT)}
             </p>

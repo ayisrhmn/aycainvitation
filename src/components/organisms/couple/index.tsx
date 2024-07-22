@@ -5,6 +5,7 @@ import { Playfair_Display_SC } from 'next/font/google';
 interface CoupleProps {
   prefixImageUrl: string;
   content: ContentProps;
+  isGroomEvent?: boolean;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -12,8 +13,8 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Couple = ({ prefixImageUrl, content }: CoupleProps) => {
-  const items = ['groom', 'bride'];
+const Couple = ({ prefixImageUrl, content, isGroomEvent }: CoupleProps) => {
+  const items = !isGroomEvent ? ['bride', 'groom'] : ['groom', 'bride'];
   return (
     <div className='px-4 py-8 shadow-md relative z-10'>
       <p
