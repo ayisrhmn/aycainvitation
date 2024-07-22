@@ -37,8 +37,8 @@ const APP_SYEHERLYN = {
       },
       resepsi1: {
         date: new Date('2024-08-18'),
-        startTime: '09.30',
-        endTime: null,
+        startTime: '10.00',
+        endTime: '11:30',
         location: 'Resto & Cafe Semilir',
         street: 'Jl. Mayor Sujadi No.73, Jepun',
         detailStreet: 'Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur',
@@ -46,8 +46,8 @@ const APP_SYEHERLYN = {
       },
       resepsi2: {
         date: new Date('2024-08-18'),
-        startTime: '09.30',
-        endTime: null,
+        startTime: '10.00',
+        endTime: '11:30',
         location: 'Resto & Cafe Semilir',
         street: 'Jl. Mayor Sujadi No.73, Jepun',
         detailStreet: 'Kec. Tulungagung, Kabupaten Tulungagung, Jawa Timur',
