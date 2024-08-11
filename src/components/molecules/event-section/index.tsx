@@ -28,12 +28,18 @@ const EventSection = ({
       <p
         className={cn(
           'text-2xl text-lime-900 mb-4 capitalize',
-          playfairDisplaySc.className
+          playfairDisplaySc.className,
+          type === 'akad' && 'text-lg mb-2'
         )}
       >
         — {type === 'akad' ? 'Akad Nikah' : 'Resepsi'} —
       </p>
-      <p className='text-lg text-lime-900 opacity-80 mb-1'>
+      <p
+        className={cn(
+          'text-lg text-lime-900 opacity-80 mb-1',
+          type === 'akad' && 'text-sm'
+        )}
+      >
         {dateFormat(content.event[type].date, DEFAULT_DATE_FORMAT)}
       </p>
       {!noTime && (
