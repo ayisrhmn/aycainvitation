@@ -23,6 +23,7 @@ const playfairDisplaySc = Playfair_Display_SC({
 const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
+  const [loading, setLoading] = useState(false);
   const [rsvpData, setRsvpData] = useState<RsvpData[]>([]);
 
   const fetchRsvp = useCallback(async () => {
@@ -41,6 +42,8 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
   }, [prefixImageUrl]);
 
   const handleRsvp = async (isAttend: boolean) => {
+    setLoading(true);
+
     const prefix = prefixImageUrl;
     try {
       const response = await fetch(`/api/${prefix}/rsvp`, {
@@ -59,11 +62,14 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
       if (data.success) {
         toast.success('Thank you for your confirmation!');
         fetchRsvp();
+        setLoading(false);
       } else {
         toast.error(`Failed to send rsvp: ${data.error}`);
+        setLoading(false);
       }
     } catch (err) {
       toast.error(`Error posting data: ${err}`);
+      setLoading(false);
     }
   };
 
@@ -109,6 +115,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
             </p>
             <div className='flex justify-center gap-2 mt-8 mb-4'>
               <Button
+                disabled={loading}
                 className='bg-emerald-500 hover:bg-emerald-700 transition duration-300 text-white hover:text-white rounded-full'
                 onClick={() => handleRsvp(true)}
               >
@@ -116,6 +123,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
                 <p className='text-sm font-medium'>Hadir</p>
               </Button>
               <Button
+                disabled={loading}
                 className='bg-red-500 hover:bg-red-700 transition duration-300 text-white hover:text-white rounded-full'
                 onClick={() => handleRsvp(false)}
               >
