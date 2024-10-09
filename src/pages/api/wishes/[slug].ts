@@ -1,4 +1,3 @@
-import { APP_SYEHERLYN } from '@/constants';
 import { Wishes } from '@/models';
 import { db } from '@/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -9,11 +8,13 @@ export default async function handler(
 ) {
   await db();
 
+  const { slug } = req.query;
+
   switch (req.method) {
     case 'GET':
       try {
         const wishes = await Wishes.find({
-          invitationBy: APP_SYEHERLYN.prefix
+          invitationBy: slug
         }).sort({ createdAt: -1 });
         res.status(200).json({ success: true, data: wishes });
       } catch (error) {
@@ -25,7 +26,7 @@ export default async function handler(
 
     case 'POST':
       try {
-        const wishes = new Wishes(req.body);
+        const wishes = new Wishes({ ...req.body, invitationBy: slug });
         await wishes.save();
         res.status(201).json({ success: true, data: wishes });
       } catch (error) {

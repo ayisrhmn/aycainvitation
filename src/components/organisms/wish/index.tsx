@@ -23,7 +23,7 @@ const Wish = ({ to, prefix }: WishProps) => {
   const fetchWishes = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/${prefix}/wishes`);
+      const response = await fetch(`/api/wishes/${prefix}`);
       const data = await response.json();
       if (data.success) {
         setLoading(false);
@@ -41,7 +41,7 @@ const Wish = ({ to, prefix }: WishProps) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/${prefix}/wishes`, {
+      const response = await fetch(`/api/wishes/${prefix}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -49,8 +49,7 @@ const Wish = ({ to, prefix }: WishProps) => {
         body: JSON.stringify({
           name,
           wish,
-          createdBy: to,
-          invitationBy: prefix
+          createdBy: to
         })
       });
       const data = await response.json();

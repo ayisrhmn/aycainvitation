@@ -21,15 +21,16 @@ const playfairDisplaySc = Playfair_Display_SC({
 });
 
 const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
+  const prefix = prefixImageUrl;
+
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
   const [loading, setLoading] = useState(false);
   const [rsvpData, setRsvpData] = useState<RsvpData[]>([]);
 
   const fetchRsvp = useCallback(async () => {
-    const prefix = prefixImageUrl;
     try {
-      const response = await fetch(`/api/${prefix}/rsvp`);
+      const response = await fetch(`/api/rsvp/${prefix}`);
       const data = await response.json();
       if (data.success) {
         setRsvpData(data.data);
@@ -39,14 +40,12 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
     } catch (err) {
       toast.error(`Error fetching data: ${err}`);
     }
-  }, [prefixImageUrl]);
+  }, [prefix]);
 
   const handleRsvp = async (isAttend: boolean) => {
     setLoading(true);
-
-    const prefix = prefixImageUrl;
     try {
-      const response = await fetch(`/api/${prefix}/rsvp`, {
+      const response = await fetch(`/api/rsvp/${prefix}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54,8 +53,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
         body: JSON.stringify({
           name: to,
           isAttend,
-          session: parseInt(session) || null,
-          invitationBy: prefix
+          session: parseInt(session) || null
         })
       });
       const data = await response.json();
@@ -92,7 +90,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            backgroundImage: `url(${imageUrl(prefixImageUrl, image, 'Background')})`
+            backgroundImage: `url(${imageUrl(prefix, image, 'Background')})`
           }}
         />
       ))}

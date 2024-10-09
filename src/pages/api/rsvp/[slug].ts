@@ -1,21 +1,22 @@
-import { APP_ERLYNSYEH } from '@/constants';
-import { Wishes } from '@/models';
+import { Rsvp } from '@/models';
 import { db } from '@/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data<WishesData | WishesData[]>>
+  res: NextApiResponse<Data<RsvpData | RsvpData[]>>
 ) {
   await db();
+
+  const { slug } = req.query;
 
   switch (req.method) {
     case 'GET':
       try {
-        const wishes = await Wishes.find({
-          invitationBy: APP_ERLYNSYEH.prefix
-        }).sort({ createdAt: -1 });
-        res.status(200).json({ success: true, data: wishes });
+        const rsvp = await Rsvp.find({
+          invitationBy: slug
+        });
+        res.status(200).json({ success: true, data: rsvp });
       } catch (error) {
         res
           .status(500)
@@ -25,9 +26,9 @@ export default async function handler(
 
     case 'POST':
       try {
-        const wishes = new Wishes(req.body);
-        await wishes.save();
-        res.status(201).json({ success: true, data: wishes });
+        const rsvp = new Rsvp({ ...req.body, invitationBy: slug });
+        await rsvp.save();
+        res.status(201).json({ success: true, data: rsvp });
       } catch (error) {
         res.status(400).json({ success: false, error: 'Bad Request' });
       }
