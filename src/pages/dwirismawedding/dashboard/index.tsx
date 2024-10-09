@@ -1,12 +1,12 @@
 import DashboardContainer from '@/components/containers/dashboard-container';
-import { APP_ERLYNSYEH } from '@/constants';
+import { APP_DWIRISMA } from '@/constants';
 
 const data = {
-  prefix: APP_ERLYNSYEH.prefix,
-  title: APP_ERLYNSYEH.title,
+  prefix: APP_DWIRISMA.prefix,
+  title: APP_DWIRISMA.title,
   coupleNick: {
-    bride: APP_ERLYNSYEH.content.couple.bride.nickname,
-    groom: APP_ERLYNSYEH.content.couple.groom.nickname
+    bride: APP_DWIRISMA.content.couple.bride.nickname,
+    groom: APP_DWIRISMA.content.couple.groom.nickname
   }
 };
 

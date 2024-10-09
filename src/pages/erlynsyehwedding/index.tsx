@@ -71,8 +71,8 @@ const ErlynSyehWedding = () => {
       <Cover
         bgUrl={`${imageUrl(APP_ERLYNSYEH.prefix, 'cover.jpg', 'Background')}`}
         coupleNick={{
-          bride: APP_ERLYNSYEH.content.couple.bride.name.split(' ')[0],
-          groom: APP_ERLYNSYEH.content.couple.groom.name.split(' ')[0]
+          bride: APP_ERLYNSYEH.content.couple.bride.nickname,
+          groom: APP_ERLYNSYEH.content.couple.groom.nickname
         }}
         eventDate={APP_ERLYNSYEH.content.event.resepsi1.date}
         to={to as string}
@@ -87,8 +87,8 @@ const ErlynSyehWedding = () => {
         images={APP_ERLYNSYEH.content.headerImages}
         duration={3000}
         coupleNick={{
-          bride: APP_ERLYNSYEH.content.couple.bride.name.split(' ')[0],
-          groom: APP_ERLYNSYEH.content.couple.groom.name.split(' ')[0]
+          bride: APP_ERLYNSYEH.content.couple.bride.nickname,
+          groom: APP_ERLYNSYEH.content.couple.groom.nickname
         }}
         eventDate={APP_ERLYNSYEH.content.event.resepsi1.date}
       />
@@ -116,9 +116,10 @@ const ErlynSyehWedding = () => {
       <Wish to={to as string} prefix={APP_ERLYNSYEH.prefix} />
       <Footer
         prefixImageUrl={APP_ERLYNSYEH.prefix}
+        footerImage={APP_ERLYNSYEH.content.footerImage}
         coupleNick={{
-          bride: APP_ERLYNSYEH.content.couple.bride.name.split(' ')[0],
-          groom: APP_ERLYNSYEH.content.couple.groom.name.split(' ')[0]
+          bride: APP_ERLYNSYEH.content.couple.bride.nickname,
+          groom: APP_ERLYNSYEH.content.couple.groom.nickname
         }}
       />
       {openInvite && <MusicToggle toggle={toggle} playing={playing} />}

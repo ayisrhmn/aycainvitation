@@ -29,16 +29,22 @@ const CoupleSection = ({
           duration={3000}
         />
       </AnimatedSection>
-      <AnimatedSection>
-        <div className='px-6 mt-4 mb-12'>
-          <p className='text-sm italic text-black text-center opacity-60 mb-2'>
-            {content.couple[type].quotes}
-          </p>
-          <p className='text-sm italic text-lime-900 text-center opacity-80'>
-            — {content.couple[type].quotesBy}
-          </p>
-        </div>
-      </AnimatedSection>
+
+      {content.couple[type].quotes ? (
+        <AnimatedSection>
+          <div className='px-6 mt-4 mb-12'>
+            <p className='text-sm italic text-black text-center opacity-60 mb-2'>
+              {content.couple[type].quotes}
+            </p>
+            <p className='text-sm italic text-lime-900 text-center opacity-80'>
+              — {content.couple[type].quotesBy}
+            </p>
+          </div>
+        </AnimatedSection>
+      ) : (
+        <div className='px-6 mt-4 mb-12' />
+      )}
+
       <AnimatedSection>
         <div className='flex flex-col justify-center items-center text-center'>
           <div className='relative w-full mb-3'>
@@ -58,7 +64,7 @@ const CoupleSection = ({
                 playfairDisplaySc.className
               )}
             >
-              {content.couple[type].name}
+              {content.couple[type].fullname}
             </p>
           </div>
           <div>

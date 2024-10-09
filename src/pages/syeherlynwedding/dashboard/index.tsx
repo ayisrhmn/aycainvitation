@@ -5,8 +5,8 @@ const data = {
   prefix: APP_SYEHERLYN.prefix,
   title: APP_SYEHERLYN.title,
   coupleNick: {
-    bride: APP_SYEHERLYN.content.couple.bride.name.split(' ')[0],
-    groom: APP_SYEHERLYN.content.couple.groom.name.split(' ')[0]
+    bride: APP_SYEHERLYN.content.couple.bride.nickname,
+    groom: APP_SYEHERLYN.content.couple.groom.nickname
   }
 };
 

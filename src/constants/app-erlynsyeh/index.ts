@@ -5,7 +5,8 @@ const APP_ERLYNSYEH = {
     headerImages: ['header-1.jpg', 'header-2.jpg', 'header-3.jpg'],
     couple: {
       bride: {
-        name: 'Erlyn Elmayanti Widya Susanti',
+        fullname: 'Erlyn Elmayanti Widya Susanti',
+        nickname: 'Erlyn',
         child_prefix: 'ketiga',
         father: 'Imam Sairodji',
         mother: 'Wahyuti',
@@ -15,7 +16,8 @@ const APP_ERLYNSYEH = {
         quotesBy: 'Emily Bronte'
       },
       groom: {
-        name: 'Syeh Danial',
+        fullname: 'Syeh Danial',
+        nickname: 'Syeh',
         child_prefix: 'keempat',
         father: 'Tantowi Husein',
         mother: 'Nur Telmy Usman',
@@ -70,7 +72,8 @@ const APP_ERLYNSYEH = {
       'gallery-7.jpg',
       'gallery-8.jpg',
       'gallery-9.jpg'
-    ]
+    ],
+    footerImage: 'header-3.jpg'
   }
 };
 

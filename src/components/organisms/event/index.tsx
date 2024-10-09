@@ -20,15 +20,12 @@ const Event = ({ prefixImageUrl, content, session }: EventProps) => {
     switch (session) {
       case '1':
         return 'resepsi1';
-        break;
 
       case '2':
         return 'resepsi2';
-        break;
 
       default:
         return 'resepsi1';
-        break;
     }
   }, [session]);
 
@@ -53,11 +50,17 @@ const Event = ({ prefixImageUrl, content, session }: EventProps) => {
           <ImageFrame prefixImageUrl={prefixImageUrl} image='event.jpg' />
         </AnimatedSection>
       </div>
+      {content.event.akad && (
+        <AnimatedSection>
+          <EventSection type='akad' content={content} noTime noLocation />
+        </AnimatedSection>
+      )}
       <AnimatedSection>
-        <EventSection type='akad' content={content} noTime noLocation />
-      </AnimatedSection>
-      <AnimatedSection>
-        <EventSection type={sessionType} content={content} />
+        <EventSection
+          type={sessionType}
+          content={content}
+          customTitle='Ngunduh Mantu'
+        />
       </AnimatedSection>
     </div>
   );

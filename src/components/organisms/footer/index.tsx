@@ -5,6 +5,7 @@ import { Playfair_Display_SC } from 'next/font/google';
 
 interface FooterProps {
   prefixImageUrl: string;
+  footerImage: string;
   coupleNick: CoupleNickProps;
   isGroomEvent?: boolean;
 }
@@ -14,13 +15,18 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Footer = ({ prefixImageUrl, coupleNick, isGroomEvent }: FooterProps) => {
+const Footer = ({
+  prefixImageUrl,
+  footerImage,
+  coupleNick,
+  isGroomEvent
+}: FooterProps) => {
   return (
     <div className='h-[500px] relative px-4 pt-8 pb-4 flex justify-center items-center'>
       <div
         className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
-          backgroundImage: `url(${imageUrl(prefixImageUrl, 'header-3.jpg', 'Background')})`
+          backgroundImage: `url(${imageUrl(prefixImageUrl, footerImage, 'Background')})`
         }}
       />
       <div className='absolute inset-0 bg-black opacity-20' />

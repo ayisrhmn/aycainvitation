@@ -4,14 +4,15 @@ interface CoupleNickProps {
 }
 
 interface CoupleInfo {
-  name: string;
+  fullname: string;
+  nickname: string;
   child_prefix: string;
   father: string;
   mother: string;
   images: string[];
   instagram: string;
-  quotes: string;
-  quotesBy: string;
+  quotes?: string | null;
+  quotesBy?: string | null;
 }
 
 type CoupleType = 'bride' | 'groom';
@@ -35,9 +36,9 @@ interface ContentProps {
     groom: CoupleInfo;
   };
   event: {
-    akad: EventInfo;
+    akad?: EventInfo | null;
     resepsi1: EventInfo;
-    resepsi2: EventInfo;
+    resepsi2?: EventInfo | null;
   };
   gift: {
     bankName: string;

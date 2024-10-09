@@ -1,6 +1,6 @@
 import { Playfair_Display } from 'next/font/google';
 import Head from 'next/head';
-import { APP_SYEHERLYN } from '@/constants';
+import { APP_DWIRISMA } from '@/constants';
 import {
   Couple,
   Cover,
@@ -31,22 +31,22 @@ const ErlynSyehWedding = () => {
 
   return (
     <main
-      id={APP_SYEHERLYN.prefix}
+      id={APP_DWIRISMA.prefix}
       className={cn('relative', playfairDisplay.className)}
     >
       {/* #region Head */}
       <Head>
-        <title>{APP_SYEHERLYN.title}</title>
+        <title>{APP_DWIRISMA.title}</title>
 
         {/* #region Open Graph */}
         <meta
           property='og:url'
-          content={`https://aycainvitation.vercel.app/${APP_SYEHERLYN.prefix}`}
+          content={`https://aycainvitation.vercel.app/${APP_DWIRISMA.prefix}`}
           key='ogurl'
         />
         <meta
           property='og:image'
-          content={imageUrl(APP_SYEHERLYN.prefix, 'gallery-5.jpg', 'Content')}
+          content={imageUrl(APP_DWIRISMA.prefix, 'gallery-5.jpg', 'Content')}
           key='ogimage'
         />
         <meta
@@ -69,12 +69,12 @@ const ErlynSyehWedding = () => {
       {/* #endregion Head */}
 
       <Cover
-        bgUrl={`${imageUrl(APP_SYEHERLYN.prefix, 'cover.jpg', 'Background')}`}
+        bgUrl={`${imageUrl(APP_DWIRISMA.prefix, 'cover.jpg', 'Background')}`}
         coupleNick={{
-          bride: APP_SYEHERLYN.content.couple.bride.nickname,
-          groom: APP_SYEHERLYN.content.couple.groom.nickname
+          bride: APP_DWIRISMA.content.couple.bride.nickname,
+          groom: APP_DWIRISMA.content.couple.groom.nickname
         }}
-        eventDate={APP_SYEHERLYN.content.event.resepsi1.date}
+        eventDate={APP_DWIRISMA.content.event.resepsi1.date}
         to={to as string}
         openInvite={openInvite}
         handleOpenInvite={() => {
@@ -84,47 +84,47 @@ const ErlynSyehWedding = () => {
         isGroomEvent
       />
       <Header
-        prefixImageUrl={APP_SYEHERLYN.prefix}
-        images={APP_SYEHERLYN.content.headerImages}
+        prefixImageUrl={APP_DWIRISMA.prefix}
+        images={APP_DWIRISMA.content.headerImages}
         duration={3000}
         coupleNick={{
-          bride: APP_SYEHERLYN.content.couple.bride.nickname,
-          groom: APP_SYEHERLYN.content.couple.groom.nickname
+          bride: APP_DWIRISMA.content.couple.bride.nickname,
+          groom: APP_DWIRISMA.content.couple.groom.nickname
         }}
-        eventDate={APP_SYEHERLYN.content.event.resepsi1.date}
+        eventDate={APP_DWIRISMA.content.event.resepsi1.date}
         isGroomEvent
       />
       <Pray />
       <Couple
-        prefixImageUrl={APP_SYEHERLYN.prefix}
-        content={APP_SYEHERLYN.content}
+        prefixImageUrl={APP_DWIRISMA.prefix}
+        content={APP_DWIRISMA.content}
         isGroomEvent
       />
       <Event
-        prefixImageUrl={APP_SYEHERLYN.prefix}
-        content={APP_SYEHERLYN.content}
+        prefixImageUrl={APP_DWIRISMA.prefix}
+        content={APP_DWIRISMA.content}
         session={session as string}
       />
       {to && (
         <Rsvp
-          prefixImageUrl={APP_SYEHERLYN.prefix}
-          images={APP_SYEHERLYN.content.rsvpImages}
+          prefixImageUrl={APP_DWIRISMA.prefix}
+          images={APP_DWIRISMA.content.rsvpImages}
           duration={3000}
           to={to as string}
           session={session as string}
         />
       )}
       <Gallery
-        prefixImageUrl={APP_SYEHERLYN.prefix}
-        images={APP_SYEHERLYN.content.gallery}
+        prefixImageUrl={APP_DWIRISMA.prefix}
+        images={APP_DWIRISMA.content.gallery}
       />
-      <Wish to={to as string} prefix={APP_SYEHERLYN.prefix} />
+      <Wish to={to as string} prefix={APP_DWIRISMA.prefix} />
       <Footer
-        prefixImageUrl={APP_SYEHERLYN.prefix}
-        footerImage={APP_SYEHERLYN.content.footerImage}
+        prefixImageUrl={APP_DWIRISMA.prefix}
+        footerImage={APP_DWIRISMA.content.footerImage}
         coupleNick={{
-          bride: APP_SYEHERLYN.content.couple.bride.nickname,
-          groom: APP_SYEHERLYN.content.couple.groom.nickname
+          bride: APP_DWIRISMA.content.couple.bride.nickname,
+          groom: APP_DWIRISMA.content.couple.groom.nickname
         }}
         isGroomEvent
       />
