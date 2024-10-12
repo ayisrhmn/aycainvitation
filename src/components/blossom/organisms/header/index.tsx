@@ -28,7 +28,7 @@ const Header = ({
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
   return (
-    <div className='h-screen relative'>
+    <div className='h-[94vh] relative mb-14'>
       {images.map((image, i) => (
         <div
           key={i}
@@ -42,7 +42,7 @@ const Header = ({
         />
       ))}
       <div className='absolute inset-0 bg-black opacity-30' />
-      <div className='relative z-10 flex flex-col items-center justify-end h-full text-white py-28'>
+      <div className='relative z-10 flex flex-col items-center justify-end h-full text-white pb-32'>
         <div className='text-center'>
           <p className='text-md tracking-widest mb-2'>The Wedding of</p>
           {!isGroomEvent ? (
@@ -60,7 +60,7 @@ const Header = ({
         </div>
       </div>
       <svg
-        className='absolute bottom-0 left-0 w-full'
+        className='absolute -bottom-1 left-0 w-full'
         xmlns='http://www.w3.org/2000/svg'
         viewBox='0 0 1440 320'
       >
