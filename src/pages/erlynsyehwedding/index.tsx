@@ -10,9 +10,9 @@ import {
   Header,
   Rsvp,
   Wish
-} from '@/components/organisms';
+} from '@/components/lime/organisms';
 import { imageUrl } from '@/helpers';
-import { MusicToggle, Pray } from '@/components/atoms';
+import { MusicToggle, Pray } from '@/components/lime/atoms';
 import { useRouter } from 'next/router';
 import { useAudio } from '@/hooks';
 import { cn } from '@/utils';
@@ -102,13 +102,15 @@ const ErlynSyehWedding = () => {
         content={APP_ERLYNSYEH.content}
         session={session as string}
       />
-      <Rsvp
-        prefixImageUrl={APP_ERLYNSYEH.prefix}
-        images={APP_ERLYNSYEH.content.rsvpImages}
-        duration={3000}
-        to={to as string}
-        session={session as string}
-      />
+      {to && (
+        <Rsvp
+          prefixImageUrl={APP_ERLYNSYEH.prefix}
+          images={APP_ERLYNSYEH.content.rsvpImages}
+          duration={3000}
+          to={to as string}
+          session={session as string}
+        />
+      )}
       <Gallery
         prefixImageUrl={APP_ERLYNSYEH.prefix}
         images={APP_ERLYNSYEH.content.gallery}

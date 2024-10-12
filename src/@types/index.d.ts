@@ -29,6 +29,12 @@ interface EventInfo {
 
 type EventType = 'akad' | 'resepsi1' | 'resepsi2';
 
+interface GiftInfo {
+  bankName: string;
+  noRek: string;
+  accName: string;
+}
+
 interface ContentProps {
   headerImages: string[];
   couple: {
@@ -40,11 +46,7 @@ interface ContentProps {
     resepsi1: EventInfo;
     resepsi2?: EventInfo | null;
   };
-  gift: {
-    bankName: string;
-    noRek: string;
-    accName: string;
-  };
+  gift: GiftInfo[] | null;
 }
 
 interface AudioProps {

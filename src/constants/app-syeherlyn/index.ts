@@ -57,11 +57,7 @@ const APP_SYEHERLYN = {
       }
     },
     rsvpImages: ['gallery-2.jpg', 'gallery-5.jpg', 'gallery-6.jpg'],
-    gift: {
-      bankName: '',
-      noRek: '',
-      accName: ''
-    },
+    gift: null,
     gallery: [
       'gallery-1.jpg',
       'gallery-2.jpg',

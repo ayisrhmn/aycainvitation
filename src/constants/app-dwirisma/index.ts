@@ -41,11 +41,7 @@ const APP_DWIRISMA = {
       resepsi2: null
     },
     rsvpImages: ['rsvp-1.jpg', 'rsvp-2.jpg', 'rsvp-3.jpg'],
-    gift: {
-      bankName: '',
-      noRek: '',
-      accName: ''
-    },
+    gift: null,
     gallery: [
       'gallery-1.jpg',
       'gallery-7.jpg',
