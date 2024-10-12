@@ -13,7 +13,7 @@ const ImageFrame = ({ prefixImageUrl, image }: ImageFrameProps) => {
       </div>
       <img
         className='rounded-t-full w-full h-full object-cover'
-        src={`${imageUrl(prefixImageUrl, image, 'Content')}`}
+        src={`${imageUrl(prefixImageUrl, image, null, 'imageKit')}`}
         alt='This is image'
       />
     </div>

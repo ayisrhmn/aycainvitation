@@ -32,3 +32,10 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.welcome-img {
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}

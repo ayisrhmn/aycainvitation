@@ -1,4 +1,4 @@
-import { Button, WishCard } from '@/components/lime/atoms';
+import { Button, WishCard } from '@/components/blossom/atoms';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
 import { FormEvent, useCallback, useEffect, useState } from 'react';

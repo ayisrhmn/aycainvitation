@@ -1,6 +1,6 @@
 import { Playfair_Display } from 'next/font/google';
 import Head from 'next/head';
-import { APP_DWIRISMA } from '@/constants';
+import { APP_CINDYFAIZAL } from '@/constants';
 import {
   Couple,
   Cover,
@@ -10,9 +10,9 @@ import {
   Header,
   Rsvp,
   Wish
-} from '@/components/lime/organisms';
+} from '@/components/blossom/organisms';
 import { imageUrl } from '@/helpers';
-import { MusicToggle, Pray } from '@/components/lime/atoms';
+import { MusicToggle } from '@/components/blossom/atoms';
 import { useRouter } from 'next/router';
 import { useAudio } from '@/hooks';
 import { cn } from '@/utils';
@@ -31,22 +31,27 @@ const ErlynSyehWedding = () => {
 
   return (
     <main
-      id={APP_DWIRISMA.prefix}
+      id={APP_CINDYFAIZAL.prefix}
       className={cn('relative', playfairDisplay.className)}
     >
       {/* #region Head */}
       <Head>
-        <title>{APP_DWIRISMA.title}</title>
+        <title>{APP_CINDYFAIZAL.title}</title>
 
         {/* #region Open Graph */}
         <meta
           property='og:url'
-          content={`https://aycainvitation.vercel.app/${APP_DWIRISMA.prefix}`}
+          content={`https://aycainvitation.vercel.app/${APP_CINDYFAIZAL.prefix}`}
           key='ogurl'
         />
         <meta
           property='og:image'
-          content={imageUrl(APP_DWIRISMA.prefix, 'gallery-5.jpg', 'Content')}
+          content={imageUrl(
+            APP_CINDYFAIZAL.prefix,
+            'gallery-5.jpg',
+            null,
+            'imageKit'
+          )}
           key='ogimage'
         />
         <meta
@@ -69,65 +74,60 @@ const ErlynSyehWedding = () => {
       {/* #endregion Head */}
 
       <Cover
-        bgUrl={`${imageUrl(APP_DWIRISMA.prefix, 'cover.jpg', 'Background')}`}
+        bgUrl={`${imageUrl(APP_CINDYFAIZAL.prefix, 'cover-2.jpg', null, 'imageKit')}`}
+        welcomeImgUrl={`${imageUrl(APP_CINDYFAIZAL.prefix, 'cover-1.jpg', null, 'imageKit')}`}
         coupleNick={{
-          bride: APP_DWIRISMA.content.couple.bride.nickname,
-          groom: APP_DWIRISMA.content.couple.groom.nickname
+          bride: APP_CINDYFAIZAL.content.couple.bride.nickname,
+          groom: APP_CINDYFAIZAL.content.couple.groom.nickname
         }}
-        eventDate={APP_DWIRISMA.content.event.resepsi1.date}
         to={to as string}
         openInvite={openInvite}
         handleOpenInvite={() => {
           setOpenInvite(true);
           setPlaying(true);
         }}
-        isGroomEvent
       />
       <Header
-        prefixImageUrl={APP_DWIRISMA.prefix}
-        images={APP_DWIRISMA.content.headerImages}
+        prefixImageUrl={APP_CINDYFAIZAL.prefix}
+        images={APP_CINDYFAIZAL.content.headerImages}
         duration={3000}
         coupleNick={{
-          bride: APP_DWIRISMA.content.couple.bride.nickname,
-          groom: APP_DWIRISMA.content.couple.groom.nickname
+          bride: APP_CINDYFAIZAL.content.couple.bride.nickname,
+          groom: APP_CINDYFAIZAL.content.couple.groom.nickname
         }}
-        eventDate={APP_DWIRISMA.content.event.resepsi1.date}
-        isGroomEvent
+        eventDate={APP_CINDYFAIZAL.content.event.resepsi1.date}
       />
-      <Pray />
+      {/* <Pray /> */}
       <Couple
-        prefixImageUrl={APP_DWIRISMA.prefix}
-        content={APP_DWIRISMA.content}
-        isGroomEvent
+        prefixImageUrl={APP_CINDYFAIZAL.prefix}
+        content={APP_CINDYFAIZAL.content}
       />
       <Event
-        prefixImageUrl={APP_DWIRISMA.prefix}
-        content={APP_DWIRISMA.content}
+        prefixImageUrl={APP_CINDYFAIZAL.prefix}
+        content={APP_CINDYFAIZAL.content}
         session={session as string}
-        eventCustomTitle='Ngunduh Mantu'
       />
       {to && (
         <Rsvp
-          prefixImageUrl={APP_DWIRISMA.prefix}
-          images={APP_DWIRISMA.content.rsvpImages}
+          prefixImageUrl={APP_CINDYFAIZAL.prefix}
+          images={APP_CINDYFAIZAL.content.rsvpImages}
           duration={3000}
           to={to as string}
           session={session as string}
         />
       )}
       <Gallery
-        prefixImageUrl={APP_DWIRISMA.prefix}
-        images={APP_DWIRISMA.content.gallery}
+        prefixImageUrl={APP_CINDYFAIZAL.prefix}
+        images={APP_CINDYFAIZAL.content.gallery}
       />
-      <Wish to={to as string} prefix={APP_DWIRISMA.prefix} />
+      <Wish to={to as string} prefix={APP_CINDYFAIZAL.prefix} />
       <Footer
-        prefixImageUrl={APP_DWIRISMA.prefix}
-        footerImage={APP_DWIRISMA.content.footerImage}
+        prefixImageUrl={APP_CINDYFAIZAL.prefix}
+        footerImage={APP_CINDYFAIZAL.content.footerImage}
         coupleNick={{
-          bride: APP_DWIRISMA.content.couple.bride.nickname,
-          groom: APP_DWIRISMA.content.couple.groom.nickname
+          bride: APP_CINDYFAIZAL.content.couple.bride.nickname,
+          groom: APP_CINDYFAIZAL.content.couple.groom.nickname
         }}
-        isGroomEvent
       />
       {openInvite && <MusicToggle toggle={toggle} playing={playing} />}
     </main>

@@ -1,4 +1,4 @@
-import { AnimatedSection } from '@/components/lime/atoms';
+import { AnimatedSection } from '@/components/blossom/atoms';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
@@ -30,10 +30,12 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
         <Masonry columnsCount={2} gutter='8px'>
           {images.map((image, i) => (
             <AnimatedSection key={i}>
-              <PhotoView src={imageUrl(prefixImageUrl, image, 'Content')}>
+              <PhotoView
+                src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
+              >
                 <img
                   key={i}
-                  src={imageUrl(prefixImageUrl, image, 'Content')}
+                  src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
                   alt={'image of gallery'}
                   className='w-full h-full object-cover shadow-md rounded cursor-pointer'
                 />

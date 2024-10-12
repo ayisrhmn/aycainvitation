@@ -2,7 +2,7 @@ const APP_CINDYFAIZAL = {
   title: 'The Wedding of Cindy & Faizal - Aycainvitation',
   prefix: 'cindyfaizalwedding',
   content: {
-    headerImages: ['header-1.jpg', 'header-2.jpg', 'header-3.jpg'],
+    headerImages: ['header-1.jpg', 'header-2.jpg'],
     couple: {
       bride: {
         fullname: 'Cindy Arinda Mayola',
@@ -72,7 +72,7 @@ const APP_CINDYFAIZAL = {
       'gallery-8.jpg',
       'gallery-9.jpg'
     ],
-    footerImage: 'header-3.jpg'
+    footerImage: 'footer.jpg'
   }
 };
 

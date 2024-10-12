@@ -1,5 +1,5 @@
-import { AnimatedSection, ImageFrame } from '@/components/lime/atoms';
-import { EventSection } from '@/components/lime/molecules';
+import { AnimatedSection, ImageFrame } from '@/components/blossom/atoms';
+import { EventSection } from '@/components/blossom/molecules';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
 import { useMemo } from 'react';
@@ -8,6 +8,7 @@ interface EventProps {
   prefixImageUrl: string;
   content: ContentProps;
   session: string;
+  eventCustomTitle?: string;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -15,7 +16,12 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Event = ({ prefixImageUrl, content, session }: EventProps) => {
+const Event = ({
+  prefixImageUrl,
+  content,
+  session,
+  eventCustomTitle
+}: EventProps) => {
   const sessionType = useMemo(() => {
     switch (session) {
       case '1':
@@ -59,7 +65,7 @@ const Event = ({ prefixImageUrl, content, session }: EventProps) => {
         <EventSection
           type={sessionType}
           content={content}
-          customTitle='Ngunduh Mantu'
+          customTitle={eventCustomTitle}
         />
       </AnimatedSection>
     </div>

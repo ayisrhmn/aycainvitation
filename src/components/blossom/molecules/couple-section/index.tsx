@@ -1,7 +1,7 @@
 import { cn } from '@/utils';
 import CoupleImageSlide from '../couple-image-slide';
 import { Playfair_Display_SC } from 'next/font/google';
-import { AnimatedSection, Button } from '@/components/lime/atoms';
+import { AnimatedSection, Button } from '@/components/blossom/atoms';
 import { InstagramLogo } from '@phosphor-icons/react';
 
 interface CoupleSectionProps {

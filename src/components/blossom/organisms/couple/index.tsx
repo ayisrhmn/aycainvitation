@@ -1,4 +1,4 @@
-import { CoupleSection } from '@/components/lime/molecules';
+import { CoupleSection } from '@/components/blossom/molecules';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
 

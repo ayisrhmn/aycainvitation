@@ -1,4 +1,4 @@
-import { Button } from '@/components/lime/atoms';
+import { Button } from '@/components/blossom/atoms';
 import { imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
@@ -90,7 +90,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            backgroundImage: `url(${imageUrl(prefix, image, 'Background')})`
+            backgroundImage: `url(${imageUrl(prefix, image, null, 'imageKit')})`
           }}
         />
       ))}

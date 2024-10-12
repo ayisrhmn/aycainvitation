@@ -1,4 +1,4 @@
-import { Button } from '@/components/lime/atoms';
+import { Button } from '@/components/blossom/atoms';
 import { DEFAULT_DATE_FORMAT } from '@/constants';
 import { dateFormat } from '@/helpers';
 import { cn } from '@/utils';

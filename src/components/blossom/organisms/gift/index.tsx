@@ -1,4 +1,4 @@
-import { Button, ImageFrame } from '@/components/lime/atoms';
+import { Button, ImageFrame } from '@/components/blossom/atoms';
 import { cn } from '@/utils';
 import { Copy } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';

@@ -11,7 +11,7 @@ const MusicToggle = ({ toggle, playing }: MusicToggleProps) => {
       className='flex fixed z-30 bottom-2 right-2 cursor-pointer'
       onClick={toggle}
     >
-      <div className='bg-lime-50 p-1.5 rounded-full shadow-lg text-lime-900'>
+      <div className='bg-pink-50 p-1.5 rounded-full shadow-lg text-pink-900'>
         {playing ? (
           <Pause weight='fill' size={12} />
         ) : (

@@ -1,4 +1,4 @@
-import { AnimatedSection } from '@/components/lime/atoms';
+import { AnimatedSection } from '@/components/blossom/atoms';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
@@ -26,7 +26,7 @@ const Footer = ({
       <div
         className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
-          backgroundImage: `url(${imageUrl(prefixImageUrl, footerImage, 'Background')})`
+          backgroundImage: `url(${imageUrl(prefixImageUrl, footerImage, null, 'imageKit')})`
         }}
       />
       <div className='absolute inset-0 bg-black opacity-20' />

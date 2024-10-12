@@ -30,7 +30,7 @@ const CoupleImageSlide = ({
             'transition-opacity duration-1000 w-full h-full object-cover absolute',
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
-          src={`${imageUrl(prefixImageUrl, image, 'Content')}`}
+          src={`${imageUrl(prefixImageUrl, image, null, 'imageKit')}`}
           alt='This is couple image'
         />
       ))}
