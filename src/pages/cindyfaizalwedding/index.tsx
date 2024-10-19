@@ -97,7 +97,6 @@ const ErlynSyehWedding = () => {
         }}
         eventDate={APP_CINDYFAIZAL.content.event.resepsi1.date}
       />
-      {/* <Pray /> */}
       <Couple
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         content={APP_CINDYFAIZAL.content}

@@ -1,8 +1,7 @@
 import { Button } from '@/components/blossom/atoms';
-import { DEFAULT_DATE_FORMAT } from '@/constants';
 import { dateFormat } from '@/helpers';
 import { cn } from '@/utils';
-import { MapPin } from '@phosphor-icons/react';
+import { MapPin, MapPinArea } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
 import { useMemo } from 'react';
 
@@ -12,6 +11,7 @@ interface EventSectionProps {
   noTime?: boolean;
   noLocation?: boolean;
   customTitle?: string;
+  icon?: React.ReactNode;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -24,7 +24,8 @@ const EventSection = ({
   content,
   noTime = false,
   noLocation = false,
-  customTitle
+  customTitle,
+  icon
 }: EventSectionProps) => {
   const event = content.event[type];
 
@@ -37,42 +38,55 @@ const EventSection = ({
 
   return (
     <div className='text-center mb-10'>
+      {icon && <div className='flex justify-center'>{icon}</div>}
       <p
-        className={cn(
-          'text-2xl text-lime-900 mb-4 capitalize',
-          playfairDisplaySc.className,
-          type === 'akad' && 'text-lg mb-2'
-        )}
+        className={cn('text-2xl mb-4 capitalize', playfairDisplaySc.className)}
       >
         {titleSection}
       </p>
-      <p
-        className={cn(
-          'text-lg text-lime-900 opacity-80 mb-1',
-          type === 'akad' && 'text-sm'
-        )}
-      >
-        {dateFormat(event?.date ?? new Date(), DEFAULT_DATE_FORMAT)}
-      </p>
-      {!noTime && (
-        <p className='text-lg text-lime-900 opacity-80 mb-6'>
-          Pukul {`${event?.startTime} WIB`} -{' '}
-          {event?.endTime ? `${event?.endTime} WIB` : 'Selesai'}
+      <div className='mb-8'>
+        <p className='text-xl mb-1'>
+          {dateFormat(event?.date ?? new Date(), 'MMMM')}
         </p>
-      )}
+        <div className='flex items-center justify-center space-x-4 -ml-3'>
+          <div className='border-r-2'>
+            <p className='text-xl mb-1 mr-4'>
+              {dateFormat(event?.date ?? new Date(), 'eeee')}
+            </p>
+          </div>
+          <p className='text-4xl font-bold mb-1'>
+            {dateFormat(event?.date ?? new Date(), 'd')}
+          </p>
+          <div className='border-l-2'>
+            <p className='text-xl mb-1 ml-4'>
+              {dateFormat(event?.date ?? new Date(), 'yyyy')}
+            </p>
+          </div>
+        </div>
+        {!noTime && (
+          <p className='text-xl my-1'>
+            {`${event?.startTime} WIB ${event?.endTime ? `- ${event.endTime} WIB` : ''}`}
+          </p>
+        )}
+      </div>
       {!noLocation && (
         <>
-          <p className='text-md text-lime-900 opacity-60 mb-6'>
-            {event?.location}, {event?.street}, {event?.detailStreet}
-          </p>
+          <div className='mb-6'>
+            <div className='mb-2 flex items-center justify-center gap-2'>
+              <MapPin weight='fill' size={24} />
+              <p className='text-lg font-semibold'>{event?.location}</p>
+            </div>
+            <p className='text-md'>
+              {event?.street}, {event?.detailStreet}
+            </p>
+          </div>
           <div className='flex justify-center relative'>
             <Button
-              variant='outlined'
-              className='rounded-full border-lime-900 hover:bg-lime-900 text-lime-900 hover:text-white transition duration-300 flex gap-1 items-center justify-center'
+              className='rounded-full flex gap-2 items-center justify-center bg-pink-900 border-none shadow-lg'
               onClick={() => window.open(event?.link, '_blank')}
             >
-              <MapPin />
-              <p className='text-sm font-medium'>GOOGLE MAPS</p>
+              <MapPinArea weight='fill' size={18} />
+              <p className='text-sm font-medium'>LIHAT LOKASI</p>
             </Button>
           </div>
         </>

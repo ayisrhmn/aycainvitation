@@ -32,7 +32,7 @@ const APP_CINDYFAIZAL = {
         date: new Date('2024-11-10'),
         startTime: '07.00',
         endTime: null,
-        location: 'Bertempat di Kediaman Mempelai Wanita',
+        location: 'Kediaman Mempelai Wanita',
         street: 'RT. 002 RW. 002, Plandaan Sedayu',
         detailStreet: 'Ds. Bungur, Kec. Karangrejo, Kab. Tulungagung',
         link: 'https://maps.app.goo.gl/7F74F63PDKgT2v7M9'
@@ -41,7 +41,7 @@ const APP_CINDYFAIZAL = {
         date: new Date('2024-11-10'),
         startTime: '12.00',
         endTime: '15.00',
-        location: 'Bertempat di Kediaman Mempelai Wanita',
+        location: 'Kediaman Mempelai Wanita',
         street: 'RT. 002 RW. 002, Plandaan Sedayu',
         detailStreet: 'Ds. Bungur, Kec. Karangrejo, Kab. Tulungagung',
         link: 'https://maps.app.goo.gl/7F74F63PDKgT2v7M9'

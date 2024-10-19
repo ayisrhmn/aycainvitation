@@ -1,8 +1,10 @@
-import { AnimatedSection, ImageFrame } from '@/components/blossom/atoms';
-import { EventSection } from '@/components/blossom/molecules';
+import { CountdownTimer, EventSection } from '@/components/blossom/molecules';
+import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
+import { Cheers, FlowerLotus } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
 import { useMemo } from 'react';
+import { AnimatedSection } from '../../atoms';
 
 interface EventProps {
   prefixImageUrl: string;
@@ -36,38 +38,59 @@ const Event = ({
   }, [session]);
 
   return (
-    <div className='bg-lime-50 px-4 py-8'>
-      <p
-        className={cn(
-          'text-3xl text-lime-900 text-center mb-4',
-          playfairDisplaySc.className
-        )}
-      >
-        Wedding Event
-      </p>
-      <div className='mb-8'>
-        <p className='text-sm italic text-lime-900 text-center opacity-60 mb-2'>
-          Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i
-          untuk menghadiri acara pernikahan kami.
-        </p>
-      </div>
-      <div className='mb-8'>
+    <div className='relative px-6 py-28 text-white text-center'>
+      <div
+        className='absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000'
+        style={{
+          backgroundImage: `url(${imageUrl(prefixImageUrl, 'event.jpg', null, 'imageKit')})`
+        }}
+      />
+      <div className='bg-white/25 backdrop-blur-sm relative z-10 flex flex-col rounded-[50px] shadow-lg py-4 px-5'>
         <AnimatedSection>
-          <ImageFrame prefixImageUrl={prefixImageUrl} image='event.jpg' />
+          <p className={cn('text-3xl mb-4', playfairDisplaySc.className)}>
+            Wedding Event
+          </p>
+          <div className='mb-6'>
+            <CountdownTimer
+              targetDate={(content.event.akad?.date as Date)?.toISOString()}
+            />
+          </div>
         </AnimatedSection>
-      </div>
-      {content.event.akad && (
         <AnimatedSection>
-          <EventSection type='akad' content={content} noTime noLocation />
+          <p className='text-sm italic my-4'>
+            Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+            pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+            dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
+            kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
+            terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+          </p>
+          <p className='text-lg font-bold'>- Q.S. Ar-Rum : 21 -</p>
         </AnimatedSection>
-      )}
-      <AnimatedSection>
-        <EventSection
-          type={sessionType}
-          content={content}
-          customTitle={eventCustomTitle}
-        />
-      </AnimatedSection>
+        <div className='mt-12'>
+          {content.event.akad && (
+            <AnimatedSection>
+              <div className='mb-5'>
+                <EventSection
+                  type='akad'
+                  content={content}
+                  noLocation
+                  icon={<FlowerLotus weight='light' size={36} />}
+                />
+              </div>
+            </AnimatedSection>
+          )}
+          <AnimatedSection>
+            <div className='mb-5'>
+              <EventSection
+                type={sessionType}
+                content={content}
+                customTitle={eventCustomTitle}
+                icon={<Cheers weight='light' size={38} />}
+              />
+            </div>
+          </AnimatedSection>
+        </div>
+      </div>
     </div>
   );
 };

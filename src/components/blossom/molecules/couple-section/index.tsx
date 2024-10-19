@@ -1,8 +1,5 @@
-import { cn } from '@/utils';
-import CoupleImageSlide from '../couple-image-slide';
-import { Playfair_Display_SC } from 'next/font/google';
-import { AnimatedSection, Button } from '@/components/blossom/atoms';
 import { InstagramLogo } from '@phosphor-icons/react';
+import { imageUrl } from '@/helpers';
 
 interface CoupleSectionProps {
   prefixImageUrl: string;
@@ -10,88 +7,57 @@ interface CoupleSectionProps {
   type: CoupleType;
 }
 
-const playfairDisplaySc = Playfair_Display_SC({
-  subsets: ['latin'],
-  weight: '400'
-});
-
 const CoupleSection = ({
   prefixImageUrl,
   content,
   type
 }: CoupleSectionProps) => {
   return (
-    <div className='mb-10'>
-      <AnimatedSection>
-        <CoupleImageSlide
-          prefixImageUrl={prefixImageUrl}
-          images={content.couple[type].images}
-          duration={3000}
-        />
-      </AnimatedSection>
-
-      {content.couple[type].quotes ? (
-        <AnimatedSection>
-          <div className='px-6 mt-4 mb-12'>
-            <p className='text-sm italic text-black text-center opacity-60 mb-2'>
-              {content.couple[type].quotes}
-            </p>
-            <p className='text-sm italic text-lime-900 text-center opacity-80'>
-              — {content.couple[type].quotesBy}
-            </p>
-          </div>
-        </AnimatedSection>
-      ) : (
-        <div className='px-6 mt-4 mb-12' />
-      )}
-
-      <AnimatedSection>
-        <div className='flex flex-col justify-center items-center text-center'>
-          <div className='relative w-full mb-3'>
-            <div className='absolute w-full -top-9 -z-10 opacity-10'>
-              <p
-                className={cn(
-                  'text-6xl font-medium text-lime-600 capitalize',
-                  playfairDisplaySc.className
-                )}
-              >
-                The {type}
-              </p>
-            </div>
-            <p
-              className={cn(
-                'text-2xl font-medium text-lime-900',
-                playfairDisplaySc.className
-              )}
-            >
-              {content.couple[type].fullname}
-            </p>
-          </div>
-          <div>
-            <p className='text-md text-lime-900 font-medium opacity-70 mb-1'>
-              {type === 'bride' ? 'Putri' : 'Putra'}{' '}
-              {content.couple[type].child_prefix} dari
-            </p>
-            <p className='text-sm text-lime-900 font-light'>
-              Bapak {content.couple[type].father} & Ibu{' '}
-              {content.couple[type].mother}
-            </p>
-          </div>
-          <Button
-            variant='outlined'
-            className='rounded-full border-lime-900 hover:bg-lime-900 text-lime-900 hover:text-white transition duration-300 flex gap-1 items-center justify-center my-6'
-            onClick={() => {
-              const url = `https://instagram.com/${content.couple[type].instagram}`;
-              window.open(url, '_blank');
-            }}
-          >
-            <InstagramLogo size={18} />
-            <p className='text-sm font-medium'>
-              {content.couple[type].instagram}
-            </p>
-          </Button>
+    <div
+      className='relative border rounded-full shadow-lg w-[180px] md:w-[280px] h-[500px] md:h-[640px] inset-0 bg-cover bg-center'
+      style={{
+        backgroundImage: `url(${imageUrl(prefixImageUrl, content.couple[type].images[0], null, 'imageKit')})`
+      }}
+    >
+      <div className='absolute inset-0 left-1/2 -translate-x-1/2 bg-white/80 rounded-full w-[168px] md:w-[268px]' />
+      <div className='relative z-10 flex flex-col items-center'>
+        <div className='my-2'>
+          <img
+            src={`${imageUrl(prefixImageUrl, content.couple[type].images[1], null, 'imageKit')}`}
+            alt='couple image'
+            className='w-[150px] md:w-[230px] h-[150px] md:h-[230px] object-cover rounded-full'
+          />
         </div>
-      </AnimatedSection>
+        <div className='mt-2 px-4'>
+          <p className='text-[25px] md:text-[28px] text-center text-pink-900 leading-none mb-1'>
+            {content.couple[type].fullname}
+          </p>
+        </div>
+        <div className='w-[50px] py-[1px] bg-pink-900 my-4' />
+        <p className='text-center text-pink-900 text-sm md:text-lg mb-3 font-bold'>
+          {type === 'bride' ? 'Putri' : 'Putra'}{' '}
+          {content.couple[type].child_prefix !== '-' &&
+            content.couple[type].child_prefix}
+        </p>
+        <div className='px-3 flex flex-col text-center text-pink-900'>
+          <p className='text-sm md:text-lg'>
+            Bapak {content.couple[type].father}
+          </p>
+          <p className='text-sm md:text-lg'>&</p>
+          <p className='text-sm md:text-lg'>
+            Ibu {content.couple[type].mother}
+          </p>
+        </div>
+        <button
+          className='mt-6'
+          onClick={() => {
+            const url = `https://instagram.com/${content.couple[type].instagram}`;
+            window.open(url, '_blank');
+          }}
+        >
+          <InstagramLogo className='text-pink-900 w-6 md:w-7 h-6 md:h-7' />
+        </button>
+      </div>
     </div>
   );
 };
