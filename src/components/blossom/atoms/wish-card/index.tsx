@@ -16,14 +16,14 @@ const WishCard = ({ sender, message, createdBy, createdAt }: WishCardProps) => {
           <Heart weight='fill' size={24} className='text-white' />
         </div>
       </div>
-      <div className='w-full bg-white border shadow p-2 rounded-lg text-sm text-lime-900'>
+      <div className='w-[86%] bg-white border shadow p-2 rounded-lg text-sm text-pink-900'>
         <div className='flex gap-1'>
           <p className='text-md font-semibold mb-1'>{sender}</p>
           {['Aycainvitation']?.includes(createdBy) && (
             <SealCheck weight='fill' size={17} className='text-blue-500' />
           )}
         </div>
-        <p className='text-md mb-2'>{message}</p>
+        <p className='text-md mb-2 break-all'>{message}</p>
         <p className='text-xs font-medium opacity-60'>
           {dateFormatDistance(new Date(createdAt))}
         </p>

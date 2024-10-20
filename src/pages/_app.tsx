@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import 'react-photo-view/dist/react-photo-view.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import type { AppProps } from 'next/app';
 import { PhotoProvider } from 'react-photo-view';
 import { Toaster } from 'react-hot-toast';

@@ -19,7 +19,7 @@ const CoupleSection = ({
         backgroundImage: `url(${imageUrl(prefixImageUrl, content.couple[type].images[0], null, 'imageKit')})`
       }}
     >
-      <div className='absolute inset-0 left-1/2 -translate-x-1/2 bg-white/80 rounded-full w-[168px] md:w-[268px]' />
+      <div className='absolute inset-0 left-1/2 -translate-x-1/2 bg-white/70 rounded-full w-[168px] md:w-[268px]' />
       <div className='relative z-10 flex flex-col items-center'>
         <div className='my-2'>
           <img

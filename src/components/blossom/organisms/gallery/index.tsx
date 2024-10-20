@@ -3,7 +3,7 @@ import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
 import { PhotoView } from 'react-photo-view';
-import Masonry from 'react-responsive-masonry';
+import Slider from 'react-slick';
 
 interface GalleryProps {
   prefixImageUrl: string;
@@ -16,20 +16,40 @@ const playfairDisplaySc = Playfair_Display_SC({
 });
 
 const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
+  const settings = {
+    arrows: false,
+    dots: false,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
+  };
+
   return (
-    <div className='relative px-4 py-8 shadow-md z-10'>
+    <div className='relative px-4 pt-10 pb-24 shadow-md z-10'>
       <p
         className={cn(
-          'text-3xl text-lime-900 text-center mb-8',
+          'text-3xl text-pink-900 text-center mb-8',
           playfairDisplaySc.className
         )}
       >
         Our Gallery
       </p>
-      <div>
-        <Masonry columnsCount={2} gutter='8px'>
+      <AnimatedSection>
+        <div className='relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg shadow-lg mb-6'>
+          <iframe
+            className='absolute top-0 left-0 w-full h-full'
+            src='https://www.youtube.com/embed/nIkT1lwEH5U?si=cNxwt40z05Z0j7zx?autoplay=1&loop=1'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          />
+        </div>
+      </AnimatedSection>
+      <AnimatedSection>
+        <Slider {...settings}>
           {images.map((image, i) => (
-            <AnimatedSection key={i}>
+            <div key={image} className='px-1'>
               <PhotoView
                 src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
               >
@@ -37,13 +57,13 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
                   key={i}
                   src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
                   alt={'image of gallery'}
-                  className='w-full h-full object-cover shadow-md rounded cursor-pointer'
+                  className='w-full h-full object-cover shadow-lg rounded cursor-pointer'
                 />
               </PhotoView>
-            </AnimatedSection>
+            </div>
           ))}
-        </Masonry>
-      </div>
+        </Slider>
+      </AnimatedSection>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
   Event,
   Footer,
   Gallery,
+  Gift,
   Header,
   Rsvp,
   Wish
@@ -120,6 +121,7 @@ const ErlynSyehWedding = () => {
         images={APP_CINDYFAIZAL.content.gallery}
       />
       <Wish to={to as string} prefix={APP_CINDYFAIZAL.prefix} />
+      <Gift content={APP_CINDYFAIZAL.content} />
       <Footer
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         footerImage={APP_CINDYFAIZAL.content.footerImage}
