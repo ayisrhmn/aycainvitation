@@ -37,13 +37,11 @@ const Couple = ({ prefixImageUrl, content, isGroomEvent }: CoupleProps) => {
             key={item}
             className={cn('flex', i === 0 ? 'justify-end' : 'justify-start')}
           >
-            <AnimatedSection>
-              <CoupleSection
-                prefixImageUrl={prefixImageUrl}
-                content={content}
-                type={item as CoupleType}
-              />
-            </AnimatedSection>
+            <CoupleSection
+              prefixImageUrl={prefixImageUrl}
+              content={content}
+              type={item as CoupleType}
+            />
           </div>
         ))}
       </div>

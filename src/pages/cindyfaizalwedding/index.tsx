@@ -27,8 +27,9 @@ const ErlynSyehWedding = () => {
 
   const [openInvite, setOpenInvite] = useState(false);
 
-  const { playing, setPlaying, toggle }: AudioProps =
-    useAudio('/main-music.mp3');
+  const { playing, setPlaying, toggle }: AudioProps = useAudio(
+    '/music/Elliot James Reay - I Think They Call This Love.mp3'
+  );
 
   return (
     <main

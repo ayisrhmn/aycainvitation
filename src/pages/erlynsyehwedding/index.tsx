@@ -26,8 +26,9 @@ const ErlynSyehWedding = () => {
 
   const [openInvite, setOpenInvite] = useState(false);
 
-  const { playing, setPlaying, toggle }: AudioProps =
-    useAudio('/main-music.mp3');
+  const { playing, setPlaying, toggle }: AudioProps = useAudio(
+    '/music/The Way You Look At Me - Instrument.mp3'
+  );
 
   return (
     <main
