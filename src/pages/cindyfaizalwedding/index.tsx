@@ -48,7 +48,7 @@ const ErlynSyehWedding = () => {
         />
         <meta
           property='og:image'
-          content={`https://ik.imagekit.io/ayisdev/${APP_CINDYFAIZAL.prefix}/thumbnail.jpg`}
+          content={`/thumbnail/${APP_CINDYFAIZAL.prefix}.jpg`}
           key='ogimage'
         />
         <meta
