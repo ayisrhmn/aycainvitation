@@ -130,7 +130,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
             </div>
           </>
         ) : (
-          <p className='text-center text-sm italic text-lime-900 opacity-80 mb-6'>
+          <p className='text-center text-sm italic text-pink-900 opacity-80 mb-6'>
             Terima kasih, atas konfirmasinya.
           </p>
         )}
