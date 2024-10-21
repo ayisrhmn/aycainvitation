@@ -1,8 +1,7 @@
+import { useRsvp } from '@/hooks/api/use-rsvp';
 import { cn } from '@/utils';
 import { Playfair_Display, Playfair_Display_SC } from 'next/font/google';
 import Head from 'next/head';
-import { useCallback, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 
 interface DashboardContainerProps {
   prefix: string;
@@ -27,25 +26,7 @@ const DashboardContainer = ({
   prefix,
   title
 }: DashboardContainerProps) => {
-  const [rsvpData, setRsvpData] = useState<RsvpData[]>([]);
-
-  const fetchRsvp = useCallback(async () => {
-    try {
-      const response = await fetch(`/api/rsvp/${prefix}`);
-      const data = await response.json();
-      if (data.success) {
-        setRsvpData(data.data);
-      } else {
-        toast.error(`Failed to fetch examples: ${data.error}`);
-      }
-    } catch (err) {
-      toast.error(`Error fetching data: ${err}`);
-    }
-  }, [prefix]);
-
-  useEffect(() => {
-    fetchRsvp();
-  }, [fetchRsvp]);
+  const { data } = useRsvp({ prefix });
 
   return (
     <div className={cn('px-4 py-8', playfairDisplay.className)}>
@@ -77,7 +58,7 @@ const DashboardContainer = ({
             </tr>
           </thead>
           <tbody>
-            {rsvpData?.map((item, i) => (
+            {data?.map((item, i) => (
               <tr key={i}>
                 <td className='px-4 py-2 border-b border-gray-200 text-sm'>
                   {item.name}

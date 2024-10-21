@@ -1,11 +1,10 @@
 import { Button } from '@/components/blossom/atoms';
 import { imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
+import { useRsvp } from '@/hooks/api/use-rsvp';
 import { cn } from '@/utils';
 import { Check, X } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import toast from 'react-hot-toast';
 
 interface RsvpProps {
   prefixImageUrl: string;
@@ -25,60 +24,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
 
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
-  const [loading, setLoading] = useState(false);
-  const [rsvpData, setRsvpData] = useState<RsvpData[]>([]);
-
-  const fetchRsvp = useCallback(async () => {
-    try {
-      const response = await fetch(`/api/rsvp/${prefix}`);
-      const data = await response.json();
-      if (data.success) {
-        setRsvpData(data.data);
-      } else {
-        toast.error(`Failed to fetch examples: ${data.error}`);
-      }
-    } catch (err) {
-      toast.error(`Error fetching data: ${err}`);
-    }
-  }, [prefix]);
-
-  const handleRsvp = async (isAttend: boolean) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/rsvp/${prefix}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: to,
-          isAttend,
-          session: parseInt(session) || null
-        })
-      });
-      const data = await response.json();
-      if (data.success) {
-        toast.success('Thank you for your confirmation!');
-        fetchRsvp();
-        setLoading(false);
-      } else {
-        toast.error(`Failed to send rsvp: ${data.error}`);
-        setLoading(false);
-      }
-    } catch (err) {
-      toast.error(`Error posting data: ${err}`);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchRsvp();
-  }, [fetchRsvp]);
-
-  const findRsvp = useMemo(() => {
-    const find = rsvpData?.find((v) => v.name === to);
-    return find;
-  }, [rsvpData, to]);
+  const { loading, findRsvp, handleRsvp } = useRsvp({ prefix, to, session });
 
   return (
     <div className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'>

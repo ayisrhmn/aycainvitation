@@ -1,8 +1,7 @@
 import { Button, WishCard } from '@/components/lime/atoms';
+import { useWishes } from '@/hooks/api/use-wishes';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { FormEvent, useCallback, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 
 interface WishProps {
   to: string;
@@ -15,60 +14,8 @@ const playfairDisplaySc = Playfair_Display_SC({
 });
 
 const Wish = ({ to, prefix }: WishProps) => {
-  const [loading, setLoading] = useState(false);
-  const [name, setName] = useState('');
-  const [wish, setWish] = useState('');
-  const [wishes, setWishes] = useState<WishesData[]>([]);
-
-  const fetchWishes = useCallback(async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/wishes/${prefix}`);
-      const data = await response.json();
-      if (data.success) {
-        setLoading(false);
-        setWishes(data.data);
-      } else {
-        setLoading(false);
-        toast.error(`Failed to fetch examples: ${data.error}`);
-      }
-    } catch (err) {
-      setLoading(false);
-      toast.error(`Error fetching data: ${err}`);
-    }
-  }, [prefix]);
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(`/api/wishes/${prefix}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          wish,
-          createdBy: to
-        })
-      });
-      const data = await response.json();
-      if (data.success) {
-        setName('');
-        setWish('');
-        toast.success('Thank you for the wishes!');
-        fetchWishes();
-      } else {
-        toast.error(`Failed to send wishes: ${data.error}`);
-      }
-    } catch (err) {
-      toast.error(`Error posting data: ${err}`);
-    }
-  };
-
-  useEffect(() => {
-    fetchWishes();
-  }, [fetchWishes]);
+  const { loading, data, name, wish, setName, setWish, handleSubmit } =
+    useWishes({ prefix, to });
 
   return (
     <div className='bg-lime-50 px-4 py-8'>
@@ -117,7 +64,7 @@ const Wish = ({ to, prefix }: WishProps) => {
       <div
         className={cn(
           'overflow-auto no-scrollbar',
-          wishes?.length > 3 ? 'h-[280px]' : 'h-auto'
+          data?.length > 3 ? 'h-[280px]' : 'h-auto'
         )}
       >
         {loading ? (
@@ -126,7 +73,7 @@ const Wish = ({ to, prefix }: WishProps) => {
           </p>
         ) : (
           <>
-            {wishes?.map((wish, i) => (
+            {data?.map((wish, i) => (
               <WishCard
                 key={i}
                 sender={wish?.name}
