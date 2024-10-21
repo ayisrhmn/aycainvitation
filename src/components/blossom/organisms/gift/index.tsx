@@ -97,7 +97,7 @@ const Gift = ({ content }: GiftProps) => {
   }, [copied]);
 
   return (
-    <div className='bg-white px-4 py-16 shadow-md'>
+    <div className='relative px-4 py-16 shadow-md z-10 bg-white'>
       <p
         className={cn(
           'text-3xl text-pink-900 text-center mb-4',

@@ -40,7 +40,7 @@ const Footer = ({
           backgroundImage: `url(${imageUrl(prefixImageUrl, footerImage, null, 'imageKit')})`
         }}
       />
-      <div className='absolute inset-0 bg-black opacity-20' />
+      <div className='absolute inset-0 bg-black/20' />
       <div className='w-full h-full relative z-10 flex flex-col items-center justify-between'>
         <AnimatedSection>
           <div>

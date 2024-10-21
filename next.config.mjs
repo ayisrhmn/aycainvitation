@@ -6,6 +6,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'ayisrhmn.sirv.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io'
       }
     ]
   }

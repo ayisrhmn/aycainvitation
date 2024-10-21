@@ -3,7 +3,7 @@ import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
 import { PhotoView } from 'react-photo-view';
-import Slider from 'react-slick';
+import Masonry from 'react-responsive-masonry';
 
 interface GalleryProps {
   prefixImageUrl: string;
@@ -16,18 +16,8 @@ const playfairDisplaySc = Playfair_Display_SC({
 });
 
 const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
-  const settings = {
-    arrows: false,
-    dots: false,
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000
-  };
-
   return (
-    <div className='relative px-4 pt-10 pb-24 shadow-md z-10'>
+    <div className='relative px-4 pt-10 pb-24 shadow-md z-10 bg-white'>
       <p
         className={cn(
           'text-3xl text-pink-900 text-center mb-8',
@@ -46,24 +36,20 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
           />
         </div>
       </AnimatedSection>
-      <AnimatedSection>
-        <Slider {...settings}>
-          {images.map((image, i) => (
-            <div key={image} className='px-1'>
-              <PhotoView
+      <Masonry columnsCount={2} gutter='8px'>
+        {images.map((image, i) => (
+          <AnimatedSection key={i}>
+            <PhotoView src={imageUrl(prefixImageUrl, image, null, 'imageKit')}>
+              <img
+                key={i}
                 src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
-              >
-                <img
-                  key={i}
-                  src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
-                  alt={'image of gallery'}
-                  className='w-full h-full object-cover shadow-lg rounded cursor-pointer'
-                />
-              </PhotoView>
-            </div>
-          ))}
-        </Slider>
-      </AnimatedSection>
+                alt={'image of gallery'}
+                className='w-full h-full object-cover shadow-md rounded cursor-pointer'
+              />
+            </PhotoView>
+          </AnimatedSection>
+        ))}
+      </Masonry>
     </div>
   );
 };

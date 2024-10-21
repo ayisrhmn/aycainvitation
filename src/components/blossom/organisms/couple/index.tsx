@@ -12,13 +12,13 @@ interface CoupleProps {
 const Couple = ({ prefixImageUrl, content, isGroomEvent }: CoupleProps) => {
   const items = !isGroomEvent ? ['bride', 'groom'] : ['groom', 'bride'];
   return (
-    <div className='relative px-4 pt-6 pb-24 shadow-md z-10'>
+    <div className='relative px-4 pt-20 pb-24 shadow-md z-10 bg-white'>
       <AnimatedSection>
         <div className='flex justify-center mb-6'>
           <img
-            src={imageUrl(prefixImageUrl, 'logo.jpg', null, 'imageKit')}
+            src={imageUrl(prefixImageUrl, 'logo.png', null, 'imageKit')}
             alt='logo icon'
-            className='w-[76px] h-[76px] shadow-lg rounded-full'
+            className='w-[76px] h-[76px]'
           />
         </div>
       </AnimatedSection>

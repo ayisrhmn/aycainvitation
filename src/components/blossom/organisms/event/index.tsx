@@ -1,9 +1,9 @@
 import { CountdownTimer, EventSection } from '@/components/blossom/molecules';
-import { imageUrl } from '@/helpers';
+import { getParallaxStyle, imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Cheers, FlowerLotus } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { AnimatedSection } from '../../atoms';
 
 interface EventProps {
@@ -11,6 +11,7 @@ interface EventProps {
   content: ContentProps;
   session: string;
   eventCustomTitle?: string;
+  scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -22,8 +23,11 @@ const Event = ({
   prefixImageUrl,
   content,
   session,
-  eventCustomTitle
+  eventCustomTitle,
+  scrollY
 }: EventProps) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   const sessionType = useMemo(() => {
     switch (session) {
       case '1':
@@ -38,7 +42,10 @@ const Event = ({
   }, [session]);
 
   return (
-    <div className='relative px-6 py-44 text-white text-center'>
+    <div
+      ref={ref}
+      className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden'
+    >
       <svg
         className='absolute z-10 -top-1 left-0 w-full'
         xmlns='http://www.w3.org/2000/svg'
@@ -51,12 +58,13 @@ const Event = ({
         ></path>
       </svg>
       <div
-        className='absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000'
+        className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
+          ...getParallaxStyle(ref, 0.3, scrollY),
           backgroundImage: `url(${imageUrl(prefixImageUrl, 'event.jpg', null, 'imageKit')})`
         }}
       />
-      <div className='bg-white/25 backdrop-blur-sm relative z-10 flex flex-col rounded-[50px] shadow-lg py-4 px-5'>
+      <div className='bg-white/30 backdrop-blur-sm relative z-10 flex flex-col rounded-[50px] shadow-lg py-4 px-5'>
         <AnimatedSection>
           <p className={cn('text-3xl mb-4', playfairDisplaySc.className)}>
             Wedding Event

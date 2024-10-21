@@ -1,10 +1,11 @@
 import { Button } from '@/components/blossom/atoms';
-import { imageUrl } from '@/helpers';
+import { getParallaxStyle, imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { useRsvp } from '@/hooks/api/use-rsvp';
 import { cn } from '@/utils';
 import { Check, X } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
+import { useRef } from 'react';
 
 interface RsvpProps {
   prefixImageUrl: string;
@@ -12,6 +13,7 @@ interface RsvpProps {
   duration: number;
   to: string;
   session: string;
+  scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -19,7 +21,16 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
+const Rsvp = ({
+  prefixImageUrl,
+  images,
+  duration,
+  to,
+  session,
+  scrollY
+}: RsvpProps) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   const prefix = prefixImageUrl;
 
   const { currentImageIndex } = useImageSlideshow(images, duration);
@@ -27,20 +38,24 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
   const { loading, findRsvp, handleRsvp } = useRsvp({ prefix, to, session });
 
   return (
-    <div className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'>
+    <div
+      ref={ref}
+      className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'
+    >
       {images.map((image, i) => (
         <div
           key={i}
           className={cn(
-            'absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000',
+            'absolute inset-0 bg-cover bg-center transition-opacity duration-1000',
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
+            ...getParallaxStyle(ref, 0.1, scrollY),
             backgroundImage: `url(${imageUrl(prefix, image, null, 'imageKit')})`
           }}
         />
       ))}
-      <div className='w-full relative z-10 px-2 py-4 bg-white/25 backdrop-blur-sm rounded-xl shadow-lg'>
+      <div className='w-full relative z-10 px-2 py-4 bg-white/50 backdrop-blur-sm rounded-xl shadow-lg'>
         <p
           className={cn(
             'text-3xl text-pink-900 text-center mb-6',
@@ -51,7 +66,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
         </p>
         {!findRsvp ? (
           <>
-            <p className='text-center text-sm italic text-pink-900 opacity-80'>
+            <p className='text-center text-sm italic text-pink-900'>
               Dimohon untuk mengisi konfirmasi
               <br />
               kehadiran di bawah ini:
@@ -76,7 +91,7 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
             </div>
           </>
         ) : (
-          <p className='text-center text-sm italic text-pink-900 opacity-80 mb-6'>
+          <p className='text-center text-sm italic text-pink-900 mb-6'>
             Terima kasih, atas konfirmasinya.
           </p>
         )}

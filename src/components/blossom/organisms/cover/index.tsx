@@ -53,7 +53,7 @@ const Cover = ({
         className='absolute inset-0 bg-cover bg-center'
         style={{ backgroundImage: `url(${bgUrl})` }}
       />
-      <div className='absolute inset-0 bg-black opacity-60' />
+      <div className='absolute inset-0 bg-black/60' />
       <div className='relative z-10 flex flex-col items-center justify-center h-full text-white py-28'>
         <AnimatedSection>
           <img

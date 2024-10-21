@@ -17,7 +17,7 @@ import { MusicToggle } from '@/components/blossom/atoms';
 import { useRouter } from 'next/router';
 import { useAudio } from '@/hooks';
 import { cn } from '@/utils';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
@@ -26,10 +26,22 @@ const ErlynSyehWedding = () => {
   const { to, session } = router.query;
 
   const [openInvite, setOpenInvite] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   const { playing, setPlaying, toggle }: AudioProps = useAudio(
     '/music/Elliot James Reay - I Think They Call This Love.mp3'
   );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <main
@@ -98,6 +110,7 @@ const ErlynSyehWedding = () => {
           groom: APP_CINDYFAIZAL.content.couple.groom.nickname
         }}
         eventDate={APP_CINDYFAIZAL.content.event.resepsi1.date}
+        scrollY={scrollY}
       />
       <Couple
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
@@ -107,6 +120,7 @@ const ErlynSyehWedding = () => {
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         content={APP_CINDYFAIZAL.content}
         session={session as string}
+        scrollY={scrollY}
       />
       {to && (
         <Rsvp
@@ -115,13 +129,18 @@ const ErlynSyehWedding = () => {
           duration={3000}
           to={to as string}
           session={session as string}
+          scrollY={scrollY}
         />
       )}
       <Gallery
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         images={APP_CINDYFAIZAL.content.gallery}
       />
-      <Wish to={to as string} prefix={APP_CINDYFAIZAL.prefix} />
+      <Wish
+        to={to as string}
+        prefix={APP_CINDYFAIZAL.prefix}
+        scrollY={scrollY}
+      />
       <Gift content={APP_CINDYFAIZAL.content} />
       <Footer
         prefixImageUrl={APP_CINDYFAIZAL.prefix}

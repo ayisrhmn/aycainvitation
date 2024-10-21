@@ -1,7 +1,8 @@
-import { dateFormat, imageUrl } from '@/helpers';
+import { dateFormat, getParallaxStyle, imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
+import { useRef } from 'react';
 
 interface HeaderProps {
   prefixImageUrl: string;
@@ -10,6 +11,7 @@ interface HeaderProps {
   coupleNick: CoupleNickProps;
   eventDate: Date;
   isGroomEvent?: boolean;
+  scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -23,25 +25,29 @@ const Header = ({
   duration,
   coupleNick,
   eventDate,
-  isGroomEvent = false
+  isGroomEvent = false,
+  scrollY
 }: HeaderProps) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
   return (
-    <div className='h-[94vh] relative mb-14'>
+    <div ref={ref} className='h-[94vh] relative overflow-hidden'>
       {images.map((image, i) => (
         <div
           key={i}
           className={cn(
-            'absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000',
+            'absolute inset-0 bg-cover bg-center transition-opacity duration-1000',
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
+            ...getParallaxStyle(ref, 0.5, scrollY),
             backgroundImage: `url(${imageUrl(prefixImageUrl, image, null, 'imageKit')})`
           }}
         />
       ))}
-      <div className='absolute inset-0 bg-black opacity-30' />
+      <div className='absolute inset-0 bg-black/30' />
       <div className='relative z-10 flex flex-col items-center justify-end h-full text-white pb-32'>
         <div className='text-center'>
           <p className='text-md tracking-widest mb-2'>The Wedding of</p>
