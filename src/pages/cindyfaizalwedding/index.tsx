@@ -48,7 +48,12 @@ const ErlynSyehWedding = () => {
         />
         <meta
           property='og:image'
-          content={`https://aycainvitation.vercel.app/thumbnail/${APP_CINDYFAIZAL.prefix}.jpg`}
+          content={imageUrl(
+            APP_CINDYFAIZAL.prefix,
+            'thumbnail.jpg',
+            null,
+            'imageKit'
+          )}
           key='ogimage'
         />
         <meta
