@@ -50,7 +50,7 @@ const ErlynSyehWedding = () => {
           property='og:image'
           content={imageUrl(
             APP_CINDYFAIZAL.prefix,
-            'gallery-5.jpg',
+            'cover-1.jpg',
             null,
             'imageKit'
           )}
