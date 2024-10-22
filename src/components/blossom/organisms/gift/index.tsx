@@ -1,4 +1,4 @@
-import { AnimatedSection, Button } from '@/components/blossom/atoms';
+import { Button } from '@/components/blossom/atoms';
 import { cn } from '@/utils';
 import { Copy, Gift as GiftIcon, MoneyWavy } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
@@ -29,53 +29,52 @@ const Gift = ({ content }: GiftProps) => {
         return (
           <>
             {content.gift?.map((item, i) => (
-              <AnimatedSection key={i}>
-                <div className='bg-pink-900/20 rounded-lg shadow-lg p-4 mb-6'>
-                  <div className='flex flex-col justify-center items-center'>
-                    <p className='text-md uppercase text-pink-900 mb-1'>
-                      Bank {item.bankName}
-                    </p>
-                    <button onClick={() => handleCopy(item.noRek)}>
-                      <div className='flex items-center text-pink-900 gap-1'>
-                        <div>
-                          <Copy />
-                        </div>
-                        <p className='text-md mb-1'>
-                          {copied === item.noRek ? 'Tersalin' : item.noRek}
-                        </p>
+              <div
+                key={i}
+                className='bg-pink-900/20 rounded-lg shadow-lg p-4 mb-6'
+              >
+                <div className='flex flex-col justify-center items-center'>
+                  <p className='text-md uppercase text-pink-900 mb-1'>
+                    Bank {item.bankName}
+                  </p>
+                  <button onClick={() => handleCopy(item.noRek)}>
+                    <div className='flex items-center text-pink-900 gap-1'>
+                      <div>
+                        <Copy />
                       </div>
-                    </button>
-                    <p className='text-md text-pink-900 mb-1'>
-                      a.n {item.accName}
-                    </p>
-                  </div>
+                      <p className='text-md mb-1'>
+                        {copied === item.noRek ? 'Tersalin' : item.noRek}
+                      </p>
+                    </div>
+                  </button>
+                  <p className='text-md text-pink-900 mb-1'>
+                    a.n {item.accName}
+                  </p>
                 </div>
-              </AnimatedSection>
+              </div>
             ))}
           </>
         );
 
       case 'gift':
         return (
-          <AnimatedSection>
-            <div className='bg-pink-900/20 rounded-lg shadow-lg p-4 mb-6'>
-              <div className='flex flex-col justify-center items-center'>
-                <p className='text-md uppercase text-pink-900 mb-1'>
-                  Alamat Kirim Kado
-                </p>
-                <button onClick={() => handleCopy(address)}>
-                  <div className='flex items-center text-pink-900 gap-1'>
-                    <div>
-                      <Copy />
-                    </div>
-                    <p className='text-md mb-1'>
-                      {copied === address ? 'Tersalin' : address}
-                    </p>
+          <div className='bg-pink-900/20 rounded-lg shadow-lg p-4 mb-6'>
+            <div className='flex flex-col justify-center items-center'>
+              <p className='text-md uppercase text-pink-900 mb-1'>
+                Alamat Kirim Kado
+              </p>
+              <button onClick={() => handleCopy(address)}>
+                <div className='flex items-center text-pink-900 gap-1'>
+                  <div>
+                    <Copy />
                   </div>
-                </button>
-              </div>
+                  <p className='text-md mb-1'>
+                    {copied === address ? 'Tersalin' : address}
+                  </p>
+                </div>
+              </button>
             </div>
-          </AnimatedSection>
+          </div>
         );
     }
   }, [openGift, content, copied]);

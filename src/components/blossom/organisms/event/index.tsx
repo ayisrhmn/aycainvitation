@@ -4,14 +4,13 @@ import { cn } from '@/utils';
 import { Cheers, FlowerLotus } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
 import { useMemo, useRef } from 'react';
-import { AnimatedSection } from '../../atoms';
 
 interface EventProps {
   prefixImageUrl: string;
   content: ContentProps;
   session: string;
   eventCustomTitle?: string;
-  // scrollY: number;
+  scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -23,10 +22,10 @@ const Event = ({
   prefixImageUrl,
   content,
   session,
-  eventCustomTitle
-  // scrollY
+  eventCustomTitle,
+  scrollY
 }: EventProps) => {
-  // const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const sessionType = useMemo(() => {
     switch (session) {
@@ -43,7 +42,7 @@ const Event = ({
 
   return (
     <div
-      // ref={ref}
+      ref={ref}
       className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden'
     >
       <svg
@@ -60,54 +59,46 @@ const Event = ({
       <div
         className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
-          // ...getParallaxStyle(ref, 0.3, scrollY),
+          ...getParallaxStyle(ref, 0.3, scrollY),
           backgroundImage: `url(${imageUrl(prefixImageUrl, 'event.jpg', null, 'imageKit')})`
         }}
       />
       <div className='bg-white/30 backdrop-blur-sm relative z-10 flex flex-col rounded-[50px] shadow-lg py-4 px-5'>
-        <AnimatedSection>
-          <p className={cn('text-3xl mb-4', playfairDisplaySc.className)}>
-            Wedding Event
-          </p>
-          <div className='mb-6'>
-            <CountdownTimer
-              targetDate={(content.event.akad?.date as Date)?.toISOString()}
-            />
-          </div>
-        </AnimatedSection>
-        <AnimatedSection>
-          <p className='text-sm italic my-4'>
-            Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-            pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
-            dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
-            kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
-            terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
-          </p>
-          <p className='text-lg font-bold'>- Q.S. Ar-Rum : 21 -</p>
-        </AnimatedSection>
+        <p className={cn('text-3xl mb-4', playfairDisplaySc.className)}>
+          Wedding Event
+        </p>
+        <div className='mb-6'>
+          <CountdownTimer
+            targetDate={(content.event.akad?.date as Date)?.toISOString()}
+          />
+        </div>
+        <p className='text-sm italic my-4'>
+          Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+          pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
+          dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa
+          kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat
+          tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+        </p>
+        <p className='text-lg font-bold'>- Q.S. Ar-Rum : 21 -</p>
         <div className='mt-12'>
           {content.event.akad && (
-            <AnimatedSection>
-              <div className='mb-5'>
-                <EventSection
-                  type='akad'
-                  content={content}
-                  noLocation
-                  icon={<FlowerLotus weight='light' size={36} />}
-                />
-              </div>
-            </AnimatedSection>
-          )}
-          <AnimatedSection>
             <div className='mb-5'>
               <EventSection
-                type={sessionType}
+                type='akad'
                 content={content}
-                customTitle={eventCustomTitle}
-                icon={<Cheers weight='light' size={38} />}
+                noLocation
+                icon={<FlowerLotus weight='light' size={36} />}
               />
             </div>
-          </AnimatedSection>
+          )}
+          <div className='mb-5'>
+            <EventSection
+              type={sessionType}
+              content={content}
+              customTitle={eventCustomTitle}
+              icon={<Cheers weight='light' size={38} />}
+            />
+          </div>
         </div>
       </div>
     </div>

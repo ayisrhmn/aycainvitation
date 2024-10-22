@@ -1,7 +1,6 @@
 import { CoupleSection } from '@/components/blossom/molecules';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
-import { AnimatedSection } from '../../atoms';
 
 interface CoupleProps {
   prefixImageUrl: string;
@@ -13,23 +12,19 @@ const Couple = ({ prefixImageUrl, content, isGroomEvent }: CoupleProps) => {
   const items = !isGroomEvent ? ['bride', 'groom'] : ['groom', 'bride'];
   return (
     <div className='relative px-4 pt-20 pb-24 shadow-md z-10 bg-white'>
-      <AnimatedSection>
-        <div className='flex justify-center mb-6'>
-          <img
-            src={imageUrl(prefixImageUrl, 'logo.png', null, 'imageKit')}
-            alt='logo icon'
-            className='w-[76px] h-[76px]'
-          />
-        </div>
-      </AnimatedSection>
-      <AnimatedSection>
-        <p className='text-sm text-pink-900 italic text-center mb-6'>
-          Maha Suci Allah Subhanahu wa Ta`ala yang telah menciptakan makhluk-Nya
-          berpasang-pasangan.
-          <br />
-          Ya Allah, perkenankanlah dan Ridhoilah Pernikahan Kami.
-        </p>
-      </AnimatedSection>
+      <div className='flex justify-center mb-6'>
+        <img
+          src={imageUrl(prefixImageUrl, 'logo.png', null, 'imageKit')}
+          alt='logo icon'
+          className='w-[76px] h-[76px]'
+        />
+      </div>
+      <p className='text-sm text-pink-900 italic text-center mb-6'>
+        Maha Suci Allah Subhanahu wa Ta`ala yang telah menciptakan makhluk-Nya
+        berpasang-pasangan.
+        <br />
+        Ya Allah, perkenankanlah dan Ridhoilah Pernikahan Kami.
+      </p>
       {/* the bride & groom */}
       <div className='grid grid-cols-2 gap-3 mb-6'>
         {items.map((item, i) => (
