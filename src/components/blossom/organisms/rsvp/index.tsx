@@ -13,7 +13,7 @@ interface RsvpProps {
   duration: number;
   to: string;
   session: string;
-  scrollY: number;
+  // scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -26,10 +26,10 @@ const Rsvp = ({
   images,
   duration,
   to,
-  session,
-  scrollY
+  session
+  // scrollY
 }: RsvpProps) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  // const ref = useRef<HTMLDivElement | null>(null);
 
   const prefix = prefixImageUrl;
 
@@ -39,7 +39,7 @@ const Rsvp = ({
 
   return (
     <div
-      ref={ref}
+      // ref={ref}
       className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'
     >
       {images.map((image, i) => (
@@ -50,7 +50,7 @@ const Rsvp = ({
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            ...getParallaxStyle(ref, 0.1, scrollY),
+            // ...getParallaxStyle(ref, 0.1, scrollY),
             backgroundImage: `url(${imageUrl(prefix, image, null, 'imageKit')})`
           }}
         />
