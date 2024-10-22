@@ -1,14 +1,12 @@
 import { Button, WishCard } from '@/components/blossom/atoms';
-import { getParallaxStyle, imageUrl } from '@/helpers';
+import { imageUrl } from '@/helpers';
 import { useWishes } from '@/hooks/api/use-wishes';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useRef } from 'react';
 
 interface WishProps {
   to: string;
   prefix: string;
-  // scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -16,21 +14,12 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Wish = ({
-  to,
-  prefix
-  // scrollY
-}: WishProps) => {
-  // const ref = useRef<HTMLDivElement | null>(null);
-
+const Wish = ({ to, prefix }: WishProps) => {
   const { loading, data, name, wish, setName, setWish, handleSubmit } =
     useWishes({ prefix, to });
 
   return (
-    <div
-      // ref={ref}
-      className='relative px-4 py-40'
-    >
+    <div className='relative px-4 py-40'>
       <svg
         className='absolute z-10 -top-1 left-0 w-full'
         xmlns='http://www.w3.org/2000/svg'
@@ -45,7 +34,6 @@ const Wish = ({
       <div
         className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
-          // ...getParallaxStyle(ref, 0.1, scrollY),
           backgroundImage: `url(${imageUrl(prefix, 'wish.jpg', null, 'imageKit')})`
         }}
       />

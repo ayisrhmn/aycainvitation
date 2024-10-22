@@ -1,3 +1,5 @@
+'use client';
+
 import { Playfair_Display } from 'next/font/google';
 import Head from 'next/head';
 import { APP_CINDYFAIZAL } from '@/constants';
@@ -17,31 +19,23 @@ import { MusicToggle } from '@/components/blossom/atoms';
 import { useRouter } from 'next/router';
 import { useAudio } from '@/hooks';
 import { cn } from '@/utils';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import Snowfall from 'react-snowfall';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
+
+const sakura = document.createElement('img');
+sakura.src = '/icons/sakura.png';
 
 const ErlynSyehWedding = () => {
   const router = useRouter();
   const { to, session } = router.query;
 
   const [openInvite, setOpenInvite] = useState(false);
-  // const [scrollY, setScrollY] = useState(0);
 
   const { playing, setPlaying, toggle }: AudioProps = useAudio(
     '/music/Elliot James Reay - I Think They Call This Love.mp3'
   );
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setScrollY(window.scrollY);
-  //   };
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
 
   return (
     <main
@@ -87,6 +81,11 @@ const ErlynSyehWedding = () => {
       </Head>
       {/* #endregion Head */}
 
+      {/* snowfall effect */}
+      {openInvite && (
+        <Snowfall images={[sakura]} radius={[5, 10]} style={{ zIndex: 9999 }} />
+      )}
+
       <Cover
         bgUrl={`${imageUrl(APP_CINDYFAIZAL.prefix, 'cover-2.jpg', null, 'imageKit')}`}
         welcomeImgUrl={`${imageUrl(APP_CINDYFAIZAL.prefix, 'cover-1.jpg', null, 'imageKit')}`}
@@ -110,7 +109,6 @@ const ErlynSyehWedding = () => {
           groom: APP_CINDYFAIZAL.content.couple.groom.nickname
         }}
         eventDate={APP_CINDYFAIZAL.content.event.resepsi1.date}
-        // scrollY={scrollY}
       />
       <Couple
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
@@ -120,7 +118,6 @@ const ErlynSyehWedding = () => {
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         content={APP_CINDYFAIZAL.content}
         session={session as string}
-        // scrollY={scrollY}
       />
       {to && (
         <Rsvp
@@ -129,18 +126,13 @@ const ErlynSyehWedding = () => {
           duration={3000}
           to={to as string}
           session={session as string}
-          // scrollY={scrollY}
         />
       )}
       <Gallery
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         images={APP_CINDYFAIZAL.content.gallery}
       />
-      <Wish
-        to={to as string}
-        prefix={APP_CINDYFAIZAL.prefix}
-        // scrollY={scrollY}
-      />
+      <Wish to={to as string} prefix={APP_CINDYFAIZAL.prefix} />
       <Gift content={APP_CINDYFAIZAL.content} />
       <Footer
         prefixImageUrl={APP_CINDYFAIZAL.prefix}

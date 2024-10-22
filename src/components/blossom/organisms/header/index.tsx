@@ -1,8 +1,7 @@
-import { dateFormat, getParallaxStyle, imageUrl } from '@/helpers';
+import { dateFormat, imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useRef } from 'react';
 
 interface HeaderProps {
   prefixImageUrl: string;
@@ -11,7 +10,6 @@ interface HeaderProps {
   coupleNick: CoupleNickProps;
   eventDate: Date;
   isGroomEvent?: boolean;
-  // scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -26,17 +24,11 @@ const Header = ({
   coupleNick,
   eventDate,
   isGroomEvent = false
-  // scrollY
 }: HeaderProps) => {
-  // const ref = useRef<HTMLDivElement | null>(null);
-
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
   return (
-    <div
-      // ref={ref}
-      className='h-[94vh] relative overflow-hidden'
-    >
+    <div className='h-[94vh] relative overflow-hidden'>
       {images.map((image, i) => (
         <div
           key={i}
@@ -45,7 +37,6 @@ const Header = ({
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            // ...getParallaxStyle(ref, 0.5, scrollY),
             backgroundImage: `url(${imageUrl(prefixImageUrl, image, null, 'imageKit')})`
           }}
         />

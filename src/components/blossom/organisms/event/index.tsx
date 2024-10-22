@@ -1,9 +1,9 @@
 import { CountdownTimer, EventSection } from '@/components/blossom/molecules';
-import { getParallaxStyle, imageUrl } from '@/helpers';
+import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Cheers, FlowerLotus } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import { AnimatedSection } from '../../atoms';
 
 interface EventProps {
@@ -11,7 +11,6 @@ interface EventProps {
   content: ContentProps;
   session: string;
   eventCustomTitle?: string;
-  // scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -24,10 +23,7 @@ const Event = ({
   content,
   session,
   eventCustomTitle
-  // scrollY
 }: EventProps) => {
-  // const ref = useRef<HTMLDivElement | null>(null);
-
   const sessionType = useMemo(() => {
     switch (session) {
       case '1':
@@ -42,10 +38,7 @@ const Event = ({
   }, [session]);
 
   return (
-    <div
-      // ref={ref}
-      className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden'
-    >
+    <div className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden'>
       <svg
         className='absolute z-10 -top-1 left-0 w-full'
         xmlns='http://www.w3.org/2000/svg'
@@ -60,7 +53,6 @@ const Event = ({
       <div
         className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
-          // ...getParallaxStyle(ref, 0.3, scrollY),
           backgroundImage: `url(${imageUrl(prefixImageUrl, 'event.jpg', null, 'imageKit')})`
         }}
       />

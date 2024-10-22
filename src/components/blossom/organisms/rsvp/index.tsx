@@ -1,11 +1,10 @@
 import { Button } from '@/components/blossom/atoms';
-import { getParallaxStyle, imageUrl } from '@/helpers';
+import { imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { useRsvp } from '@/hooks/api/use-rsvp';
 import { cn } from '@/utils';
 import { Check, X } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useRef } from 'react';
 
 interface RsvpProps {
   prefixImageUrl: string;
@@ -13,7 +12,6 @@ interface RsvpProps {
   duration: number;
   to: string;
   session: string;
-  // scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -21,16 +19,7 @@ const playfairDisplaySc = Playfair_Display_SC({
   weight: '400'
 });
 
-const Rsvp = ({
-  prefixImageUrl,
-  images,
-  duration,
-  to,
-  session
-  // scrollY
-}: RsvpProps) => {
-  // const ref = useRef<HTMLDivElement | null>(null);
-
+const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
   const prefix = prefixImageUrl;
 
   const { currentImageIndex } = useImageSlideshow(images, duration);
@@ -38,10 +27,7 @@ const Rsvp = ({
   const { loading, findRsvp, handleRsvp } = useRsvp({ prefix, to, session });
 
   return (
-    <div
-      // ref={ref}
-      className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'
-    >
+    <div className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'>
       {images.map((image, i) => (
         <div
           key={i}
@@ -50,7 +36,6 @@ const Rsvp = ({
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
-            // ...getParallaxStyle(ref, 0.1, scrollY),
             backgroundImage: `url(${imageUrl(prefix, image, null, 'imageKit')})`
           }}
         />
