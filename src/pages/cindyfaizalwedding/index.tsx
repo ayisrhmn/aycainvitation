@@ -1,5 +1,3 @@
-'use client';
-
 import { Playfair_Display } from 'next/font/google';
 import Head from 'next/head';
 import { APP_CINDYFAIZAL } from '@/constants';
@@ -15,17 +13,13 @@ import {
   Wish
 } from '@/components/blossom/organisms';
 import { imageUrl } from '@/helpers';
-import { MusicToggle } from '@/components/blossom/atoms';
+import { MusicToggle, SnowfallEffect } from '@/components/blossom/atoms';
 import { useRouter } from 'next/router';
 import { useAudio } from '@/hooks';
 import { cn } from '@/utils';
 import { useState } from 'react';
-import Snowfall from 'react-snowfall';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
-
-const sakura = document.createElement('img');
-sakura.src = '/icons/sakura.png';
 
 const ErlynSyehWedding = () => {
   const router = useRouter();
@@ -82,9 +76,7 @@ const ErlynSyehWedding = () => {
       {/* #endregion Head */}
 
       {/* snowfall effect */}
-      {openInvite && (
-        <Snowfall images={[sakura]} radius={[5, 10]} style={{ zIndex: 9999 }} />
-      )}
+      {openInvite && <SnowfallEffect />}
 
       <Cover
         bgUrl={`${imageUrl(APP_CINDYFAIZAL.prefix, 'cover-2.jpg', null, 'imageKit')}`}
