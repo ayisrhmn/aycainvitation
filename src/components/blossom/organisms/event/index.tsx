@@ -11,7 +11,7 @@ interface EventProps {
   content: ContentProps;
   session: string;
   eventCustomTitle?: string;
-  scrollY: number;
+  // scrollY: number;
 }
 
 const playfairDisplaySc = Playfair_Display_SC({
@@ -23,10 +23,10 @@ const Event = ({
   prefixImageUrl,
   content,
   session,
-  eventCustomTitle,
-  scrollY
+  eventCustomTitle
+  // scrollY
 }: EventProps) => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  // const ref = useRef<HTMLDivElement | null>(null);
 
   const sessionType = useMemo(() => {
     switch (session) {
@@ -43,7 +43,7 @@ const Event = ({
 
   return (
     <div
-      ref={ref}
+      // ref={ref}
       className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden'
     >
       <svg
@@ -60,7 +60,7 @@ const Event = ({
       <div
         className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000'
         style={{
-          ...getParallaxStyle(ref, 0.3, scrollY),
+          // ...getParallaxStyle(ref, 0.3, scrollY),
           backgroundImage: `url(${imageUrl(prefixImageUrl, 'event.jpg', null, 'imageKit')})`
         }}
       />

@@ -26,22 +26,22 @@ const ErlynSyehWedding = () => {
   const { to, session } = router.query;
 
   const [openInvite, setOpenInvite] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  // const [scrollY, setScrollY] = useState(0);
 
   const { playing, setPlaying, toggle }: AudioProps = useAudio(
     '/music/Elliot James Reay - I Think They Call This Love.mp3'
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY);
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   return (
     <main
@@ -110,7 +110,7 @@ const ErlynSyehWedding = () => {
           groom: APP_CINDYFAIZAL.content.couple.groom.nickname
         }}
         eventDate={APP_CINDYFAIZAL.content.event.resepsi1.date}
-        scrollY={scrollY}
+        // scrollY={scrollY}
       />
       <Couple
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
@@ -120,7 +120,7 @@ const ErlynSyehWedding = () => {
         prefixImageUrl={APP_CINDYFAIZAL.prefix}
         content={APP_CINDYFAIZAL.content}
         session={session as string}
-        scrollY={scrollY}
+        // scrollY={scrollY}
       />
       {to && (
         <Rsvp
@@ -129,7 +129,7 @@ const ErlynSyehWedding = () => {
           duration={3000}
           to={to as string}
           session={session as string}
-          scrollY={scrollY}
+          // scrollY={scrollY}
         />
       )}
       <Gallery
@@ -139,7 +139,7 @@ const ErlynSyehWedding = () => {
       <Wish
         to={to as string}
         prefix={APP_CINDYFAIZAL.prefix}
-        scrollY={scrollY}
+        // scrollY={scrollY}
       />
       <Gift content={APP_CINDYFAIZAL.content} />
       <Footer
