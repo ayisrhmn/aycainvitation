@@ -22,7 +22,7 @@ const APP_CINDYFAIZAL = {
         father: 'Mujiono',
         mother: '(Almh) Hartutik',
         images: ['groom-1.jpg', 'groom-2.jpg'],
-        instagram: 'faizalyahya',
+        instagram: 'faiz.alyahya',
         quotes: null,
         quotesBy: null
       }
