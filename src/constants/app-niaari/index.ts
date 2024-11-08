@@ -34,7 +34,8 @@ const APP_NIAARI = {
         endTime: null,
         location: 'Jalan Kawi No.88',
         street: 'RT. 004 RW. 001, Ds. Panggungrejo',
-        detailStreet: 'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung',
+        detailStreet:
+          'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung (Depan Pabrik Panggungrejo)',
         link: 'https://maps.app.goo.gl/BLXTuKd7DoZbTHWh9'
       },
       resepsi1: {
@@ -43,7 +44,8 @@ const APP_NIAARI = {
         endTime: '14.00',
         location: 'Jalan Kawi No.88',
         street: 'RT. 004 RW. 001, Ds. Panggungrejo',
-        detailStreet: 'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung',
+        detailStreet:
+          'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung (Depan Pabrik Panggungrejo)',
         link: 'https://maps.app.goo.gl/BLXTuKd7DoZbTHWh9'
       },
       resepsi2: null

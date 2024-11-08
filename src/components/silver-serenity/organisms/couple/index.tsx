@@ -22,12 +22,13 @@ const Couple = ({ prefixImageUrl, content, isGroomEvent }: CoupleProps) => {
       {/* the bride & groom */}
       <div className='flex flex-col gap-12 mt-12'>
         {items.map((item, i) => (
-          <CoupleSection
-            key={i}
-            prefixImageUrl={prefixImageUrl}
-            content={content}
-            type={item as CoupleType}
-          />
+          <AnimatedSection key={i}>
+            <CoupleSection
+              prefixImageUrl={prefixImageUrl}
+              content={content}
+              type={item as CoupleType}
+            />
+          </AnimatedSection>
         ))}
       </div>
     </div>

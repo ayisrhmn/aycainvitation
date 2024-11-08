@@ -20,7 +20,7 @@ import { useState } from 'react';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
-const ErlynSyehWedding = () => {
+const WeddingPage = () => {
   const router = useRouter();
   const { to, session } = router.query;
 
@@ -134,4 +134,4 @@ const ErlynSyehWedding = () => {
   );
 };
 
-export default ErlynSyehWedding;
+export default WeddingPage;
