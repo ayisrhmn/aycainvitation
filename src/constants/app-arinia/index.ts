@@ -1,6 +1,6 @@
-const APP_NIAARI = {
-  title: 'The Wedding of Nia & Ari - Aycainvitation',
-  prefix: 'niaariwedding',
+const APP_ARINIA = {
+  title: 'The Wedding of Ari & Nia - Aycainvitation',
+  prefix: 'ariniawedding',
   content: {
     headerImages: ['header-1.jpg', 'header-2.jpg'],
     couple: {
@@ -75,4 +75,4 @@ const APP_NIAARI = {
   }
 };
 
-export default APP_NIAARI;
+export default APP_ARINIA;
