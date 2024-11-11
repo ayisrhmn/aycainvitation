@@ -35,7 +35,7 @@ const APP_ARINIA = {
         location: 'Jalan Kawi No.88',
         street: 'RT. 004 RW. 001, Ds. Panggungrejo',
         detailStreet:
-          'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung (Depan Pabrik Panggungrejo)',
+          'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung (Depan Pabrik Mojopanggung)',
         link: 'https://maps.app.goo.gl/BLXTuKd7DoZbTHWh9'
       },
       resepsi1: {
@@ -45,7 +45,7 @@ const APP_ARINIA = {
         location: 'Jalan Kawi No.88',
         street: 'RT. 004 RW. 001, Ds. Panggungrejo',
         detailStreet:
-          'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung (Depan Pabrik Panggungrejo)',
+          'Dsn. Irongganan, Kec. Kauman, Kab. Tulungagung (Depan Pabrik Mojopanggung)',
         link: 'https://maps.app.goo.gl/BLXTuKd7DoZbTHWh9'
       },
       resepsi2: null
