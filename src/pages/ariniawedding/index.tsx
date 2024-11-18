@@ -28,7 +28,7 @@ const WeddingPage = () => {
   const [openInvite, setOpenInvite] = useState(false);
 
   const { playing, setPlaying, toggle }: AudioProps = useAudio(
-    '/music/The way you look at me - Christian Bautista.mp3'
+    '/music/Elliot James Reay - I Think They Call This Love.mp3'
   );
 
   return (
