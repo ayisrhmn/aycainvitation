@@ -1,4 +1,4 @@
-import { AnimatedSection } from '@/components/blossom/atoms';
+import { AnimatedSection } from '@/components/jade-serenity/atoms';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
@@ -19,7 +19,7 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
     <div className='relative px-4 pt-10 pb-24 shadow-md z-10 bg-white'>
       <p
         className={cn(
-          'text-3xl text-pink-900 text-center mb-8',
+          'text-3xl text-green-900 text-center mb-8',
           playfairDisplaySc.className
         )}
       >
@@ -29,7 +29,7 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
         <div className='relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg shadow-lg mb-6'>
           <iframe
             className='absolute top-0 left-0 w-full h-full'
-            src='https://www.youtube.com/embed/nIkT1lwEH5U?si=cNxwt40z05Z0j7zx?autoplay=1&loop=1'
+            src='https://www.youtube.com/embed/NfUl5EvdeFE?si=3djBLBWemEX1rXfL'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             allowFullScreen
           />

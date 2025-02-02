@@ -1,4 +1,4 @@
-import { CoupleSection } from '@/components/blossom/molecules';
+import { CoupleSection } from '@/components/jade-serenity/molecules';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { AnimatedSection } from '../../atoms';
@@ -20,7 +20,7 @@ const Couple = ({
   return (
     <div className='relative px-4 pt-20 pb-24 shadow-md z-10 bg-white'>
       <AnimatedSection>
-        {!withoutLogo && (
+        {!withoutLogo ? (
           <div className='flex justify-center mb-6'>
             <img
               src={imageUrl(prefixImageUrl, 'logo.png', null, 'imageKit')}
@@ -28,10 +28,18 @@ const Couple = ({
               className='w-[76px] h-[76px]'
             />
           </div>
+        ) : (
+          <div className='flex justify-center mb-6'>
+            <img
+              src='/icons/wedding-ring.png'
+              alt='logo icon'
+              className='w-[76px] h-[76px]'
+            />
+          </div>
         )}
       </AnimatedSection>
       <AnimatedSection>
-        <p className='text-sm text-pink-900 italic text-center mb-6'>
+        <p className='text-sm text-green-900 italic text-center mb-6'>
           Maha Suci Allah Subhanahu wa Ta`ala yang telah menciptakan makhluk-Nya
           berpasang-pasangan.
           <br />

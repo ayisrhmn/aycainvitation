@@ -3,7 +3,6 @@ import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
 import { PhotoView } from 'react-photo-view';
-import Masonry from 'react-responsive-masonry';
 
 interface GalleryProps {
   prefixImageUrl: string;
@@ -26,7 +25,13 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
       >
         Our Gallery
       </p>
-      <Masonry columnsCount={2} gutter='8px'>
+      <div
+        className='grid'
+        style={{
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '8px'
+        }}
+      >
         {images.map((image, i) => (
           <AnimatedSection key={i}>
             <PhotoView src={imageUrl(prefixImageUrl, image, null, 'imageKit')}>
@@ -39,7 +44,7 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
             </PhotoView>
           </AnimatedSection>
         ))}
-      </Masonry>
+      </div>
     </div>
   );
 };
