@@ -94,7 +94,7 @@ const Wish = ({ to, prefix }: WishProps) => {
         <div
           key={i}
           className={cn(
-            `absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000 bg-wish-${i}`,
+            `absolute inset-0 bg-cover bg-center transition-opacity duration-1000 bg-wish-${i}`,
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{
