@@ -2,6 +2,7 @@ import { dateFormat, imageUrl } from '@/helpers';
 import { useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
+import { useEffect } from 'react';
 
 interface HeaderProps {
   prefixImageUrl: string;
@@ -27,13 +28,66 @@ const Header = ({
 }: HeaderProps) => {
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
+  // handle bg scroll
+  useEffect(() => {
+    const handleBgScroll = () => {
+      document.addEventListener('scroll', function () {
+        const background = document.querySelector<HTMLElement>('.bg-header-0');
+        const content = document.querySelector<HTMLElement>('body');
+
+        if (!background || !content) return;
+
+        const scrollPosition = window.scrollY;
+        const contentTop = content.offsetTop;
+
+        if (scrollPosition >= contentTop) {
+          background.style.position = 'fixed';
+          background.style.top = '0';
+        } else {
+          background.style.position = 'absolute';
+          background.style.top = '0';
+        }
+      });
+    };
+    window.addEventListener('scroll', handleBgScroll);
+    return () => {
+      window.removeEventListener('scroll', handleBgScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleBgScroll = () => {
+      document.addEventListener('scroll', function () {
+        const background = document.querySelector<HTMLElement>('.bg-header-1');
+        const content = document.querySelector<HTMLElement>('body');
+
+        if (!background || !content) return;
+
+        const scrollPosition = window.scrollY;
+        const contentTop = content.offsetTop;
+
+        if (scrollPosition >= contentTop) {
+          background.style.position = 'fixed';
+          background.style.top = '0';
+        } else {
+          background.style.position = 'absolute';
+          background.style.top = '0';
+        }
+      });
+    };
+    window.addEventListener('scroll', handleBgScroll);
+    return () => {
+      window.removeEventListener('scroll', handleBgScroll);
+    };
+  }, []);
+
   return (
     <div className='h-[94vh] relative overflow-hidden'>
       {images.map((image, i) => (
         <div
           key={i}
           className={cn(
-            'absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000',
+            `absolute inset-0 bg-cover bg-center transition-opacity duration-1000 bg-header-${i}`,
             i === currentImageIndex ? 'opacity-100' : 'opacity-0'
           )}
           style={{

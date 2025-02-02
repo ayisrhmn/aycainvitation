@@ -6,7 +6,7 @@ import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Cheers, FlowerLotus } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { AnimatedSection } from '../../atoms';
 
 interface EventProps {
@@ -40,8 +40,35 @@ const Event = ({
     }
   }, [session]);
 
+  // handle bg scroll
+  useEffect(() => {
+    const handleBgScroll = () => {
+      document.addEventListener('scroll', function () {
+        const background = document.querySelector<HTMLElement>('.bg-event');
+        const content = document.querySelector<HTMLElement>('.trigger-event');
+
+        if (!background || !content) return;
+
+        const scrollPosition = window.scrollY;
+        const contentTop = content.offsetTop;
+
+        if (scrollPosition >= contentTop) {
+          background.style.position = 'fixed';
+          background.style.top = '0';
+        } else {
+          background.style.position = 'absolute';
+          background.style.top = '0';
+        }
+      });
+    };
+    window.addEventListener('scroll', handleBgScroll);
+    return () => {
+      window.removeEventListener('scroll', handleBgScroll);
+    };
+  }, []);
+
   return (
-    <div className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden'>
+    <div className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden trigger-rsvp'>
       <svg
         className='absolute z-10 -top-1 left-0 w-full'
         xmlns='http://www.w3.org/2000/svg'
@@ -54,7 +81,7 @@ const Event = ({
         ></path>
       </svg>
       <div
-        className='absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-1000'
+        className='absolute inset-0 bg-cover bg-center transition-opacity duration-1000 bg-event'
         style={{
           backgroundImage: `url(${imageUrl(prefixImageUrl, 'event.jpg', null, 'imageKit')})`
         }}

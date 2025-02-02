@@ -18,7 +18,7 @@ const Couple = ({
 }: CoupleProps) => {
   const items = !isGroomEvent ? ['bride', 'groom'] : ['groom', 'bride'];
   return (
-    <div className='relative px-4 pt-20 pb-24 shadow-md z-10 bg-white'>
+    <div className='relative px-4 pt-20 pb-24 shadow-md z-10 bg-white trigger-event'>
       <AnimatedSection>
         {!withoutLogo ? (
           <div className='flex justify-center mb-6'>
