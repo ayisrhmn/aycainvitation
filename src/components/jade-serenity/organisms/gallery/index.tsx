@@ -44,7 +44,19 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
       >
         {images.map((image, i) => (
           <div key={i} className='break-inside-avoid mb-2'>
-            <AnimatedSection>
+            {image !== 'gallery-5.jpg' ? (
+              <AnimatedSection>
+                <PhotoView
+                  src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
+                >
+                  <img
+                    src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
+                    alt={'image of gallery'}
+                    className='w-full h-full object-cover shadow-md rounded cursor-pointer'
+                  />
+                </PhotoView>
+              </AnimatedSection>
+            ) : (
               <PhotoView
                 src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
               >
@@ -54,7 +66,7 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
                   className='w-full h-full object-cover shadow-md rounded cursor-pointer'
                 />
               </PhotoView>
-            </AnimatedSection>
+            )}
           </div>
         ))}
       </div>
