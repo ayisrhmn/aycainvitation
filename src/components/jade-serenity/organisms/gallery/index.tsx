@@ -42,8 +42,8 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
           columnGap: 8
         }}
       >
-        {images.map((image, i) => (
-          <AnimatedSection key={i}>
+        <AnimatedSection>
+          {images.map((image, i) => (
             <div key={i} className='break-inside-avoid mb-2'>
               <PhotoView
                 src={imageUrl(prefixImageUrl, image, null, 'imageKit')}
@@ -55,8 +55,8 @@ const Gallery = ({ prefixImageUrl, images }: GalleryProps) => {
                 />
               </PhotoView>
             </div>
-          </AnimatedSection>
-        ))}
+          ))}
+        </AnimatedSection>
       </div>
     </div>
   );
