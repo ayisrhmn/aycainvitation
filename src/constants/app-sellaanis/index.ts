@@ -2,7 +2,7 @@ const APP_SELLAANIS = {
   title: 'The Wedding of Sella & Anis - Aycainvitation',
   prefix: 'sellaaniswedding',
   content: {
-    headerImages: ['header-1.jpg', 'header-2.jpg'],
+    headerImages: ['header-1.jpg', 'header-2.jpg', 'header-3.jpg'],
     couple: {
       bride: {
         fullname: 'Sella Fatma Falianda, S. Psi',
@@ -57,7 +57,9 @@ const APP_SELLAANIS = {
       'gallery-5.jpg',
       'gallery-6.jpg',
       'gallery-7.jpg',
-      'gallery-8.jpg'
+      'gallery-8.jpg',
+      'gallery-9.jpg',
+      'gallery-10.jpg'
     ],
     footerImage: 'footer.jpg'
   }

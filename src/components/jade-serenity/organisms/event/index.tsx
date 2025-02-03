@@ -6,8 +6,9 @@ import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { Cheers, FlowerLotus } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { AnimatedSection } from '../../atoms';
+import { useBgScroll } from '@/hooks';
 
 interface EventProps {
   prefixImageUrl: string;
@@ -41,31 +42,7 @@ const Event = ({
   }, [session]);
 
   // handle bg scroll
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-event');
-        const content = document.querySelector<HTMLElement>('.trigger-event');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
+  useBgScroll('.bg-event', '.trigger-event');
 
   return (
     <div className='relative px-6 pt-32 pb-24 text-white text-center overflow-hidden trigger-rsvp'>

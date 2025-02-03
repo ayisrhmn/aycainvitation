@@ -1,16 +1,20 @@
 import { InstagramLogo } from '@phosphor-icons/react';
 import { imageUrl } from '@/helpers';
+import { ClassNameValue } from 'tailwind-merge';
+import { cn } from '@/utils';
 
 interface CoupleSectionProps {
   prefixImageUrl: string;
   content: ContentProps;
   type: CoupleType;
+  classNames?: ClassNameValue;
 }
 
 const CoupleSection = ({
   prefixImageUrl,
   content,
-  type
+  type,
+  classNames
 }: CoupleSectionProps) => {
   return (
     <div
@@ -25,7 +29,10 @@ const CoupleSection = ({
           <img
             src={`${imageUrl(prefixImageUrl, content.couple[type].images[1], null, 'imageKit')}`}
             alt='couple image'
-            className='w-[150px] md:w-[230px] h-[150px] md:h-[230px] object-cover rounded-full'
+            className={cn(
+              'w-[150px] md:w-[230px] h-[150px] md:h-[230px] object-cover rounded-full',
+              classNames
+            )}
           />
         </div>
         <div className='mt-2 px-4'>

@@ -1,10 +1,9 @@
 import { Button, WishCard } from '@/components/jade-serenity/atoms';
 import { imageUrl } from '@/helpers';
-import { useImageSlideshow } from '@/hooks';
+import { useBgScroll, useImageSlideshow } from '@/hooks';
 import { useWishes } from '@/hooks/api/use-wishes';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useEffect } from 'react';
 
 interface WishProps {
   to: string;
@@ -25,57 +24,8 @@ const Wish = ({ to, prefix }: WishProps) => {
   const { currentImageIndex } = useImageSlideshow(images, 3000);
 
   // handle bg scroll
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-wish-0');
-        const content = document.querySelector<HTMLElement>('.trigger-wish');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-wish-1');
-        const content = document.querySelector<HTMLElement>('.trigger-wish');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
+  useBgScroll('.bg-wish-0', '.trigger-wish');
+  useBgScroll('.bg-wish-1', '.trigger-wish');
 
   return (
     <div className='relative px-4 py-40'>

@@ -2,19 +2,22 @@ import { CoupleSection } from '@/components/jade-serenity/molecules';
 import { imageUrl } from '@/helpers';
 import { cn } from '@/utils';
 import { AnimatedSection } from '../../atoms';
+import { ClassNameValue } from 'tailwind-merge';
 
 interface CoupleProps {
   prefixImageUrl: string;
   content: ContentProps;
   isGroomEvent?: boolean;
   withoutLogo?: boolean;
+  coupleClassNames?: ClassNameValue;
 }
 
 const Couple = ({
   prefixImageUrl,
   content,
   isGroomEvent,
-  withoutLogo = false
+  withoutLogo = false,
+  coupleClassNames
 }: CoupleProps) => {
   const items = !isGroomEvent ? ['bride', 'groom'] : ['groom', 'bride'];
   return (
@@ -57,6 +60,7 @@ const Couple = ({
               prefixImageUrl={prefixImageUrl}
               content={content}
               type={item as CoupleType}
+              classNames={coupleClassNames}
             />
           </div>
         ))}

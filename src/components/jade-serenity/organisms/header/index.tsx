@@ -1,8 +1,7 @@
 import { dateFormat, imageUrl } from '@/helpers';
-import { useImageSlideshow } from '@/hooks';
+import { useBgScroll, useImageSlideshow } from '@/hooks';
 import { cn } from '@/utils';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useEffect } from 'react';
 
 interface HeaderProps {
   prefixImageUrl: string;
@@ -29,60 +28,12 @@ const Header = ({
   const { currentImageIndex } = useImageSlideshow(images, duration);
 
   // handle bg scroll
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-header-0');
-        const content = document.querySelector<HTMLElement>('body');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-header-1');
-        const content = document.querySelector<HTMLElement>('body');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
+  useBgScroll('.bg-header-0', 'body');
+  useBgScroll('.bg-header-1', 'body');
+  useBgScroll('.bg-header-2', 'body');
 
   return (
-    <div className='h-[94vh] relative overflow-hidden'>
+    <div className={`h-[94vh] relative overflow-hidden ${prefixImageUrl}`}>
       {images.map((image, i) => (
         <div
           key={i}

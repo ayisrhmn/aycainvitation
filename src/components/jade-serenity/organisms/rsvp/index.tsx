@@ -1,11 +1,10 @@
 import { Button } from '@/components/jade-serenity/atoms';
 import { imageUrl } from '@/helpers';
-import { useImageSlideshow } from '@/hooks';
+import { useBgScroll, useImageSlideshow } from '@/hooks';
 import { useRsvp } from '@/hooks/api/use-rsvp';
 import { cn } from '@/utils';
 import { Check, X } from '@phosphor-icons/react';
 import { Playfair_Display_SC } from 'next/font/google';
-import { useEffect } from 'react';
 
 interface RsvpProps {
   prefixImageUrl: string;
@@ -28,57 +27,8 @@ const Rsvp = ({ prefixImageUrl, images, duration, to, session }: RsvpProps) => {
   const { loading, findRsvp, handleRsvp } = useRsvp({ prefix, to, session });
 
   // handle bg scroll
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-rsvp-0');
-        const content = document.querySelector<HTMLElement>('.trigger-rsvp');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleBgScroll = () => {
-      document.addEventListener('scroll', function () {
-        const background = document.querySelector<HTMLElement>('.bg-rsvp-1');
-        const content = document.querySelector<HTMLElement>('.trigger-rsvp');
-
-        if (!background || !content) return;
-
-        const scrollPosition = window.scrollY;
-        const contentTop = content.offsetTop;
-
-        if (scrollPosition >= contentTop) {
-          background.style.position = 'fixed';
-          background.style.top = '0';
-        } else {
-          background.style.position = 'absolute';
-          background.style.top = '0';
-        }
-      });
-    };
-    window.addEventListener('scroll', handleBgScroll);
-    return () => {
-      window.removeEventListener('scroll', handleBgScroll);
-    };
-  }, []);
+  useBgScroll('.bg-rsvp-0', '.trigger-rsvp');
+  useBgScroll('.bg-rsvp-1', '.trigger-rsvp');
 
   return (
     <div className='h-[500px] relative px-4 pt-8 pb-24 flex justify-center items-center'>

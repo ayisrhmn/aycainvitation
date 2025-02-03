@@ -7,7 +7,7 @@ import {
   Event,
   Footer,
   Gallery,
-  Gift,
+  // Gift,
   Header,
   LoveStory,
   Rsvp,
@@ -109,6 +109,7 @@ const WeddingPage = () => {
       <Couple
         prefixImageUrl={APP_SELLAANIS.prefix}
         content={APP_SELLAANIS.content}
+        coupleClassNames={`${APP_SELLAANIS.prefix}-couple-img`}
         withoutLogo
       />
       <Event
@@ -131,7 +132,7 @@ const WeddingPage = () => {
       />
       <LoveStory prefixImageUrl={APP_SELLAANIS.prefix} />
       <Wish to={to as string} prefix={APP_SELLAANIS.prefix} />
-      <Gift content={APP_SELLAANIS.content} />
+      {/* <Gift content={APP_SELLAANIS.content} /> */}
       <Footer
         prefixImageUrl={APP_SELLAANIS.prefix}
         footerImage={APP_SELLAANIS.content.footerImage}
