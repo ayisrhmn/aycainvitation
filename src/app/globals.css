@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm Champagne and Ethereal Sage Theme Color Variables */
+  --bg-cream: #faf9f5;
+  --bg-cream-dark: #f3f0e6;
+
+  --text-dark: #2c2c2c;
+  --text-muted: #555555;
+
+  --primary: #c39b78; /* Rose Gold/Gold */
+  --primary-light: #dfcdbc; /* Light Gold */
+  --primary-dark: #a57e58; /* Deep Gold */
+
+  --secondary: #708238; /* Sage Green */
+  --secondary-light: #9bb05e;
+  --secondary-dark: #4b5b21;
+
+  --accent-olive: #8a9a5b;
+  --accent-gold: #d4af37;
+}
+
+@theme {
+  --color-cream: var(--bg-cream);
+  --color-cream-dark: var(--bg-cream-dark);
+
+  --color-gold-accent: var(--accent-gold);
+  --color-sage: var(--secondary);
+  --color-sage-light: var(--secondary-light);
+  --color-sage-dark: var(--secondary-dark);
+
+  --color-rose-gold: var(--primary);
+  --color-rose-gold-light: var(--primary-light);
+  --color-rose-gold-dark: var(--primary-dark);
+
+  --color-charcoal: var(--text-dark);
+  --color-charcoal-muted: var(--text-muted);
+
+  /* Sakura (Cherry Blossom) Theme Colors */
+  --color-sakura-bg: #fff7f8;
+  --color-sakura-bg-dark: #ffeaec;
+  --color-sakura-primary: #d2697d;
+  --color-sakura-primary-light: #fbcad2;
+  --color-sakura-primary-dark: #8c3042;
+  --color-sakura-accent: #e28f9e;
+  --color-sakura-charcoal: #3d2d30;
+  --color-sakura-charcoal-muted: #6b5559;
+
+  --font-serif:
+    var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times,
+    serif;
+  --font-sans:
+    var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for aesthetic purposes */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes equalizer {
+  0%,
+  100% {
+    height: 25%;
+  }
+  50% {
+    height: 100%;
+  }
+}
