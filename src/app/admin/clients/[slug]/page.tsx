@@ -137,7 +137,9 @@ export default function ClientDetailPage() {
         <div className="bg-white border border-sakura-primary-light/20 shadow-xs p-6 rounded-2xl">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h2 className="text-2xl font-serif font-bold text-sakura-primary-dark">{coupleName}</h2>
+              <h2 className="text-2xl font-serif font-bold text-sakura-primary-dark">
+                {coupleName}
+              </h2>
               <p className="text-sakura-charcoal-muted mt-1">
                 Undangan:{" "}
                 <code className="bg-sakura-bg border border-sakura-primary-light/35 px-2 py-1 rounded-lg text-sm text-sakura-primary-dark font-mono font-bold">
@@ -176,7 +178,7 @@ export default function ClientDetailPage() {
               </button>
             )}
             <a
-              href={`/${slug}`}
+              href={`/${slug}?to=Nama+Tamu`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-4 py-2 border border-sakura-primary-light/40 rounded-xl text-sm font-bold transition-all bg-white text-sakura-charcoal hover:bg-sakura-bg cursor-pointer"
@@ -228,7 +230,9 @@ export default function ClientDetailPage() {
               </dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">Tema</dt>
+              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">
+                Tema
+              </dt>
               <dd className="text-base font-semibold text-sakura-charcoal mt-1 capitalize">
                 {client.theme}
               </dd>
@@ -260,11 +264,17 @@ export default function ClientDetailPage() {
           </h3>
           <dl className="space-y-4">
             <div>
-              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">Email</dt>
-              <dd className="text-sm text-sakura-charcoal mt-1">{client.email}</dd>
+              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">
+                Email
+              </dt>
+              <dd className="text-sm text-sakura-charcoal mt-1">
+                {client.email}
+              </dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">Telepon</dt>
+              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">
+                Telepon
+              </dt>
               <dd className="text-sm text-sakura-charcoal mt-1">
                 <a
                   href={`https://wa.me/${formatWhatsAppNumber(client.phone)}`}
@@ -277,7 +287,9 @@ export default function ClientDetailPage() {
               </dd>
             </div>
             <div>
-              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">Dibuat Pada</dt>
+              <dt className="text-xs uppercase tracking-wider text-sakura-charcoal-muted/80 font-bold">
+                Dibuat Pada
+              </dt>
               <dd className="text-sm text-sakura-charcoal-muted mt-1">
                 {new Date(client.created_at).toLocaleString("id-ID")}
               </dd>
@@ -288,11 +300,11 @@ export default function ClientDetailPage() {
 
       {/* Google Drive Link Request Modal */}
       {isModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in"
           onClick={closeModal}
         >
-          <div 
+          <div
             className="bg-white border border-sakura-primary-light/20 shadow-2xl p-6 rounded-3xl max-w-md w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
@@ -300,28 +312,32 @@ export default function ClientDetailPage() {
               Kirim Link Drive Asset
             </h3>
             <p className="text-xs text-sakura-charcoal-muted mb-4 leading-relaxed font-sans">
-              Masukkan URL Google Drive folder tempat klien mengunggah foto pengantin, foto galeri, dan kustom musik.
+              Masukkan URL Google Drive folder tempat klien mengunggah foto
+              pengantin, foto galeri, dan kustom musik.
             </p>
-            
-            <form 
+
+            <form
               onSubmit={(e) => {
                 e.preventDefault();
                 if (!driveLink.trim()) {
                   alert("Mohon isi Link Google Drive terlebih dahulu.");
                   return;
                 }
-                
+
                 const clientPhoneClean = formatWhatsAppNumber(client.phone);
                 const message = `Bila ada foto pengantin, foto gallery, dan kustom musik bisa di upload pada Link Google Drive ini ya: ${driveLink.trim()}.`;
                 const waLink = `https://wa.me/${clientPhoneClean}?text=${encodeURIComponent(message)}`;
-                
+
                 window.open(waLink, "_blank");
                 closeModal();
               }}
               className="space-y-4"
             >
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="drive-link" className="text-xs uppercase tracking-wider text-sakura-charcoal-muted font-bold">
+                <label
+                  htmlFor="drive-link"
+                  className="text-xs uppercase tracking-wider text-sakura-charcoal-muted font-bold"
+                >
                   Link Google Drive
                 </label>
                 <input
