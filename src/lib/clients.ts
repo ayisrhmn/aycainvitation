@@ -77,11 +77,22 @@ export function getClientMusic(
 
   // Fallback berdasarkan tema jika tidak ada lagu kustom
   switch (theme) {
+    case "emerald-elegance":
+      return {
+        title: "Backstreet Boys - Shape of My Heart",
+        fileUrl: "/audio/Shape of My Heart.mp3", // Lagu default tema
+      };
+
     case "creamy-sage":
-    default:
       return {
         title: "Westlife - When You Tell Me That You Love Me",
-        fileUrl: "/music/When You Tell Me That You Love Me.mp3", // Lagu default tema
+        fileUrl: "/audio/When You Tell Me That You Love Me.mp3", // Lagu default tema
+      };
+
+    default:
+      return {
+        title: "Backstreet Boys - Shape of My Heart",
+        fileUrl: "/audio/Shape of My Heart.mp3", // Lagu fallback
       };
   }
 }

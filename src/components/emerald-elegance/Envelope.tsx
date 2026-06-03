@@ -46,23 +46,23 @@ export default function Envelope({
             opacity: 0,
             transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] },
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-between px-6 py-16 bg-linear-to-b from-[#FAF9F5] via-[#F3F0E6] to-[#FAF9F5] text-charcoal select-none overflow-hidden"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-between px-6 py-16 bg-linear-to-b from-emerald-bg via-emerald-bg-dark to-emerald-bg text-emerald-charcoal select-none overflow-hidden"
         >
           {/* Ornamen Botani Pojok Atas */}
-          <div className="absolute top-0 left-0 w-32 h-32 opacity-10 pointer-events-none">
+          <div className="absolute top-0 left-0 w-32 h-32 opacity-15 pointer-events-none">
             <svg
               viewBox="0 0 100 100"
               fill="currentColor"
-              className="w-full h-full text-sage"
+              className="w-full h-full text-emerald-primary"
             >
               <path d="M0,0 Q30,10 40,40 Q10,30 0,0 M0,0 Q10,30 30,50 Q20,20 0,0" />
             </svg>
           </div>
-          <div className="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none transform scale-x-[-1]">
+          <div className="absolute top-0 right-0 w-32 h-32 opacity-15 pointer-events-none transform scale-x-[-1]">
             <svg
               viewBox="0 0 100 100"
               fill="currentColor"
-              className="w-full h-full text-sage"
+              className="w-full h-full text-emerald-primary"
             >
               <path d="M0,0 Q30,10 40,40 Q10,30 0,0 M0,0 Q10,30 30,50 Q20,20 0,0" />
             </svg>
@@ -75,10 +75,10 @@ export default function Envelope({
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-center mt-4 sm:mt-8 z-10"
           >
-            <span className="text-sm uppercase tracking-[0.3em] text-charcoal-muted font-semibold">
+            <span className="text-sm uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
               Undangan Pernikahan
             </span>
-            <h1 className="font-serif text-4xl sm:text-5xl mt-4 font-light text-rose-gold-dark tracking-wide">
+            <h1 className="font-serif text-4xl sm:text-5xl mt-4 font-light text-emerald-primary tracking-wide">
               {groomName || "Arya"} &amp; {brideName || "Nabila"}
             </h1>
           </motion.div>
@@ -108,7 +108,7 @@ export default function Envelope({
               <img
                 src="/images/cover.png"
                 alt="Wedding Envelope Illustration"
-                className="w-full h-full object-contain filter drop-shadow-[0_8px_16px_rgba(195,155,120,0.15)]"
+                className="w-full h-full object-contain filter drop-shadow-[0_8px_16px_rgba(18,63,53,0.15)]"
               />
             </motion.div>
 
@@ -117,20 +117,20 @@ export default function Envelope({
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="w-full max-w-sm p-6 py-5 sm:p-8 text-center bg-white/70 backdrop-blur-md border border-rose-gold-light/40 rounded-2xl shadow-xl shadow-rose-gold-light/10 relative z-20"
+              className="w-full max-w-sm p-6 py-5 sm:p-8 text-center bg-white/80 backdrop-blur-md border border-emerald-primary-light/40 rounded-2xl shadow-xl shadow-emerald-primary-light/10 relative z-20"
             >
               {/* Hiasan Frame Minimalis */}
-              <div className="absolute inset-2 border border-rose-gold-light/20 rounded-xl pointer-events-none" />
+              <div className="absolute inset-2 border border-emerald-primary-light/20 rounded-xl pointer-events-none" />
 
-              <p className="text-xs uppercase tracking-widest text-charcoal font-bold font-sans mb-3">
+              <p className="text-xs uppercase tracking-widest text-emerald-charcoal font-sans mb-3 font-bold">
                 Kepada Yth. Bapak/Ibu/Saudara/i:
               </p>
 
-              <h2 className="font-serif text-2xl font-semibold text-rose-gold-dark mt-2 mb-4 tracking-wide wrap-break-word">
+              <h2 className="font-serif text-2xl font-bold text-emerald-primary mt-2 mb-4 tracking-wide wrap-break-word">
                 {guestName}
               </h2>
 
-              <p className="text-xs sm:text-sm text-charcoal font-medium leading-relaxed font-sans px-2">
+              <p className="text-xs sm:text-sm text-emerald-charcoal leading-relaxed font-sans px-2 font-medium">
                 Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir
                 di hari bahagia pernikahan kami.
               </p>
@@ -146,11 +146,11 @@ export default function Envelope({
           >
             <button
               onClick={handleOpen}
-              className="group relative flex items-center justify-center w-20 h-20 bg-linear-to-br from-rose-gold-dark to-rose-gold rounded-full shadow-lg shadow-rose-gold-dark/30 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+              className="group relative flex items-center justify-center w-20 h-20 bg-linear-to-br from-emerald-primary to-emerald-primary-dark rounded-full shadow-lg shadow-emerald-primary-dark/30 hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
               aria-label="Buka Undangan"
             >
               {/* Efek Denyut Latar Belakang */}
-              <div className="absolute inset-0 bg-rose-gold rounded-full scale-110 opacity-20 animate-ping group-hover:animate-none" />
+              <div className="absolute inset-0 bg-emerald-primary-light rounded-full scale-110 opacity-20 animate-ping group-hover:animate-none" />
 
               {/* SVG Wax Seal Detail */}
               <div className="absolute inset-1.5 border-2 border-dashed border-white/30 rounded-full" />
@@ -161,26 +161,26 @@ export default function Envelope({
               </div>
             </button>
 
-            <span className="text-sm tracking-widest text-charcoal font-bold animate-pulse">
+            <span className="text-sm tracking-widest text-emerald-charcoal font-bold animate-pulse">
               BUKA UNDANGAN
             </span>
           </motion.div>
 
           {/* Ornamen Botani Pojok Bawah */}
-          <div className="absolute bottom-0 left-0 w-32 h-32 opacity-10 pointer-events-none transform scale-y-[-1]">
+          <div className="absolute bottom-0 left-0 w-32 h-32 opacity-15 pointer-events-none transform scale-y-[-1]">
             <svg
               viewBox="0 0 100 100"
               fill="currentColor"
-              className="w-full h-full text-sage"
+              className="w-full h-full text-emerald-primary"
             >
               <path d="M0,0 Q30,10 40,40 Q10,30 0,0 M0,0 Q10,30 30,50 Q20,20 0,0" />
             </svg>
           </div>
-          <div className="absolute bottom-0 right-0 w-32 h-32 opacity-10 pointer-events-none transform scale-[-1]">
+          <div className="absolute bottom-0 right-0 w-32 h-32 opacity-15 pointer-events-none transform scale-[-1]">
             <svg
               viewBox="0 0 100 100"
               fill="currentColor"
-              className="w-full h-full text-sage"
+              className="w-full h-full text-emerald-primary"
             >
               <path d="M0,0 Q30,10 40,40 Q10,30 0,0 M0,0 Q10,30 30,50 Q20,20 0,0" />
             </svg>

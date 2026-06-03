@@ -46,6 +46,18 @@
   --color-sakura-charcoal: #3d2d30;
   --color-sakura-charcoal-muted: #6b5559;
 
+  /* Emerald Elegance Theme Colors */
+  --color-emerald-bg: #f6f8f5;
+  --color-emerald-bg-dark: #ecf0eb;
+  --color-emerald-primary: #123f35;
+  --color-emerald-primary-light: #cde0dc;
+  --color-emerald-primary-dark: #0a251f;
+  --color-emerald-accent: #b09b7c;
+  --color-emerald-accent-light: #dfd5c6;
+  --color-emerald-accent-dark: #6e5d3f;
+  --color-emerald-charcoal: #202b28;
+  --color-emerald-charcoal-muted: #52635f;
+
   --font-serif:
     var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times,
     serif;
@@ -66,14 +78,19 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-cream);
+  background: var(--color-sakura-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-light);
+  background: var(--color-sakura-primary-light);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--color-sakura-primary);
+}
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sakura-primary-light) var(--color-sakura-bg);
 }
 
 html {

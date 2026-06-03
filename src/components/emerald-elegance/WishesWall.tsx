@@ -23,7 +23,6 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
       const date = new Date(dateStr);
       if (isNaN(date.getTime())) return "";
 
-      // eslint-disable-next-line react-hooks/purity
       const diffMs = Date.now() - date.getTime();
       const diffMin = Math.floor(diffMs / 60000);
       const diffHr = Math.floor(diffMin / 60);
@@ -57,11 +56,11 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
       .split("")
       .reduce((acc, char) => acc + char.charCodeAt(0), 0);
     const colors = [
-      "bg-[#DFCDBC] text-[#8C6D4F]", // Gold/Champagne soft
-      "bg-[#E2E7D5] text-[#556B2F]", // Sage soft
-      "bg-[#F2DEDE] text-[#A94442]", // Rose soft
-      "bg-[#D9EDF7] text-[#31708F]", // Blue soft
-      "bg-[#FCF8E3] text-[#8A6D3B]", // Yellow soft
+      "bg-[#dfd5c6] text-[#6e5d3f]", // Bronze/Sand soft
+      "bg-[#cde0dc] text-[#123f35]", // Emerald light soft
+      "bg-[#e2e8e4] text-[#2e5d4e]", // Sage soft
+      "bg-[#f0ece1] text-[#7a6a53]", // Warm Ivory soft
+      "bg-[#edf1ec] text-[#3e524d]", // Muted Teal soft
     ];
     return colors[charCodeSum % colors.length];
   };
@@ -69,16 +68,16 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
   return (
     <div className="w-full flex flex-col gap-4">
       {/* Header Wishes Wall */}
-      <div className="flex items-center justify-between border-b border-rose-gold-light/20 pb-3">
+      <div className="flex items-center justify-between border-b border-emerald-primary-light/20 pb-3">
         <div className="flex items-center gap-2">
-          <MessageSquare className="w-5 h-5 text-rose-gold" />
-          <span className="text-sm font-semibold tracking-wider uppercase text-charcoal">
+          <MessageSquare className="w-5 h-5 text-emerald-accent" />
+          <span className="text-sm font-semibold tracking-wider uppercase text-emerald-charcoal">
             Buku Tamu ({wishes.length})
           </span>
         </div>
 
         {isLoading && (
-          <span className="text-xs text-charcoal-muted animate-pulse font-sans font-medium">
+          <span className="text-xs text-emerald-charcoal-muted animate-pulse font-sans font-medium">
             Menyegarkan doa...
           </span>
         )}
@@ -91,20 +90,20 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
           [...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="flex gap-3 bg-white/50 p-4 border border-rose-gold-light/10 rounded-2xl animate-pulse"
+              className="flex gap-3 bg-white/50 p-4 border border-emerald-primary-light/10 rounded-2xl animate-pulse"
             >
-              <div className="w-10 h-10 rounded-full bg-rose-gold-light/20 shrink-0" />
+              <div className="w-10 h-10 rounded-full bg-emerald-primary-light/20 shrink-0" />
               <div className="flex-1 flex flex-col gap-2">
-                <div className="h-3 w-28 bg-rose-gold-light/20 rounded" />
-                <div className="h-3 w-full bg-rose-gold-light/10 rounded" />
-                <div className="h-3 w-4/5 bg-rose-gold-light/10 rounded" />
+                <div className="h-3 w-28 bg-emerald-primary-light/20 rounded" />
+                <div className="h-3 w-full bg-emerald-primary-light/10 rounded" />
+                <div className="h-3 w-4/5 bg-emerald-primary-light/10 rounded" />
               </div>
             </div>
           ))
         ) : wishes.length === 0 ? (
           /* State jika tidak ada ucapan */
-          <div className="text-center py-10 bg-white/40 border border-dashed border-rose-gold-light/30 rounded-2xl">
-            <p className="text-sm text-charcoal-muted font-sans px-4 font-medium">
+          <div className="text-center py-10 bg-white/40 border border-dashed border-emerald-primary-light/30 rounded-2xl">
+            <p className="text-sm text-emerald-charcoal-muted font-sans px-4 font-medium">
               Belum ada ucapan. Jadilah yang pertama memberikan doa restu kepada
               kedua mempelai!
             </p>
@@ -117,7 +116,7 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
               initial={{ y: 15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: Math.min(index * 0.05, 0.4), duration: 0.5 }}
-              className="flex gap-3 bg-white/60 p-4 border border-rose-gold-light/20 rounded-2xl shadow-sm relative hover:bg-white transition-all duration-300"
+              className="flex gap-3 bg-white/60 p-4 border border-emerald-primary-light/20 rounded-2xl shadow-sm relative hover:bg-white transition-all duration-300"
             >
               {/* Avatar Bulat dengan Inisial */}
               <div
@@ -129,7 +128,7 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
               {/* Detail Ucapan */}
               <div className="flex-1 flex flex-col gap-1 min-w-0">
                 <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
-                  <h4 className="text-sm font-bold text-charcoal truncate font-sans">
+                  <h4 className="text-sm font-bold text-emerald-charcoal truncate font-sans">
                     {item.name}
                   </h4>
 
@@ -157,14 +156,14 @@ export default function WishesWall({ wishes, isLoading }: WishesWallProps) {
 
                 {/* Friendly Timestamp */}
                 {item.timestamp && (
-                  <div className="flex items-center gap-1 text-[10px] text-charcoal-muted/70 font-sans font-medium">
+                  <div className="flex items-center gap-1 text-[10px] text-emerald-charcoal-muted/70 font-sans font-medium">
                     <Calendar className="w-3 h-3" />
                     <span>{formatFriendlyDate(item.timestamp)}</span>
                   </div>
                 )}
 
                 {/* Teks Doa / Ucapan */}
-                <p className="text-sm text-charcoal leading-relaxed font-sans mt-1.5 wrap-break-word whitespace-pre-line bg-[#FAF9F5]/40 p-2.5 rounded-xl border border-rose-gold-light/10">
+                <p className="text-sm text-emerald-charcoal leading-relaxed font-sans mt-1.5 wrap-break-word whitespace-pre-line bg-emerald-bg/40 p-2.5 rounded-xl border border-emerald-primary-light/10 font-medium">
                   {item.wish}
                 </p>
               </div>

@@ -107,7 +107,7 @@ export default function RsvpForm({
           localStorage.setItem(storageKey, "true");
 
           // Simpan data ucapan lengkap ke local wishes list untuk demo mode
-          const localWishesKey = `wedding_local_wishes_${clientSlug || "creamy-sage"}`;
+          const localWishesKey = `wedding_local_wishes_${clientSlug || "emerald-elegance"}`;
           try {
             const existingLocal = JSON.parse(
               localStorage.getItem(localWishesKey) || "[]"
@@ -148,9 +148,9 @@ export default function RsvpForm({
   };
 
   return (
-    <div className="w-full bg-white/80 backdrop-blur-md border border-rose-gold-light/30 rounded-3xl p-6 sm:p-8 shadow-xl shadow-rose-gold-light/5 relative overflow-hidden">
+    <div className="w-full bg-white/80 backdrop-blur-md border border-emerald-primary-light/30 rounded-3xl p-6 sm:p-8 shadow-xl shadow-emerald-primary-light/5 relative overflow-hidden">
       {/* Hiasan Frame Tipis */}
-      <div className="absolute inset-2 border border-rose-gold-light/20 rounded-2xl pointer-events-none" />
+      <div className="absolute inset-2 border border-emerald-primary-light/20 rounded-2xl pointer-events-none" />
 
       <AnimatePresence mode="wait">
         {!isSuccess ? (
@@ -165,7 +165,7 @@ export default function RsvpForm({
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="name"
-                className="text-xs sm:text-sm uppercase tracking-widest text-charcoal font-bold"
+                className="text-xs sm:text-sm uppercase tracking-widest text-emerald-charcoal font-bold"
               >
                 Nama Lengkap
               </label>
@@ -175,7 +175,7 @@ export default function RsvpForm({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Masukkan nama Anda"
-                className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all"
+                className="w-full px-4 py-3 bg-emerald-bg border border-emerald-primary-light/30 rounded-xl text-sm text-emerald-charcoal focus:outline-none focus:border-emerald-primary focus:ring-1 focus:ring-emerald-primary transition-all"
                 disabled={isLoading}
                 required
               />
@@ -183,7 +183,7 @@ export default function RsvpForm({
 
             {/* Opsi Kehadiran */}
             <div className="flex flex-col gap-2">
-              <span className="text-xs sm:text-sm uppercase tracking-widest text-charcoal font-bold">
+              <span className="text-xs sm:text-sm uppercase tracking-widest text-emerald-charcoal font-bold">
                 Konfirmasi Kehadiran
               </span>
               <div className="grid grid-cols-2 gap-3">
@@ -193,13 +193,13 @@ export default function RsvpForm({
                   onClick={() => setAttendance("Hadir")}
                   className={`flex flex-col items-center justify-center py-3.5 px-4 rounded-xl border text-sm transition-all duration-300 cursor-pointer ${
                     attendance === "Hadir"
-                      ? "bg-emerald-600 border-emerald-600 text-white font-bold shadow-lg shadow-emerald-600/30 scale-[1.04]"
+                      ? "bg-emerald-primary border-emerald-primary text-white font-bold shadow-lg shadow-emerald-primary/30 scale-[1.04]"
                       : "bg-emerald-50/40 border-emerald-200/60 text-emerald-800/80 hover:bg-emerald-50 hover:border-emerald-300"
                   }`}
                   disabled={isLoading}
                 >
                   <Check
-                    className={`w-6 h-6 mb-1 transition-colors ${attendance === "Hadir" ? "text-white stroke-3" : "text-emerald-600"}`}
+                    className={`w-6 h-6 mb-1 transition-colors ${attendance === "Hadir" ? "text-white stroke-3" : "text-emerald-primary"}`}
                   />
                   <span>Hadir</span>
                 </button>
@@ -213,13 +213,13 @@ export default function RsvpForm({
                   }}
                   className={`flex flex-col items-center justify-center py-3.5 px-4 rounded-xl border text-sm transition-all duration-300 cursor-pointer ${
                     attendance === "Tidak Hadir"
-                      ? "bg-rose-600 border-rose-600 text-white font-bold shadow-lg shadow-rose-600/30 scale-[1.04]"
+                      ? "bg-rose-700 border-rose-700 text-white font-bold shadow-lg shadow-rose-700/30 scale-[1.04]"
                       : "bg-rose-50/40 border-rose-200/60 text-rose-800/80 hover:bg-rose-50 hover:border-rose-300"
                   }`}
                   disabled={isLoading}
                 >
                   <X
-                    className={`w-6 h-6 mb-1 transition-colors ${attendance === "Tidak Hadir" ? "text-white stroke-3" : "text-rose-600"}`}
+                    className={`w-6 h-6 mb-1 transition-colors ${attendance === "Tidak Hadir" ? "text-white stroke-3" : "text-rose-700"}`}
                   />
                   <span>Tidak Hadir</span>
                 </button>
@@ -238,7 +238,7 @@ export default function RsvpForm({
                 >
                   <label
                     htmlFor="guests"
-                    className="text-xs sm:text-sm uppercase tracking-widest text-charcoal font-bold"
+                    className="text-xs sm:text-sm uppercase tracking-widest text-emerald-charcoal font-bold"
                   >
                     Jumlah Tamu (Pax)
                   </label>
@@ -247,7 +247,7 @@ export default function RsvpForm({
                       id="guests"
                       value={guestsCount}
                       onChange={(e) => setGuestsCount(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none focus:border-rose-gold transition-all appearance-none pr-10 cursor-pointer"
+                      className="w-full px-4 py-3 bg-emerald-bg border border-emerald-primary-light/30 rounded-xl text-sm text-emerald-charcoal focus:outline-none focus:border-emerald-primary transition-all appearance-none pr-10 cursor-pointer"
                       disabled={isLoading}
                     >
                       <option value="1">1 Orang</option>
@@ -255,7 +255,7 @@ export default function RsvpForm({
                       <option value="3">3 Orang</option>
                       <option value="4">4 Orang</option>
                     </select>
-                    <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-charcoal-muted/60">
+                    <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-emerald-charcoal-muted/60">
                       <ChevronDown className="w-5 h-5" />
                     </div>
                   </div>
@@ -267,7 +267,7 @@ export default function RsvpForm({
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="wish"
-                className="text-xs sm:text-sm uppercase tracking-widest text-charcoal font-bold"
+                className="text-xs sm:text-sm uppercase tracking-widest text-emerald-charcoal font-bold"
               >
                 Ucapan &amp; Doa Restu
               </label>
@@ -277,7 +277,7 @@ export default function RsvpForm({
                 onChange={(e) => setWish(e.target.value)}
                 placeholder="Tulis ucapan selamat dan doa restu Anda di sini..."
                 rows={4}
-                className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all resize-none"
+                className="w-full px-4 py-3 bg-emerald-bg border border-emerald-primary-light/30 rounded-xl text-sm text-emerald-charcoal placeholder:text-emerald-charcoal-muted/50 focus:outline-none focus:border-emerald-primary focus:ring-1 focus:ring-emerald-primary transition-all resize-none"
                 disabled={isLoading}
               />
             </div>
@@ -301,7 +301,7 @@ export default function RsvpForm({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-sage hover:bg-sage-dark text-white rounded-xl text-sm font-medium tracking-wider uppercase transition-all shadow-md shadow-sage/20 hover:shadow-lg disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-3.5 bg-emerald-primary hover:bg-emerald-primary-dark text-white rounded-xl text-sm font-medium tracking-wider uppercase transition-all shadow-md shadow-emerald-primary/20 hover:shadow-lg disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
             >
               {isLoading ? (
                 <>
@@ -325,19 +325,19 @@ export default function RsvpForm({
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="flex flex-col items-center justify-center text-center py-10 relative z-10"
           >
-            <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center text-sage mb-4 border border-sage/20 shadow-inner">
+            <div className="w-16 h-16 bg-emerald-primary/10 rounded-full flex items-center justify-center text-emerald-primary mb-4 border border-emerald-primary/20 shadow-inner">
               <Check className="w-10 h-10 stroke-[2.5]" />
             </div>
 
-            <h3 className="font-serif text-2xl font-semibold text-rose-gold-dark mb-2">
+            <h3 className="font-serif text-2xl font-bold text-emerald-primary mb-2">
               Terima Kasih!
             </h3>
 
-            <p className="text-sm text-charcoal font-medium leading-relaxed max-w-xs">
+            <p className="text-sm text-emerald-charcoal font-medium leading-relaxed max-w-xs">
               Konfirmasi kehadiran dan ucapan doa restu Anda telah tersimpan
               dengan aman di buku tamu kami.
             </p>
-            <p className="font-serif text-base italic text-rose-gold-dark mt-4 font-bold leading-relaxed px-4">
+            <p className="font-serif text-base italic text-emerald-accent-dark mt-4 font-bold leading-relaxed px-4">
               Sampai jumpa di hari bahagia kami, <br />
               kami sangat menantikan kehadiran Anda!
             </p>

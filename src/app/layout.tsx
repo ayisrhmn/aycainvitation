@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   title: "Undangan Pernikahan Romantis & Estetik",
   description:
     "Buka undangan digital kami untuk berbagi hari bahagia bersama kami.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

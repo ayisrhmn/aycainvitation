@@ -54,7 +54,36 @@ async function seed() {
   console.log("Seeding demo_themes table on Supabase sequentially...");
 
   try {
-    // 1. Seed Creamy Sage
+    // 1. Seed Emerald Elegance
+    console.log("Upserting Emerald Elegance...");
+    const { data: emeraldData, error: emeraldError } = await supabase
+      .from("demo_themes")
+      .upsert(
+        {
+          slug: "emerald-elegance",
+          name: "Emerald Elegance",
+          tagline: "Elegant & Botanical",
+          description:
+            "Perpaduan mewah mawar hijau emerald gelap dengan dedaunan bernuansa perunggu/bronze hangat dan aksen bunga putih bersih. Menghadirkan kesan romantis yang premium, elegan, dan abadi.",
+          colors: [
+            { name: "Emerald Green", hex: "#123F35" },
+            { name: "Bronze Brown", hex: "#B09B7C" },
+            { name: "Ivory White", hex: "#FAF9F5" },
+          ],
+          is_coming_soon: false,
+          settings: CREAMY_SAGE_DEFAULT_SETTINGS,
+          created_at: new Date(Date.now() - 20000).toISOString(),
+        },
+        { onConflict: "slug" }
+      )
+      .select();
+
+    if (emeraldError) {
+      throw emeraldError;
+    }
+    console.log("Successfully seeded Emerald Elegance:", emeraldData);
+
+    // 2. Seed Creamy Sage
     console.log("Upserting Creamy Sage...");
     const { data: creamyData, error: creamyError } = await supabase
       .from("demo_themes")
@@ -72,6 +101,7 @@ async function seed() {
           ],
           is_coming_soon: false,
           settings: CREAMY_SAGE_DEFAULT_SETTINGS,
+          created_at: new Date(Date.now() - 10000).toISOString(),
         },
         { onConflict: "slug" }
       )
@@ -82,7 +112,7 @@ async function seed() {
     }
     console.log("Successfully seeded Creamy Sage:", creamyData);
 
-    // 2. Seed Rustic Wood
+    // 3. Seed Rustic Wood
     console.log("Upserting Rustic Wood...");
     const { data: rusticData, error: rusticError } = await supabase
       .from("demo_themes")
@@ -100,6 +130,7 @@ async function seed() {
           ],
           is_coming_soon: true,
           settings: null, // Coming Soon, no settings yet
+          created_at: new Date().toISOString(),
         },
         { onConflict: "slug" }
       )

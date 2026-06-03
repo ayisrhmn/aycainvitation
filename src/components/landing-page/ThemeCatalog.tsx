@@ -154,16 +154,27 @@ export default function ThemeCatalog({
               );
             }
 
+            const isEmerald = theme.slug === 'emerald-elegance';
+            const styles = isEmerald
+              ? {
+                  cardBorder: selectedTheme === theme.slug ? "border-emerald-primary ring-1 ring-emerald-primary" : "border-emerald-accent-light/30",
+                  titleText: "text-emerald-primary",
+                  buttonOutline: "border-emerald-accent hover:bg-emerald-accent-light/10 text-emerald-accent-dark",
+                  buttonFill: selectedTheme === theme.slug ? "bg-emerald-primary text-white shadow-md shadow-emerald-primary/20" : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10"
+                }
+              : {
+                  cardBorder: selectedTheme === theme.slug ? "border-sage ring-1 ring-sage" : "border-sage-light/30",
+                  titleText: "text-sage-dark",
+                  buttonOutline: "border-rose-gold-light hover:bg-rose-gold-light/10 text-rose-gold-dark",
+                  buttonFill: selectedTheme === theme.slug ? "bg-sage text-white shadow-md shadow-sage/20" : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10"
+                };
+
             // Active/Previewable theme card
             return (
               <motion.div
                 key={theme.slug}
                 whileHover={{ y: -5 }}
-                className={`bg-white rounded-3xl border overflow-hidden shadow-md flex flex-col transition-all duration-300 ${
-                  selectedTheme === theme.slug
-                    ? "border-sage ring-1 ring-sage"
-                    : "border-sage-light/30"
-                }`}
+                className={`bg-white rounded-3xl border overflow-hidden shadow-md flex flex-col transition-all duration-300 ${styles.cardBorder}`}
               >
                 {/* Visual Preview Placeholder */}
                 <div className="h-56 bg-cream-dark/50 flex flex-col items-center justify-center p-6 relative overflow-hidden text-center border-b border-rose-gold-light/20">
@@ -172,7 +183,7 @@ export default function ThemeCatalog({
                     <span className="text-[9px] uppercase tracking-widest text-charcoal-muted block mb-1">
                       {theme.tagline}
                     </span>
-                    <h3 className="font-serif text-2xl text-sage-dark">
+                    <h3 className={`font-serif text-2xl ${styles.titleText}`}>
                       {theme.name} Theme
                     </h3>
                     <div className="flex gap-2 justify-center mt-3">
@@ -202,7 +213,7 @@ export default function ThemeCatalog({
                       href={`/${theme.slug}?to=Nama+Tamu`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 border border-rose-gold-light hover:bg-rose-gold-light/10 text-rose-gold-dark rounded-xl text-xs font-semibold tracking-wider uppercase transition-all"
+                      className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 border rounded-xl text-xs font-semibold tracking-wider uppercase transition-all ${styles.buttonOutline}`}
                     >
                       <span>Preview Tema</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -214,11 +225,7 @@ export default function ThemeCatalog({
                           .getElementById("order-form")
                           ?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${
-                        selectedTheme === theme.slug
-                          ? "bg-sage text-white shadow-md shadow-sage/20"
-                          : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10"
-                      }`}
+                      className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-bold tracking-wider uppercase transition-all cursor-pointer ${styles.buttonFill}`}
                     >
                       {selectedTheme === theme.slug ? "Terpilih" : "Pilih Tema"}
                     </button>

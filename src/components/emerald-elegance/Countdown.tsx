@@ -60,12 +60,12 @@ export default function Countdown({ targetDate }: CountdownProps) {
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
-            className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-white/50 backdrop-blur border border-rose-gold-light/20 rounded-xl"
+            className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-white/50 backdrop-blur border border-emerald-primary-light/20 rounded-xl"
           >
-            <span className="text-3xl sm:text-4xl font-serif text-rose-gold-dark font-light">
+            <span className="text-3xl sm:text-4xl font-serif text-emerald-primary font-light">
               00
             </span>
-            <span className="text-[11px] sm:text-xs uppercase tracking-wider text-charcoal-muted mt-1">
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider text-emerald-charcoal-muted mt-1">
               ...
             </span>
           </div>
@@ -90,12 +90,12 @@ export default function Countdown({ targetDate }: CountdownProps) {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1, duration: 0.6 }}
-          className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-white/70 backdrop-blur border border-rose-gold-light/30 rounded-2xl shadow-sm shadow-rose-gold-light/5"
+          className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-white/70 backdrop-blur border border-emerald-primary-light/30 rounded-2xl shadow-sm shadow-emerald-primary-light/5"
         >
-          <span className="text-3xl sm:text-4xl font-serif text-rose-gold-dark font-medium leading-none">
+          <span className="text-3xl sm:text-4xl font-serif text-emerald-primary font-semibold leading-none">
             {String(item.value).padStart(2, "0")}
           </span>
-          <span className="text-[11px] sm:text-xs uppercase tracking-widest text-charcoal-muted mt-1.5 font-medium">
+          <span className="text-[11px] sm:text-xs uppercase tracking-widest text-emerald-charcoal-muted mt-1.5 font-semibold">
             {item.label}
           </span>
         </motion.div>

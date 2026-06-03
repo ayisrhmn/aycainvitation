@@ -9,7 +9,7 @@ import OrderForm from "@/components/landing-page/OrderForm";
 import Link from "next/link";
 
 export default function LandingClientPage() {
-  const [selectedTheme, setSelectedTheme] = useState<string>("creamy-sage");
+  const [selectedTheme, setSelectedTheme] = useState<string>("emerald-elegance");
 
   return (
     <div className="min-h-screen bg-sakura-bg text-sakura-charcoal font-sans selection:bg-sakura-primary-light/40 relative">
@@ -26,9 +26,13 @@ export default function LandingClientPage() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center relative z-10 max-w-4xl mx-auto"
         >
-          <div className="flex items-center gap-2 mb-4 bg-white/70 px-4 py-1.5 rounded-full border border-sakura-primary-light/20 backdrop-blur-xs">
-            <Flower2 className="w-5 h-5 text-sakura-primary animate-pulse stroke-[1.5]" />
-            <span className="font-serif text-xs sm:text-sm tracking-[0.25em] text-sakura-primary-dark uppercase font-semibold">
+          <div className="flex items-center gap-2.5 mb-5 bg-white/70 px-4 py-2 rounded-full border border-sakura-primary-light/20 backdrop-blur-xs shadow-xs">
+            <img
+              src="/logo.png"
+              alt="Aycainvitation Logo"
+              className="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-full bg-sakura-primary/5 p-0.5"
+            />
+            <span className="font-serif text-sm sm:text-lg tracking-[0.22em] text-sakura-primary-dark uppercase font-semibold">
               Aycainvitation
             </span>
           </div>

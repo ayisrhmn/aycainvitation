@@ -18,15 +18,26 @@ export const metadata: Metadata = {
     "buat undangan instan",
   ],
   authors: [{ name: "Aycainvitation" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title:
       "Aycainvitation - Undangan Pernikahan Digital Premium, Murah & Instan",
     description:
-      "Buat website undangan pernikahan digital premium, murah, dan instan hanya dalam 5 menit. Dilengkapi RSVP online otomatis dan desain mobile-responsive yang elegan.",
+      "Buat website undangan pernikahan digital premium, murah, dan instan hanya dalam 5 menit. Dilengkapi RSVP online otomatis and desain mobile-responsive yang elegan.",
     url: "https://aycainvitation.vercel.app",
     siteName: "Aycainvitation",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Aycainvitation Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -34,6 +45,7 @@ export const metadata: Metadata = {
       "Aycainvitation - Undangan Pernikahan Digital Premium, Murah & Instan",
     description:
       "Buat website undangan pernikahan digital premium, murah, dan instan hanya dalam 5 menit. Dilengkapi RSVP online otomatis.",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
