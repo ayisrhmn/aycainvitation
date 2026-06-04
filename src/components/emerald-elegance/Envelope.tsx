@@ -78,7 +78,7 @@ export default function Envelope({
             <span className="text-sm uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
               Undangan Pernikahan
             </span>
-            <h1 className="font-serif text-4xl sm:text-5xl mt-4 text-emerald-primary tracking-wide">
+            <h1 className="font-script text-5xl sm:text-6xl mt-4 text-emerald-primary tracking-wide">
               {groomName || "Arya"} &amp; {brideName || "Nabila"}
             </h1>
           </motion.div>
@@ -103,7 +103,7 @@ export default function Envelope({
                   delay: 1.3,
                 },
               }}
-              className="w-44 h-44 sm:w-56 sm:h-56 relative flex items-center justify-center mb-4 sm:mb-8 z-10"
+              className="w-60 h-60 relative flex items-center justify-center mb-4 sm:mb-8 z-10"
             >
               <img
                 src="/images/cover.png"
@@ -126,7 +126,7 @@ export default function Envelope({
                 Kepada Yth. Bapak/Ibu/Saudara/i:
               </p>
 
-              <h2 className="font-serif text-2xl font-bold text-emerald-primary mt-2 mb-4 tracking-wide wrap-break-word">
+              <h2 className="font-script text-4xl text-emerald-primary mt-2 mb-4 tracking-wide wrap-break-word">
                 {guestName}
               </h2>
 

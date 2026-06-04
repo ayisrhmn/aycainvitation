@@ -124,6 +124,44 @@ export default function EmeraldEleganceTheme({
     }
   };
 
+  // --- Calendar Computation ---
+  const akadDateStr = getSetting("akad_date");
+  let calYear = 2026;
+  let calMonth = 4; // May (0-indexed)
+  let calDay = 31;
+  if (akadDateStr && akadDateStr.includes("-")) {
+    const parts = akadDateStr.split("-");
+    calYear = parseInt(parts[0], 10);
+    calMonth = parseInt(parts[1], 10) - 1;
+    calDay = parseInt(parts[2], 10);
+  }
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const firstDayIndex = new Date(calYear, calMonth, 1).getDay(); // 0: Sun, 1: Mon, ...
+  const monthNames = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
+  const monthName = monthNames[calMonth] || "Mei";
+  const daysOfWeek = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
+
+  const calendarCells = [];
+  for (let i = 0; i < firstDayIndex; i++) {
+    calendarCells.push(null);
+  }
+  for (let i = 1; i <= daysInMonth; i++) {
+    calendarCells.push(i);
+  }
+
   return (
     <div className="min-h-screen bg-emerald-bg-dark/40 flex justify-center items-start overflow-x-hidden w-full">
       {/* Pembuka Amplop Digital */}
@@ -165,11 +203,11 @@ export default function EmeraldEleganceTheme({
               <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 border-r border-b border-emerald-primary-light/40 pointer-events-none" />
 
               <div className="relative z-10 mt-2 sm:mt-6">
-                <span className="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-emerald-charcoal-muted font-bold">
+                <span className="text-xs sm:text-sm uppercase tracking-[0.4em] text-emerald-charcoal-muted font-bold">
                   Walimatul &apos;Ursy
                 </span>
-                <h2 className="font-serif font-semibold text-2xl sm:text-2xl text-emerald-primary mt-2 tracking-widest">
-                  THE WEDDING OF
+                <h2 className="font-script text-5xl sm:text-6xl text-emerald-primary mt-2">
+                  The Wedding Of
                 </h2>
               </div>
 
@@ -192,10 +230,10 @@ export default function EmeraldEleganceTheme({
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 1 }}
-                  className="font-serif font-medium text-4xl sm:text-5xl text-emerald-primary tracking-wide leading-tight"
+                  className="font-script text-5xl sm:text-6xl text-emerald-primary tracking-wide leading-tight"
                 >
                   {firstName} <br />
-                  <span className="text-2xl sm:text-3xl font-serif italic text-emerald-charcoal-muted my-1 sm:my-2 block">
+                  <span className="text-3xl sm:text-4xl font-script text-emerald-charcoal-muted my-1 sm:my-2 block">
                     &amp;
                   </span>
                   {secondName}
@@ -214,8 +252,65 @@ export default function EmeraldEleganceTheme({
               </div>
             </section>
 
+            {/* 1.5. SECTION SAVE THE DATE / CALENDAR */}
+            <section className="px-8 py-10 flex flex-col items-center justify-center relative border-b border-emerald-primary-light/10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-full max-w-[320px]"
+              >
+                <div className="text-center mb-8">
+                  <h3 className="font-script text-6xl text-emerald-primary">
+                    {monthName}
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-7 gap-y-6 text-center text-emerald-charcoal">
+                  {/* Header Hari */}
+                  {daysOfWeek.map((day, idx) => (
+                    <div
+                      key={`header-${idx}`}
+                      className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-charcoal-muted"
+                    >
+                      {day}
+                    </div>
+                  ))}
+
+                  {/* Grid Tanggal */}
+                  {calendarCells.map((cell, idx) => {
+                    const isEventDate = cell === calDay;
+                    return (
+                      <div
+                        key={`cell-${idx}`}
+                        className="relative flex items-center justify-center h-8 sm:h-10"
+                      >
+                        {cell ? (
+                          <>
+                            {isEventDate ? (
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <Heart className="w-8 h-8 sm:w-10 sm:h-10 fill-emerald-primary text-emerald-primary shadow-sm" />
+                                <span className="absolute text-[11px] sm:text-[13px] font-bold text-cream z-10">
+                                  {cell}
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="text-xs sm:text-sm font-semibold text-emerald-charcoal z-10">
+                                {cell}
+                              </span>
+                            )}
+                          </>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </section>
+
             {/* 2. SECTION QUOTE / KATA PENGANTAR */}
-            <section className="px-8 py-16 text-center border-b border-emerald-primary-light/10 relative">
+            <section className="px-8 py-10 text-center border-b border-emerald-primary-light/10 relative">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-emerald-bg border border-emerald-primary-light/40 flex items-center justify-center text-emerald-primary shadow-sm">
                 <Heart className="w-4.5 h-4.5 fill-emerald-primary/20 stroke-[1.5]" />
               </div>
@@ -227,7 +322,7 @@ export default function EmeraldEleganceTheme({
                 transition={{ duration: 0.8 }}
                 className="flex flex-col items-center gap-4"
               >
-                <h3 className="font-serif italic text-emerald-primary text-xl font-bold">
+                <h3 className="font-script text-3xl text-emerald-primary">
                   {getSetting("quote_reference")}
                 </h3>
                 <p className="text-sm text-emerald-charcoal leading-relaxed font-sans px-2 italic font-medium">
@@ -271,7 +366,7 @@ export default function EmeraldEleganceTheme({
             </section>
 
             {/* 3. SECTION MEMPELAI (BRIDE & GROOM) */}
-            <section className="px-8 py-20 flex flex-col gap-8 relative overflow-hidden bg-emerald-bg z-20">
+            <section className="px-8 py-12 flex flex-col gap-5 relative overflow-hidden bg-emerald-bg z-20">
               {/* Background Backdrop Satin */}
               <div className="absolute inset-0 pointer-events-none z-0 opacity-20">
                 <img
@@ -305,129 +400,143 @@ export default function EmeraldEleganceTheme({
                 />
               </svg>
 
-              <div className="text-center relative z-10 mt-2">
+              <div className="text-center relative z-10 mt-2 -mb-12!">
                 <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
                   {isBrideFirst
                     ? "Mempelai Wanita & Pria"
                     : "Mempelai Pria & Wanita"}
                 </span>
-                <h3 className="font-serif font-semibold text-2xl text-emerald-primary mt-1">
-                  KEDUA MEMPELAI
+                <h3 className="font-script text-4xl text-emerald-primary mt-1">
+                  Kedua Mempelai
                 </h3>
               </div>
 
-              {/* Card Mempelai Pertama */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="flex flex-row items-center justify-between gap-4 relative z-10"
-              >
-                <div className="w-[200px] shrink-0 relative flex justify-center items-end">
-                  <img
-                    src={
-                      isBrideFirst ? "/images/bride.png" : "/images/groom.png"
-                    }
-                    alt={
-                      isBrideFirst
-                        ? getSetting("bride_fullname")
-                        : getSetting("groom_fullname")
-                    }
-                    className="w-full h-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                  />
-                </div>
-                <div className="flex-1 flex flex-col text-left">
-                  <h4 className="font-serif text-2xl font-bold text-emerald-primary leading-snug">
-                    {isBrideFirst
-                      ? getSetting("bride_fullname")
-                      : getSetting("groom_fullname")}
-                  </h4>
-                  <p className="text-[10px] uppercase tracking-wider text-emerald-charcoal-muted font-bold mt-4 mb-1">
-                    {isBrideFirst ? "Putri Pertama dari:" : "Putra Kedua dari:"}
-                  </p>
-                  <p className="text-xs text-emerald-charcoal font-bold leading-relaxed">
-                    Bapak{" "}
-                    {isBrideFirst
-                      ? getSetting("bride_father")
-                      : getSetting("groom_father")}
-                    <br />
-                    <span className="font-serif italic text-sm text-emerald-accent-dark/80">
-                      &amp;
-                    </span>{" "}
-                    Ibu{" "}
-                    {isBrideFirst
-                      ? getSetting("bride_mother")
-                      : getSetting("groom_mother")}
-                  </p>
-                </div>
-              </motion.div>
+              {/* Staggered Grid Layout Mempelai */}
+              <div className="grid grid-cols-2 gap-x-1 relative z-10 w-full mt-4">
+                {/* Left Column */}
+                <div className="flex flex-col">
+                  {/* Top Item: Avatar Mempelai 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full flex justify-start"
+                  >
+                    <img
+                      src={
+                        isBrideFirst
+                          ? "/images/emerald-elegance/bride-stand.png"
+                          : "/images/emerald-elegance/groom-stand.png"
+                      }
+                      alt={
+                        isBrideFirst
+                          ? getSetting("bride_fullname")
+                          : getSetting("groom_fullname")
+                      }
+                      className="w-[170px] xs:w-[190px] h-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
+                    />
+                  </motion.div>
 
-              {/* Pembatas Minimalis */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="flex items-center justify-center w-full my-0 px-12 opacity-60 relative z-10"
-              >
-                <div className="h-px flex-1 bg-emerald-accent"></div>
-                <span className="mx-4 font-serif italic text-3xl text-emerald-accent-dark drop-shadow-sm">
-                  &amp;
-                </span>
-                <div className="h-px flex-1 bg-emerald-accent"></div>
-              </motion.div>
-
-              {/* Card Mempelai Kedua */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="flex flex-row items-center justify-between gap-4 relative z-10"
-              >
-                <div className="flex-1 flex flex-col text-right">
-                  <h4 className="font-serif text-2xl font-bold text-emerald-primary leading-snug">
-                    {isBrideFirst
-                      ? getSetting("groom_fullname")
-                      : getSetting("bride_fullname")}
-                  </h4>
-                  <p className="text-[10px] uppercase tracking-wider text-emerald-charcoal-muted font-bold mt-4 mb-1">
-                    {isBrideFirst ? "Putra Kedua dari:" : "Putri Pertama dari:"}
-                  </p>
-                  <p className="text-xs text-emerald-charcoal font-bold leading-relaxed">
-                    Bapak{" "}
-                    {isBrideFirst
-                      ? getSetting("groom_father")
-                      : getSetting("bride_father")}
-                    <br />
-                    <span className="font-serif italic text-sm text-emerald-accent-dark/80">
-                      &amp;
-                    </span>{" "}
-                    Ibu{" "}
-                    {isBrideFirst
-                      ? getSetting("groom_mother")
-                      : getSetting("bride_mother")}
-                  </p>
-                </div>
-                <div className="w-[200px] shrink-0 relative flex justify-center items-end">
-                  <img
-                    src={
-                      isBrideFirst ? "/images/groom.png" : "/images/bride.png"
-                    }
-                    alt={
-                      isBrideFirst
+                  {/* Bottom Item: Details Mempelai 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mt-6 text-right pr-2 translate-x-4 relative z-20"
+                  >
+                    <h4 className="font-script text-4xl text-emerald-primary">
+                      {isBrideFirst
                         ? getSetting("groom_fullname")
-                        : getSetting("bride_fullname")
-                    }
-                    className="w-full h-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
-                  />
+                        : getSetting("bride_fullname")}
+                    </h4>
+                    <p className="text-[11px] uppercase tracking-wider text-emerald-charcoal-muted font-bold mt-2 mb-1">
+                      {isBrideFirst
+                        ? "Putra Kedua dari:"
+                        : "Putri Pertama dari:"}
+                    </p>
+                    <p className="text-sm text-emerald-charcoal font-bold leading-relaxed">
+                      Bapak{" "}
+                      {isBrideFirst
+                        ? getSetting("groom_father")
+                        : getSetting("bride_father")}
+                      <br />
+                      <span className="font-serif italic text-xs text-emerald-accent-dark/80">
+                        &amp;
+                      </span>{" "}
+                      Ibu{" "}
+                      {isBrideFirst
+                        ? getSetting("groom_mother")
+                        : getSetting("bride_mother")}
+                    </p>
+                  </motion.div>
                 </div>
-              </motion.div>
+
+                {/* Right Column */}
+                <div className="flex flex-col pt-14">
+                  {/* Top Item: Details Mempelai 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-left pr-2 min-h-[140px] flex flex-col justify-center -ml-6 relative z-20"
+                  >
+                    <h4 className="font-script text-4xl text-emerald-primary leading-snug">
+                      {isBrideFirst
+                        ? getSetting("bride_fullname")
+                        : getSetting("groom_fullname")}
+                    </h4>
+                    <p className="text-[11px] uppercase tracking-wider text-emerald-charcoal-muted font-bold mt-2 mb-1">
+                      {isBrideFirst
+                        ? "Putri Pertama dari:"
+                        : "Putra Kedua dari:"}
+                    </p>
+                    <p className="text-sm text-emerald-charcoal font-bold leading-relaxed">
+                      Bapak{" "}
+                      {isBrideFirst
+                        ? getSetting("bride_father")
+                        : getSetting("groom_father")}
+                      <br />
+                      <span className="font-serif italic text-xs text-emerald-accent-dark/80">
+                        &amp;
+                      </span>{" "}
+                      Ibu{" "}
+                      {isBrideFirst
+                        ? getSetting("bride_mother")
+                        : getSetting("groom_mother")}
+                    </p>
+                  </motion.div>
+
+                  {/* Bottom Item: Avatar Mempelai 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="w-full flex justify-end -mt-4"
+                  >
+                    <img
+                      src={
+                        isBrideFirst
+                          ? "/images/emerald-elegance/groom-stand.png"
+                          : "/images/emerald-elegance/bride-stand.png"
+                      }
+                      alt={
+                        isBrideFirst
+                          ? getSetting("groom_fullname")
+                          : getSetting("bride_fullname")
+                      }
+                      className="w-[170px] xs:w-[190px] h-auto object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)]"
+                    />
+                  </motion.div>
+                </div>
+              </div>
             </section>
 
             {/* 4. SECTION ACARA & LOKASI */}
-            <section className="px-8 pt-[240px] pb-16 flex flex-col gap-8 border-b border-emerald-primary-light/10 relative">
+            <section className="px-8 pt-[240px] pb-10 flex flex-col gap-8 border-b border-emerald-primary-light/10 relative">
               {/* Curtain Decorative Header */}
               <div className="absolute -top-6 sm:-top-8 inset-x-0 w-full pointer-events-none select-none z-10 flex justify-center">
                 <motion.img
@@ -444,8 +553,8 @@ export default function EmeraldEleganceTheme({
                 <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
                   Waktu &amp; Tempat
                 </span>
-                <h3 className="font-serif font-semibold text-2xl text-emerald-primary mt-1">
-                  INFORMASI ACARA
+                <h3 className="font-script text-4xl text-emerald-primary mt-1">
+                  Informasi Acara
                 </h3>
               </div>
 
@@ -528,12 +637,12 @@ export default function EmeraldEleganceTheme({
             </section>
 
             {/* 5. COUNTDOWN TIMER */}
-            <section className="px-8 py-16 bg-emerald-bg-dark/30 border-b border-emerald-primary-light/10 text-center">
+            <section className="px-8 py-10 bg-emerald-bg-dark/30 border-b border-emerald-primary-light/10 text-center">
               <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold block mb-1">
                 Momen Bahagia
               </span>
-              <h3 className="font-serif font-semibold text-2xl text-emerald-primary mb-4">
-                HITUNG MUNDUR
+              <h3 className="font-script text-4xl text-emerald-primary mb-4">
+                Hitung Mundur
               </h3>
 
               <Countdown targetDate={getSetting("wedding_date")} />
@@ -541,20 +650,33 @@ export default function EmeraldEleganceTheme({
               <p className="text-xs text-emerald-charcoal-muted font-sans mt-3 font-bold">
                 Kami tidak sabar menyambut kehadiran Anda di hari istimewa kami.
               </p>
+
+              {/* Ornamen Bunga Bawah Countdown */}
+              <div className="flex justify-center -mb-6 px-0 sm:px-4">
+                <motion.img
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  src="/images/emerald-elegance/flower-3-emerald.png"
+                  alt="Floral Ornament"
+                  className="w-full max-w-lg sm:max-w-3xl h-auto object-contain pointer-events-none drop-shadow-sm"
+                />
+              </div>
             </section>
 
             {/* 6. KADO DIGITAL / BANK DETAILS */}
             {((getRawConfig("bank_name_1") && getRawConfig("bank_account_1")) ||
               (getRawConfig("bank_name_2") &&
                 getRawConfig("bank_account_2"))) && (
-              <section className="px-8 py-16 flex flex-col gap-8 border-b border-emerald-primary-light/10 bg-linear-to-b from-emerald-bg to-emerald-bg-dark/25">
+              <section className="px-8 py-10 flex flex-col gap-8 border-b border-emerald-primary-light/10 bg-linear-to-b from-emerald-bg to-emerald-bg-dark/25">
                 <div className="text-center">
                   <Gift className="w-6 h-6 text-emerald-primary mx-auto mb-2" />
                   <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
                     Kado Digital
                   </span>
-                  <h3 className="font-serif font-semibold text-2xl text-emerald-primary mt-1">
-                    AMPLOP DIGITAL
+                  <h3 className="font-script text-4xl text-emerald-primary mt-1">
+                    Kirim Hadiah
                   </h3>
                   <p className="text-sm text-emerald-charcoal px-4 mt-3 leading-relaxed font-sans font-medium">
                     Bagi bapak/ibu/saudara/i yang ingin memberikan tanda kasih
@@ -653,13 +775,13 @@ export default function EmeraldEleganceTheme({
             )}
 
             {/* 7. RSVP FORM & WISHES BOARD */}
-            <section className="px-6 py-16 flex flex-col gap-10 bg-emerald-bg">
+            <section className="px-6 py-10 flex flex-col gap-10 bg-emerald-bg">
               <div className="text-center px-4">
                 <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
                   Form Kehadiran &amp; Doa
                 </span>
-                <h3 className="font-serif font-semibold text-2xl text-emerald-primary mt-1">
-                  KONFIRMASI RSVP
+                <h3 className="font-script text-4xl text-emerald-primary mt-1">
+                  RSVP
                 </h3>
                 <p className="text-sm text-emerald-charcoal mt-2 font-sans font-medium">
                   Bantu kami mempersiapkan kenyamanan acara dengan mengisi
@@ -703,7 +825,7 @@ export default function EmeraldEleganceTheme({
                 />
               </motion.div>
 
-              <h2 className="font-serif font-semibold text-2xl text-emerald-primary tracking-widest mt-4">
+              <h2 className="font-script text-5xl text-emerald-primary mt-4">
                 {firstName} &amp; {secondName}
               </h2>
 
