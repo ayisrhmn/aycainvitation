@@ -61,7 +61,7 @@ export default function ThemeCatalog({
         <span className="text-[10px] uppercase tracking-[0.3em] text-sakura-charcoal-muted font-bold block mb-1">
           Katalog Desain
         </span>
-        <h2 className="font-serif text-3xl font-light text-sakura-primary tracking-wide">
+        <h2 className="font-serif text-3xl text-sakura-primary tracking-wide">
           PILIHAN TEMA ESTETIK
         </h2>
         <p className="text-xs text-sakura-charcoal-muted mt-2 max-w-md mx-auto">
@@ -154,19 +154,33 @@ export default function ThemeCatalog({
               );
             }
 
-            const isEmerald = theme.slug === 'emerald-elegance';
+            const isEmerald = theme.slug === "emerald-elegance";
             const styles = isEmerald
               ? {
-                  cardBorder: selectedTheme === theme.slug ? "border-emerald-primary ring-1 ring-emerald-primary" : "border-emerald-accent-light/30",
+                  cardBorder:
+                    selectedTheme === theme.slug
+                      ? "border-emerald-primary ring-1 ring-emerald-primary"
+                      : "border-emerald-accent-light/30",
                   titleText: "text-emerald-primary",
-                  buttonOutline: "border-emerald-accent hover:bg-emerald-accent-light/10 text-emerald-accent-dark",
-                  buttonFill: selectedTheme === theme.slug ? "bg-emerald-primary text-white shadow-md shadow-emerald-primary/20" : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10"
+                  buttonOutline:
+                    "border-emerald-accent hover:bg-emerald-accent-light/10 text-emerald-accent-dark",
+                  buttonFill:
+                    selectedTheme === theme.slug
+                      ? "bg-emerald-primary text-white shadow-md shadow-emerald-primary/20"
+                      : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10",
                 }
               : {
-                  cardBorder: selectedTheme === theme.slug ? "border-sage ring-1 ring-sage" : "border-sage-light/30",
+                  cardBorder:
+                    selectedTheme === theme.slug
+                      ? "border-sage ring-1 ring-sage"
+                      : "border-sage-light/30",
                   titleText: "text-sage-dark",
-                  buttonOutline: "border-rose-gold-light hover:bg-rose-gold-light/10 text-rose-gold-dark",
-                  buttonFill: selectedTheme === theme.slug ? "bg-sage text-white shadow-md shadow-sage/20" : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10"
+                  buttonOutline:
+                    "border-rose-gold-light hover:bg-rose-gold-light/10 text-rose-gold-dark",
+                  buttonFill:
+                    selectedTheme === theme.slug
+                      ? "bg-sage text-white shadow-md shadow-sage/20"
+                      : "bg-charcoal/5 text-charcoal hover:bg-charcoal/10",
                 };
 
             // Active/Previewable theme card

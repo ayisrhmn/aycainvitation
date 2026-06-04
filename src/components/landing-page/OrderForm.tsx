@@ -180,7 +180,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
             <span className="text-[10px] uppercase tracking-[0.3em] text-sakura-charcoal-muted font-bold block mb-1">
               Formulir Order
             </span>
-            <h2 className="font-serif text-3xl font-light text-sakura-primary tracking-wide">
+            <h2 className="font-serif text-3xl text-sakura-primary tracking-wide">
               LENGKAPI DETAIL UNDANGAN
             </h2>
             <p className="text-xs text-sakura-charcoal-muted mt-2">

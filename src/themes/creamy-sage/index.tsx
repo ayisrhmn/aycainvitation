@@ -10,6 +10,7 @@ import AudioPlayer from "@/components/creamy-sage/AudioPlayer";
 import Countdown from "@/components/creamy-sage/Countdown";
 import RsvpForm from "@/components/creamy-sage/RsvpForm";
 import WishesWall from "@/components/creamy-sage/WishesWall";
+import FloatingParticles from "@/components/shared/FloatingParticles";
 import { WeddingConfig, RsvpWish } from "@/types";
 import Link from "next/link";
 
@@ -149,8 +150,15 @@ export default function CreamySageTheme({
             transition={{ duration: 1 }}
             className="w-full max-w-md bg-cream text-charcoal shadow-2xl relative min-h-screen flex flex-col justify-start border-x border-rose-gold-light/20 pb-20"
           >
+            <FloatingParticles
+              colors={[
+                "rgba(183, 133, 115, 0.5)",
+                "rgba(141, 155, 142, 0.6)",
+                "rgba(225, 218, 203, 0.6)",
+              ]}
+            />
             {/* 1. SECTION HERO COVER */}
-            <section className="relative h-[85vh] flex flex-col items-center justify-between py-10 sm:py-16 px-4 sm:px-6 text-center overflow-hidden">
+            <section className="relative h-[96vh] flex flex-col items-center justify-between py-10 sm:py-16 px-4 sm:px-6 text-center overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(#FAF9F5_30%,#F3F0E6_100%)] opacity-80 pointer-events-none" />
               <div className="absolute top-6 left-6 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 border-l border-t border-rose-gold-light/40 pointer-events-none" />
               <div className="absolute top-6 right-6 sm:top-10 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 border-r border-t border-rose-gold-light/40 pointer-events-none" />
@@ -161,7 +169,7 @@ export default function CreamySageTheme({
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-charcoal-muted font-medium">
                   Walimatul &apos;Ursy
                 </span>
-                <h2 className="font-serif text-2xl sm:text-3xl font-light text-rose-gold-dark mt-2 tracking-widest">
+                <h2 className="font-serif font-semibold text-2xl sm:text-2xl text-rose-gold-dark mt-2 tracking-widest">
                   THE WEDDING OF
                 </h2>
               </div>
@@ -185,10 +193,10 @@ export default function CreamySageTheme({
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 1 }}
-                  className="font-serif text-4xl sm:text-5xl font-light text-rose-gold-dark tracking-wide leading-tight"
+                  className="font-serif font-medium text-4xl sm:text-5xl text-rose-gold-dark tracking-wide leading-tight"
                 >
                   {firstName} <br />
-                  <span className="text-2xl sm:text-3xl font-serif italic text-charcoal-muted font-light my-1 sm:my-2 block">
+                  <span className="text-2xl sm:text-3xl font-serif italic text-charcoal-muted my-1 sm:my-2 block">
                     &amp;
                   </span>
                   {secondName}
@@ -254,7 +262,7 @@ export default function CreamySageTheme({
                     ? "Mempelai Wanita & Pria"
                     : "Mempelai Pria & Wanita"}
                 </span>
-                <h3 className="font-serif text-2xl font-light text-rose-gold-dark mt-1">
+                <h3 className="font-serif font-semibold text-2xl text-rose-gold-dark mt-1">
                   KEDUA MEMPELAI
                 </h3>
               </div>
@@ -267,7 +275,7 @@ export default function CreamySageTheme({
                 transition={{ duration: 0.8 }}
                 className="text-center flex flex-col items-center gap-2"
               >
-                <div className="w-24 h-24 rounded-full border-2 border-rose-gold/30 flex items-center justify-center shadow-md mb-3 relative overflow-hidden bg-[#E2E7D5] group cursor-pointer">
+                <div className="w-36 h-36 rounded-full border-2 border-rose-gold/30 flex items-center justify-center shadow-md mb-3 relative overflow-hidden bg-[#E2E7D5] group cursor-pointer">
                   <img
                     src={
                       isBrideFirst ? "/images/bride.png" : "/images/groom.png"
@@ -315,7 +323,7 @@ export default function CreamySageTheme({
                 transition={{ duration: 0.8 }}
                 className="text-center flex flex-col items-center gap-2"
               >
-                <div className="w-24 h-24 rounded-full border-2 border-rose-gold/30 flex items-center justify-center shadow-md mb-3 relative overflow-hidden bg-[#E2E7D5] group cursor-pointer">
+                <div className="w-36 h-36 rounded-full border-2 border-rose-gold/30 flex items-center justify-center shadow-md mb-3 relative overflow-hidden bg-[#E2E7D5] group cursor-pointer">
                   <img
                     src={
                       isBrideFirst ? "/images/groom.png" : "/images/bride.png"
@@ -355,7 +363,7 @@ export default function CreamySageTheme({
                 <span className="text-xs uppercase tracking-[0.3em] text-charcoal-muted font-medium">
                   Waktu &amp; Tempat
                 </span>
-                <h3 className="font-serif text-3xl font-light text-rose-gold-dark mt-1">
+                <h3 className="font-serif font-semibold text-2xl text-rose-gold-dark mt-1">
                   INFORMASI ACARA
                 </h3>
               </div>
@@ -443,7 +451,7 @@ export default function CreamySageTheme({
               <span className="text-xs uppercase tracking-[0.3em] text-charcoal-muted font-medium block mb-1">
                 Momen Bahagia
               </span>
-              <h3 className="font-serif text-3xl font-light text-rose-gold-dark mb-4">
+              <h3 className="font-serif font-semibold text-2xl text-rose-gold-dark mb-4">
                 HITUNG MUNDUR
               </h3>
 
@@ -464,7 +472,7 @@ export default function CreamySageTheme({
                   <span className="text-xs uppercase tracking-[0.3em] text-charcoal-muted font-medium">
                     Kado Digital
                   </span>
-                  <h3 className="font-serif text-3xl font-light text-rose-gold-dark mt-1">
+                  <h3 className="font-serif font-semibold text-2xl text-rose-gold-dark mt-1">
                     AMPLOP DIGITAL
                   </h3>
                   <p className="text-sm text-charcoal px-4 mt-3 leading-relaxed font-sans font-medium">
@@ -569,7 +577,7 @@ export default function CreamySageTheme({
                 <span className="text-xs uppercase tracking-[0.3em] text-charcoal-muted font-medium">
                   Form Kehadiran &amp; Doa
                 </span>
-                <h3 className="font-serif text-3xl font-light text-rose-gold-dark mt-1">
+                <h3 className="font-serif font-semibold text-2xl text-rose-gold-dark mt-1">
                   KONFIRMASI RSVP
                 </h3>
                 <p className="text-sm text-charcoal mt-2 font-sans font-medium">
@@ -600,7 +608,7 @@ export default function CreamySageTheme({
                 restu untuk perjalanan hidup baru kami.&quot;
               </p>
 
-              <h2 className="font-serif text-3xl font-light text-rose-gold-dark tracking-widest mt-4">
+              <h2 className="font-serif font-semibold text-2xl text-rose-gold-dark tracking-widest mt-4">
                 {firstName} &amp; {secondName}
               </h2>
 

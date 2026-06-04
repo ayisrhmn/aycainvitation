@@ -62,7 +62,7 @@ export default function Countdown({ targetDate }: CountdownProps) {
             key={i}
             className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-white/50 backdrop-blur border border-rose-gold-light/20 rounded-xl"
           >
-            <span className="text-3xl sm:text-4xl font-serif text-rose-gold-dark font-light">
+            <span className="text-3xl sm:text-4xl font-serif text-rose-gold-dark">
               00
             </span>
             <span className="text-[11px] sm:text-xs uppercase tracking-wider text-charcoal-muted mt-1">

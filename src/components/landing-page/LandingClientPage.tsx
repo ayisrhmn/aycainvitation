@@ -9,7 +9,8 @@ import OrderForm from "@/components/landing-page/OrderForm";
 import Link from "next/link";
 
 export default function LandingClientPage() {
-  const [selectedTheme, setSelectedTheme] = useState<string>("emerald-elegance");
+  const [selectedTheme, setSelectedTheme] =
+    useState<string>("emerald-elegance");
 
   return (
     <div className="min-h-screen bg-sakura-bg text-sakura-charcoal font-sans selection:bg-sakura-primary-light/40 relative">
@@ -37,7 +38,7 @@ export default function LandingClientPage() {
             </span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-light text-sakura-charcoal tracking-wide leading-tight">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-sakura-charcoal tracking-wide leading-tight">
             Undangan Pernikahan Web{" "}
             <span className="font-serif italic text-sakura-primary block sm:inline">
               Premium
@@ -118,7 +119,7 @@ export default function LandingClientPage() {
           <span className="text-[10px] uppercase tracking-[0.3em] text-sakura-charcoal-muted font-bold block mb-1">
             Mengapa Memilih Kami?
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-light text-sakura-primary tracking-wide">
+          <h2 className="font-serif text-3xl sm:text-4xl text-sakura-primary tracking-wide">
             SOLUSI UNDANGAN PERNIKAHAN TERBAIK
           </h2>
           <p className="text-xs sm:text-sm text-sakura-charcoal-muted mt-2 max-w-xl mx-auto">

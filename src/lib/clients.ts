@@ -59,6 +59,10 @@ export async function getClientConfig(
 export const CLIENT_MUSIC: Record<string, { title: string; fileUrl: string }> =
   {
     // Tambahkan kustom musik klien di bawah ini:
+    "karin-anton": {
+      title: "Ari Lasso - Cinta Terakhir",
+      fileUrl: "/audio/Ari Lasso - Cinta Terakhir.mp3",
+    },
   };
 
 /**

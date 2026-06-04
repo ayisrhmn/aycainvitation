@@ -78,7 +78,7 @@ export default function Envelope({
             <span className="text-sm uppercase tracking-[0.3em] text-charcoal-muted font-semibold">
               Undangan Pernikahan
             </span>
-            <h1 className="font-serif text-4xl sm:text-5xl mt-4 font-light text-rose-gold-dark tracking-wide">
+            <h1 className="font-serif text-4xl sm:text-5xl mt-4 text-rose-gold-dark tracking-wide">
               {groomName || "Arya"} &amp; {brideName || "Nabila"}
             </h1>
           </motion.div>

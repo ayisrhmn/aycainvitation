@@ -31,7 +31,7 @@ export default function NotFound() {
           </span>
         </div>
 
-        <h1 className="font-serif text-6xl sm:text-7xl font-light text-sakura-primary-dark tracking-wide mb-2">
+        <h1 className="font-serif text-6xl sm:text-7xl text-sakura-primary-dark tracking-wide mb-2">
           404
         </h1>
         <h2 className="font-serif text-xl sm:text-2xl text-sakura-charcoal font-medium tracking-wide mb-4">
