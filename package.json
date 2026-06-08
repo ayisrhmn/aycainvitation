@@ -2,6 +2,11 @@
   "name": "wedding-invitation",
   "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "Muhammad Fariz Rahman",
+    "email": "farizrahman30@gmail.com",
+    "url": "https://github.com/ayisrhmn"
+  },
   "scripts": {
     "dev": "next dev -p 2931",
     "build": "next build",

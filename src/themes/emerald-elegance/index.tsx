@@ -195,7 +195,7 @@ export default function EmeraldEleganceTheme({
               ]}
             />
             {/* 1. SECTION HERO COVER */}
-            <section className="relative h-[96vh] flex flex-col items-center justify-between py-10 sm:py-16 px-4 sm:px-6 text-center overflow-hidden">
+            <section className="relative flex flex-col items-center py-16 sm:py-20 px-4 sm:px-6 text-center overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(#f6f8f5_30%,#ecf0eb_100%)] opacity-80 pointer-events-none" />
               <div className="absolute top-6 left-6 sm:top-10 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 border-l border-t border-emerald-primary-light/40 pointer-events-none" />
               <div className="absolute top-6 right-6 sm:top-10 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 border-r border-t border-emerald-primary-light/40 pointer-events-none" />
@@ -212,33 +212,88 @@ export default function EmeraldEleganceTheme({
               </div>
 
               {/* Inisial & Nama Mempelai */}
-              <div className="relative z-10 my-auto flex flex-col items-center">
-                {/* Floral Centerpiece */}
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 1.2 }}
-                  className="flex items-center justify-center mb-8 sm:mb-12"
-                >
-                  <img
-                    src="/images/emerald-elegance/flower-emerald.png"
-                    alt="Floral Ornament"
-                    className="w-60 sm:w-72 h-auto object-contain pointer-events-none drop-shadow-sm"
-                  />
-                </motion.div>
-                <motion.h1
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.5, duration: 1 }}
-                  className="font-script text-5xl sm:text-6xl text-emerald-primary tracking-wide leading-tight"
-                >
-                  {firstName} <br />
-                  <span className="text-3xl sm:text-4xl font-script text-emerald-charcoal-muted my-1 sm:my-2 block">
-                    &amp;
-                  </span>
-                  {secondName}
-                </motion.h1>
+              <div className="relative z-10 flex flex-col items-center mt-6 sm:mt-10 pt-24 sm:pt-28">
+                <div className="relative group">
+                  {/* Floral Decor Bottom Left (Behind Frame for depth) */}
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.8, duration: 1.2 }}
+                    className="absolute -bottom-6 -left-8 sm:-left-12 z-30 pointer-events-none"
+                  >
+                    <img
+                      src="/images/emerald-elegance/flower-2-emerald.png"
+                      alt="Floral Ornament Bottom Left"
+                      className="w-36 sm:w-40 h-auto object-contain drop-shadow-md"
+                    />
+                  </motion.div>
+
+                  {/* Frame Name */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
+                    className="w-[260px] sm:w-[300px] h-[360px] sm:h-[400px] rounded-t-full border border-emerald-primary-light/30 shadow-[0_20px_50px_rgba(0,0,0,0.4)] bg-emerald-primary p-2 relative z-10 mx-auto"
+                  >
+                    <div className="w-full h-full rounded-t-full border-[1.5px] border-white/40 flex flex-col items-center justify-center pt-8 sm:pt-12 pb-6">
+                      <motion.h1
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.6, duration: 1 }}
+                        className="font-script text-5xl sm:text-6xl text-white tracking-wide leading-tight text-center drop-shadow-md relative z-10"
+                      >
+                        {firstName} <br />
+                        <span className="text-3xl sm:text-4xl font-script text-white/80 my-3 block">
+                          &amp;
+                        </span>
+                        {secondName}
+                      </motion.h1>
+                    </div>
+                  </motion.div>
+
+                  {/* Floral Centerpiece Overlay Top (In Front of Frame) */}
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1.2 }}
+                    className="absolute -top-16 sm:-top-20 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center pointer-events-none"
+                  >
+                    <img
+                      src="/images/emerald-elegance/flower-emerald.png"
+                      alt="Floral Ornament Top"
+                      className="w-56 sm:w-64 h-auto object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.3)]"
+                    />
+                  </motion.div>
+
+                  {/* Floral Decor Bottom Right (In Front of Frame) */}
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.7, duration: 1.2 }}
+                    className="absolute -bottom-10 -right-12 sm:-right-16 z-30 pointer-events-none"
+                  >
+                    <img
+                      src="/images/emerald-elegance/flower-1-emerald.png"
+                      alt="Floral Ornament Bottom Right"
+                      className="w-32 sm:w-36 h-auto object-contain drop-shadow-xl"
+                    />
+                  </motion.div>
+                </div>
               </div>
+
+              {/* Floral Bottom Center (Below Frame) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.8, duration: 1.2 }}
+                className="relative z-10 flex items-center justify-center mt-6 sm:mt-10 mb-4 sm:mb-6 pointer-events-none w-full"
+              >
+                <img
+                  src="/images/emerald-elegance/flower-3-emerald.png"
+                  alt="Floral Decor Bottom Center"
+                  className="w-[280px] sm:w-[360px] h-auto object-contain drop-shadow-md"
+                />
+              </motion.div>
 
               {/* Tanggal & Swipe Info */}
               <div className="relative z-10 mb-2 sm:mb-6">
