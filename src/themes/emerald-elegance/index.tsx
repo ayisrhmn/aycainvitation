@@ -290,7 +290,7 @@ export default function EmeraldEleganceTheme({
                           <>
                             {isEventDate ? (
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <Heart className="w-8 h-8 sm:w-10 sm:h-10 fill-emerald-primary text-emerald-primary shadow-sm" />
+                                <Heart className="w-8 h-8 sm:w-10 sm:h-10 fill-emerald-primary text-emerald-primary" />
                                 <span className="absolute text-[11px] sm:text-[13px] font-bold text-cream z-10">
                                   {cell}
                                 </span>

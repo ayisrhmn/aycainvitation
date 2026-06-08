@@ -366,7 +366,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             name="groom_father"
                             value={formData.groom_father}
                             onChange={handleChange}
-                            placeholder="Bapak Ir. H. Joko Santoso"
+                            placeholder="Ir. H. Joko Santoso"
                             className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
@@ -379,7 +379,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             name="groom_mother"
                             value={formData.groom_mother}
                             onChange={handleChange}
-                            placeholder="Ibu Hj. Retno Lestari, S.Pd."
+                            placeholder="Hj. Retno Lestari, S.Pd."
                             className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
@@ -429,7 +429,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             name="bride_father"
                             value={formData.bride_father}
                             onChange={handleChange}
-                            placeholder="Bapak H. Ahmad Fauzi, M.B.A."
+                            placeholder="H. Ahmad Fauzi, M.B.A."
                             className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
@@ -442,7 +442,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             name="bride_mother"
                             value={formData.bride_mother}
                             onChange={handleChange}
-                            placeholder="Ibu Hj. Fatimah Azzahra"
+                            placeholder="Hj. Fatimah Azzahra"
                             className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>

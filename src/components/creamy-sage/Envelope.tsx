@@ -106,7 +106,7 @@ export default function Envelope({
               className="w-44 h-44 sm:w-56 sm:h-56 relative flex items-center justify-center mb-4 sm:mb-8 z-10"
             >
               <img
-                src="/images/cover.png"
+                src="/images/creamy-sage/envelope-creamy.png"
                 alt="Wedding Envelope Illustration"
                 className="w-full h-full object-contain filter drop-shadow-[0_8px_16px_rgba(195,155,120,0.15)]"
               />

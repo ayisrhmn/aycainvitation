@@ -106,7 +106,7 @@ export default function Envelope({
               className="w-60 h-60 relative flex items-center justify-center mb-4 sm:mb-8 z-10"
             >
               <img
-                src="/images/cover.png"
+                src="/images/emerald-elegance/envelope-emerald.png"
                 alt="Wedding Envelope Illustration"
                 className="w-full h-full object-contain filter drop-shadow-[0_8px_16px_rgba(18,63,53,0.15)]"
               />
