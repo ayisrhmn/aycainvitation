@@ -90,6 +90,9 @@ export default function EmeraldEleganceTheme({
     return config[key] || "";
   };
 
+  // Khusus karina-anton
+  const isKarinaAnton = clientSlug === "karina-anton";
+
   // Apakah urutan mempelai dimulai dari wanita?
   const isBrideFirst = getSetting("couple_order") === "bride_first";
 
@@ -455,16 +458,33 @@ export default function EmeraldEleganceTheme({
                 />
               </svg>
 
-              <div className="text-center relative z-10 mt-2 -mb-12!">
-                <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
-                  {isBrideFirst
-                    ? "Mempelai Wanita & Pria"
-                    : "Mempelai Pria & Wanita"}
-                </span>
-                <h3 className="font-script text-4xl text-emerald-primary mt-1">
-                  Kedua Mempelai
-                </h3>
-              </div>
+              {isKarinaAnton ? (
+                <div className="text-center relative z-10 mt-3 -mb-12! flex flex-col items-center gap-3">
+                  <h3 className="font-arabic text-xl md:text-2xl text-emerald-primary text-center leading-relaxed">
+                    ﷽
+                  </h3>
+                  <div>
+                    <p className="font-serif text-sm md:text-base text-emerald-primary/90 font-bold text-center">
+                      Assalamu&apos;alaikum Warahmatullahi Wabarakatuh
+                    </p>
+                    <p className="font-sans text-xs md:text-sm text-emerald-charcoal/85 leading-relaxed px-4 text-center max-w-md">
+                      Dengan memohon rahmat dan ridho Allah SWT, kami mengundang
+                      Bapak/Ibu/Saudara/i untuk hadir di hari bahagia kami.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center relative z-10 mt-2 -mb-12!">
+                  <span className="text-xs uppercase tracking-[0.3em] text-emerald-charcoal-muted font-bold">
+                    {isBrideFirst
+                      ? "Mempelai Wanita & Pria"
+                      : "Mempelai Pria & Wanita"}
+                  </span>
+                  <h3 className="font-script text-4xl text-emerald-primary mt-1">
+                    Kedua Mempelai
+                  </h3>
+                </div>
+              )}
 
               {/* Staggered Grid Layout Mempelai */}
               <div className="grid grid-cols-2 gap-x-1 relative z-10 w-full mt-4">

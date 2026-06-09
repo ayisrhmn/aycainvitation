@@ -66,6 +66,8 @@
     Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-script:
     var(--font-script), cursive;
+  --font-arabic:
+    var(--font-arabic), serif;
 }
 
 body {

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Outfit, Great_Vibes } from "next/font/google";
+import { Cormorant_Garamond, Outfit, Alex_Brush, Amiri } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -16,11 +16,18 @@ const outfit = Outfit({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const greatVibes = Great_Vibes({
+const alexBrush = Alex_Brush({
   variable: "--font-script",
   subsets: ["latin"],
   weight: ["400"],
 });
+
+const amiri = Amiri({
+  variable: "--font-arabic",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+});
+
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -46,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${cormorantGaramond.variable} ${outfit.variable} ${greatVibes.variable} h-full antialiased`}
+      className={`${cormorantGaramond.variable} ${outfit.variable} ${alexBrush.variable} ${amiri.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-charcoal bg-cream">
         {children}
