@@ -16,14 +16,17 @@ export default function Envelope({
   brideName,
 }: EnvelopeProps) {
   const [guestName, setGuestName] = useState<string>("");
+  const [address, setAddress] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // Mengambil parameter nama tamu dari URL (?to=Nama+Tamu)
     const params = new URLSearchParams(window.location.search);
     const to = params.get("to") || params.get("recipient") || "Tamu Undangan";
+    const addr = params.get("add") || null;
     const timerId = setTimeout(() => {
       setGuestName(to);
+      setAddress(addr);
     }, 0);
     return () => clearTimeout(timerId);
   }, []);
@@ -126,9 +129,16 @@ export default function Envelope({
                 Kepada Yth. Bapak/Ibu/Saudara/i:
               </p>
 
-              <h2 className="font-serif text-2xl font-semibold text-rose-gold-dark mt-2 mb-4 tracking-wide wrap-break-word">
-                {guestName}
-              </h2>
+              <div className="mt-2 mb-4">
+                <h2 className="font-sans font-semibold text-2xl text-rose-gold-dark tracking-wide wrap-break-word">
+                  {guestName}
+                </h2>
+                {address && (
+                  <p className="font-sans font-medium text-base text-rose-gold-dark wrap-break-word">
+                    {address}
+                  </p>
+                )}
+              </div>
 
               <p className="text-xs sm:text-sm text-charcoal font-medium leading-relaxed font-sans px-2">
                 Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir
