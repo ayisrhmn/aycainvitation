@@ -76,7 +76,7 @@ export default function ThemeCatalog({
           {[1, 2].map((i) => (
             <div
               key={i}
-              className="bg-white rounded-3xl border border-sage-light/20 overflow-hidden shadow-xs flex flex-col h-[400px] animate-pulse"
+              className="bg-white rounded-3xl border border-sage-light/20 overflow-hidden shadow-xs flex flex-col h-100 animate-pulse"
             >
               <div className="h-56 bg-cream-dark/20 flex flex-col items-center justify-center p-6 relative overflow-hidden" />
               <div className="p-6 flex-1 flex flex-col justify-between">

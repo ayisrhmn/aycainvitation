@@ -346,7 +346,7 @@ export default function ClientDetailPage() {
                   value={driveLink}
                   onChange={(e) => setDriveLink(e.target.value)}
                   placeholder="https://drive.google.com/..."
-                  className="w-full px-4 py-3 bg-[#FAF9F5] border border-sakura-primary-light/35 rounded-xl text-xs text-sakura-charcoal focus:outline-none focus:border-sakura-primary transition-all font-sans"
+                  className="w-full px-4 py-3 bg-[#FAF9F5] border border-sakura-primary-light/35 rounded-xl text-xs text-sakura-charcoal focus:outline-none transition-all font-sans"
                   required
                   autoFocus
                 />

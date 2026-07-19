@@ -216,7 +216,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.clientName}
                       onChange={handleChange}
                       placeholder="Nama Lengkap Anda"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                       required
                     />
                   </div>
@@ -230,7 +230,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.clientEmail}
                       onChange={handleChange}
                       placeholder="contoh@gmail.com"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                       required
                     />
                   </div>
@@ -244,7 +244,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.clientPhone}
                       onChange={handleChange}
                       placeholder="081234567890"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                       required
                     />
                   </div>
@@ -262,7 +262,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                         value={formData.clientSlug}
                         onChange={handleSlugChange}
                         placeholder="budi-ani"
-                        className="w-full pl-6 pr-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all font-mono"
+                        className="w-full pl-6 pr-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all font-mono"
                         required
                       />
                     </div>
@@ -340,7 +340,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.groom_nickname}
                             onChange={handleChange}
                             placeholder="Sena"
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                             required
                           />
                         </div>
@@ -354,7 +354,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.groom_fullname}
                             onChange={handleChange}
                             placeholder="Sena Wiratama, S.T."
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
                         <div className="flex flex-col gap-1">
@@ -367,7 +367,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.groom_father}
                             onChange={handleChange}
                             placeholder="Ir. H. Joko Santoso"
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
                         <div className="flex flex-col gap-1">
@@ -380,7 +380,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.groom_mother}
                             onChange={handleChange}
                             placeholder="Hj. Retno Lestari, S.Pd."
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
                       </div>
@@ -403,7 +403,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.bride_nickname}
                             onChange={handleChange}
                             placeholder="Davina"
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                             required
                           />
                         </div>
@@ -417,7 +417,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.bride_fullname}
                             onChange={handleChange}
                             placeholder="Davina Putri, S.Ds."
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
                         <div className="flex flex-col gap-1">
@@ -430,7 +430,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.bride_father}
                             onChange={handleChange}
                             placeholder="H. Ahmad Fauzi, M.B.A."
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
                         <div className="flex flex-col gap-1">
@@ -443,7 +443,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                             value={formData.bride_mother}
                             onChange={handleChange}
                             placeholder="Hj. Fatimah Azzahra"
-                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                            className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                           />
                         </div>
                       </div>
@@ -474,7 +474,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                     name="wedding_date"
                     value={formData.wedding_date}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                    className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     required
                   />
                 </div>
@@ -494,7 +494,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       name="akad_date"
                       value={formData.akad_date}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -507,7 +507,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.akad_start_time}
                       onChange={handleChange}
                       placeholder="09:00"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -520,7 +520,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.akad_end_time}
                       onChange={handleChange}
                       placeholder="10:30"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1 sm:col-span-2">
@@ -533,7 +533,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.akad_location}
                       onChange={handleChange}
                       placeholder="Masjid Sasana Kriya, TMII"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -546,7 +546,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.akad_maps_url}
                       onChange={handleChange}
                       placeholder="https://maps.app.goo.gl/..."
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                 </div>
@@ -566,7 +566,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       name="resepsi_date"
                       value={formData.resepsi_date}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -579,7 +579,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.resepsi_start_time}
                       onChange={handleChange}
                       placeholder="11:00"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -592,7 +592,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.resepsi_end_time}
                       onChange={handleChange}
                       placeholder="Selesai"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1 sm:col-span-2">
@@ -605,7 +605,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.resepsi_location}
                       onChange={handleChange}
                       placeholder="Gedung Sasana Kriya, TMII"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -618,7 +618,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.resepsi_maps_url}
                       onChange={handleChange}
                       placeholder="https://maps.app.goo.gl/..."
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                 </div>
@@ -649,7 +649,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.bank_name_1}
                       onChange={handleChange}
                       placeholder="BANK BCA"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -662,7 +662,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.bank_account_1}
                       onChange={handleChange}
                       placeholder="1234567890"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -675,7 +675,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.bank_holder_1}
                       onChange={handleChange}
                       placeholder="Sena Wiratama"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                 </div>
@@ -696,7 +696,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.bank_name_2}
                       onChange={handleChange}
                       placeholder="BANK MANDIRI"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -709,7 +709,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.bank_account_2}
                       onChange={handleChange}
                       placeholder="987654321098"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -722,7 +722,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.bank_holder_2}
                       onChange={handleChange}
                       placeholder="Davina Putri"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                 </div>
@@ -742,7 +742,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.quote}
                       onChange={handleChange}
                       rows={3}
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all resize-none"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all resize-none"
                     />
                   </div>
                   <div className="flex flex-col gap-1">
@@ -755,7 +755,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
                       value={formData.quote_reference}
                       onChange={handleChange}
                       placeholder="QS. Ar-Rum: 21"
-                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all"
+                      className="w-full px-4 py-2.5 bg-sakura-bg border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all"
                     />
                   </div>
                 </div>
@@ -781,7 +781,7 @@ export default function OrderForm({ selectedTheme }: OrderFormProps) {
             <button
               type="submit"
               disabled={isLoading || !!successData}
-              className="mt-8 w-full flex items-center justify-center gap-2 py-4 bg-sakura-primary hover:bg-sakura-primary-dark text-white rounded-xl text-sm font-bold tracking-wider uppercase transition-all shadow-md shadow-sakura-primary/20 hover:shadow-lg disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
+              className="mt-8 w-full flex items-center justify-center gap-2 py-4 bg-sakura-primary hover:bg-sakura-primary-dark text-white rounded-xl text-sm font-bold tracking-wider uppercase transition-all shadow-md shadow-sakura-primary/20 hover:shadow-lg disabled:opacity-75 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>

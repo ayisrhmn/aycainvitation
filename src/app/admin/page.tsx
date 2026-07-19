@@ -63,7 +63,8 @@ export default function AdminDashboard() {
   const filteredClients = clients
     .filter((client) => {
       // 1. Filter status
-      if (filter !== "all" && client.status.toLowerCase() !== filter) return false;
+      if (filter !== "all" && client.status.toLowerCase() !== filter)
+        return false;
 
       // 2. Filter search term (slug, email, atau phone)
       if (searchTerm.trim() !== "") {
@@ -155,7 +156,7 @@ export default function AdminDashboard() {
               placeholder="Cari slug, email, telp..."
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              className="w-full sm:w-60 pl-9 pr-4 py-2 bg-white border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all text-sakura-charcoal placeholder-sakura-charcoal-muted/50"
+              className="w-full sm:w-60 pl-9 pr-4 py-2 bg-white border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all placeholder-sakura-charcoal-muted/50"
             />
           </div>
 
@@ -165,15 +166,19 @@ export default function AdminDashboard() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as "newest" | "oldest")}
-              className="w-full sm:w-40 pl-9 pr-8 py-2 bg-white border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:border-sakura-primary focus:ring-1 focus:ring-sakura-primary transition-all text-sakura-charcoal cursor-pointer appearance-none"
+              className="w-full sm:w-40 pl-9 pr-8 py-2 bg-white border border-sakura-primary-light/40 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-sakura-primary transition-all text-sakura-charcoal cursor-pointer appearance-none"
             >
               <option value="newest">Terbaru</option>
               <option value="oldest">Terlama</option>
             </select>
             {/* Custom select arrow indicator */}
             <div className="pointer-events-none absolute right-3 flex items-center text-sakura-charcoal-muted">
-              <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+              <svg
+                className="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
             </div>
           </div>
@@ -190,7 +195,9 @@ export default function AdminDashboard() {
       {/* Loading */}
       {loading && (
         <div className="text-center py-12">
-          <p className="text-sakura-charcoal-muted font-medium">Memuat data klien...</p>
+          <p className="text-sakura-charcoal-muted font-medium">
+            Memuat data klien...
+          </p>
         </div>
       )}
 

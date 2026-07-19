@@ -175,7 +175,7 @@ export default function RsvpForm({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Masukkan nama Anda"
-                className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all"
+                className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none focus:ring-1 focus:ring-rose-gold transition-all"
                 disabled={isLoading}
                 required
               />
@@ -247,7 +247,7 @@ export default function RsvpForm({
                       id="guests"
                       value={guestsCount}
                       onChange={(e) => setGuestsCount(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none focus:border-rose-gold transition-all appearance-none pr-10 cursor-pointer"
+                      className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none transition-all appearance-none pr-10 cursor-pointer"
                       disabled={isLoading}
                     >
                       <option value="1">1 Orang</option>
@@ -277,7 +277,7 @@ export default function RsvpForm({
                 onChange={(e) => setWish(e.target.value)}
                 placeholder="Tulis ucapan selamat dan doa restu Anda di sini..."
                 rows={4}
-                className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-rose-gold focus:ring-1 focus:ring-rose-gold transition-all resize-none"
+                className="w-full px-4 py-3 bg-[#FAF9F5] border border-rose-gold-light/30 rounded-xl text-sm text-charcoal focus:outline-none focus:ring-1 focus:ring-rose-gold transition-all resize-none"
                 disabled={isLoading}
               />
             </div>
@@ -301,7 +301,7 @@ export default function RsvpForm({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 py-3.5 bg-sage hover:bg-sage-dark text-white rounded-xl text-sm font-medium tracking-wider uppercase transition-all shadow-md shadow-sage/20 hover:shadow-lg disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 py-3.5 bg-sage hover:bg-sage-dark text-white rounded-xl text-sm font-medium tracking-wider uppercase transition-all shadow-md shadow-sage/20 hover:shadow-lg disabled:opacity-75 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>

@@ -100,7 +100,7 @@ export default function AudioPlayer({
             </span>
             <span
               title={musicTitle}
-              className="text-[11px] font-semibold text-emerald-primary max-w-[160px] truncate"
+              className="text-[11px] font-semibold text-emerald-primary max-w-40 truncate"
             >
               {musicTitle}
             </span>
@@ -121,7 +121,7 @@ export default function AudioPlayer({
                 </span>
                 <span
                   title={musicTitle}
-                  className="text-[11px] font-semibold text-emerald-primary truncate max-w-[140px] sm:max-w-xs"
+                  className="text-[11px] font-semibold text-emerald-primary truncate max-w-35 sm:max-w-xs"
                 >
                   {musicTitle}
                 </span>
