@@ -1,12 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getClientConfig } from "@/lib/clients";
 import { getDemoThemeConfig } from "@/lib/themes";
-import { supabase } from "@/lib/supabase";
+import { sql } from "@/lib/db";
 import { RsvpWish } from "@/types";
+
+interface RsvpRow {
+  name: string;
+  attendance: "Hadir" | "Tidak Hadir";
+  guests_count: number;
+  wish: string;
+  created_at: Date;
+}
 
 /**
  * GET /api/rsvp?slug=dipa-icha
- * Mengambil data acara (settings) dan daftar RSVP dari Supabase
+ * Mengambil data acara (settings) dan daftar RSVP dari database
  */
 export async function GET(request: NextRequest) {
   try {
@@ -21,7 +29,7 @@ export async function GET(request: NextRequest) {
     }
 
     // ========================================
-    // 1. Ambil Konfigurasi Klien dari Supabase
+    // 1. Ambil Konfigurasi Klien dari Database
     // ========================================
     const clientConfig = await getClientConfig(slug);
 
@@ -87,26 +95,25 @@ export async function GET(request: NextRequest) {
     }
 
     // ========================================
-    // 2. Ambil Daftar RSVP dari Supabase
+    // 2. Ambil Daftar RSVP dari Database
     // ========================================
-    const { data: rsvps, error: rsvpError } = await supabase
-      .from("rsvps")
-      .select("name, attendance, guests_count, wish, created_at")
-      .eq("client_slug", slug)
-      .order("created_at", { ascending: false });
-
-    if (rsvpError) {
-      console.error("Error fetching RSVPs:", rsvpError);
+    const rsvps = await sql<RsvpRow[]>`
+      SELECT name, attendance, guests_count, wish, created_at
+      FROM rsvps
+      WHERE client_slug = ${slug}
+      ORDER BY created_at DESC
+    `.catch((error) => {
+      console.error("Error fetching RSVPs:", error);
       throw new Error("Gagal mengambil data RSVP");
-    }
+    });
 
     // Konversi ke format RsvpWish
-    const wishes: RsvpWish[] = (rsvps || []).map((rsvp) => ({
+    const wishes: RsvpWish[] = rsvps.map((rsvp) => ({
       name: rsvp.name,
       attendance: rsvp.attendance,
       guestsCount: rsvp.guests_count,
       wish: rsvp.wish,
-      timestamp: rsvp.created_at,
+      timestamp: rsvp.created_at.toISOString(),
     }));
 
     // ========================================
@@ -127,7 +134,7 @@ export async function GET(request: NextRequest) {
 
 /**
  * POST /api/rsvp
- * Submit RSVP baru ke Supabase
+ * Submit RSVP baru ke database
  */
 export async function POST(request: NextRequest) {
   try {
@@ -169,7 +176,8 @@ export async function POST(request: NextRequest) {
         // Jika ini tema demo, return simulated success
         return NextResponse.json({
           status: "success",
-          message: "Terima kasih! Konfirmasi kehadiran Anda telah dicatat (Demo Mode).",
+          message:
+            "Terima kasih! Konfirmasi kehadiran Anda telah dicatat (Demo Mode).",
         });
       }
 
@@ -189,16 +197,13 @@ export async function POST(request: NextRequest) {
     // ========================================
     // 3. Cek Duplikasi (Optional — bisa di-disable)
     // ========================================
-    const { data: existingRsvps } = await supabase
-      .from("rsvps")
-      .select("name")
-      .eq("client_slug", slug);
+    const [duplicate] = await sql`
+      SELECT 1 FROM rsvps
+      WHERE client_slug = ${slug} AND lower(btrim(name)) = ${name.toLowerCase().trim()}
+      LIMIT 1
+    `;
 
-    const isDuplicate = (existingRsvps || []).some(
-      (rsvp) => rsvp.name.toLowerCase().trim() === name.toLowerCase().trim()
-    );
-
-    if (isDuplicate) {
+    if (duplicate) {
       return NextResponse.json({
         status: "success",
         message: "Konfirmasi kehadiran Anda sudah terdaftar sebelumnya.",
@@ -207,20 +212,21 @@ export async function POST(request: NextRequest) {
     }
 
     // ========================================
-    // 4. Insert RSVP Baru ke Supabase
+    // 4. Insert RSVP Baru ke Database
     // ========================================
-    const { error: insertError } = await supabase.from("rsvps").insert({
-      client_slug: slug,
-      name: name.trim(),
-      attendance,
-      guests_count: parseInt(guestsCount, 10) || 1,
-      wish: (wish || "").trim(),
-    });
-
-    if (insertError) {
-      console.error("Error inserting RSVP:", insertError);
+    await sql`
+      INSERT INTO rsvps (client_slug, name, attendance, guests_count, wish)
+      VALUES (
+        ${slug},
+        ${name.trim()},
+        ${attendance},
+        ${parseInt(guestsCount, 10) || 1},
+        ${(wish || "").trim()}
+      )
+    `.catch((error) => {
+      console.error("Error inserting RSVP:", error);
       throw new Error("Gagal menyimpan RSVP");
-    }
+    });
 
     // ========================================
     // 5. Return Sukses

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ensureSupabaseAdmin } from "@/lib/supabase";
+import { sql } from "@/lib/db";
 
 /**
  * GET /api/admin/clients/{slug}
@@ -11,15 +11,15 @@ export async function GET(
 ) {
   try {
     const { slug } = await params;
-    const supabaseAdmin = ensureSupabaseAdmin();
 
-    const { data: client, error } = await supabaseAdmin
-      .from("clients")
-      .select("slug, email, phone, theme, status, settings, created_at")
-      .eq("slug", slug.toLowerCase())
-      .single();
+    const [client] = await sql`
+      SELECT slug, email, phone, theme, status, settings, created_at
+      FROM clients
+      WHERE slug = ${slug.toLowerCase()}
+      LIMIT 1
+    `;
 
-    if (error || !client) {
+    if (!client) {
       return NextResponse.json(
         { status: "error", message: "Klien tidak ditemukan" },
         { status: 404 }
@@ -59,16 +59,14 @@ export async function PATCH(
       );
     }
 
-    const supabaseAdmin = ensureSupabaseAdmin();
+    const [updated] = await sql`
+      UPDATE clients
+      SET status = ${status}
+      WHERE slug = ${slug.toLowerCase()}
+      RETURNING slug, email, phone, theme, status, settings, created_at
+    `;
 
-    const { data: updated, error } = await supabaseAdmin
-      .from("clients")
-      .update({ status })
-      .eq("slug", slug.toLowerCase())
-      .select("slug, email, phone, theme, status, settings, created_at")
-      .single();
-
-    if (error || !updated) {
+    if (!updated) {
       return NextResponse.json(
         { status: "error", message: "Gagal memperbarui status" },
         { status: 500 }
@@ -98,23 +96,13 @@ export async function DELETE(
 ) {
   try {
     const { slug } = await params;
-    const supabaseAdmin = ensureSupabaseAdmin();
+    const normalizedSlug = slug.toLowerCase();
 
-    // Delete associated RSVPs first
-    await supabaseAdmin.from("rsvps").delete().eq("client_slug", slug);
-
-    // Delete client
-    const { error } = await supabaseAdmin
-      .from("clients")
-      .delete()
-      .eq("slug", slug.toLowerCase());
-
-    if (error) {
-      return NextResponse.json(
-        { status: "error", message: "Gagal menghapus klien" },
-        { status: 500 }
-      );
-    }
+    // Hapus RSVP lalu klien dalam satu transaksi
+    await sql.begin(async (tx) => {
+      await tx`DELETE FROM rsvps WHERE client_slug = ${normalizedSlug}`;
+      await tx`DELETE FROM clients WHERE slug = ${normalizedSlug}`;
+    });
 
     return NextResponse.json({
       status: "success",

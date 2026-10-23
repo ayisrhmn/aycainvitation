@@ -1,18 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
-
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.error(
-    "Error: NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be defined in your .env file."
-  );
-  process.exit(1);
-}
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-  auth: { persistSession: false },
-});
+import { sql, json } from "../lib/db";
 
 const CREAMY_SAGE_DEFAULT_SETTINGS = {
   groom_nickname: "Sena",
@@ -50,100 +36,90 @@ const CREAMY_SAGE_DEFAULT_SETTINGS = {
   couple_order: "groom_first",
 };
 
+const THEMES = [
+  {
+    slug: "emerald-elegance",
+    name: "Emerald Elegance",
+    tagline: "Elegant & Botanical",
+    description:
+      "Perpaduan mewah mawar hijau emerald gelap dengan dedaunan bernuansa perunggu/bronze hangat dan aksen bunga putih bersih. Menghadirkan kesan romantis yang premium, elegan, dan abadi.",
+    colors: [
+      { name: "Emerald Green", hex: "#123F35" },
+      { name: "Bronze Brown", hex: "#B09B7C" },
+      { name: "Ivory White", hex: "#FAF9F5" },
+    ],
+    is_coming_soon: false,
+    settings: CREAMY_SAGE_DEFAULT_SETTINGS,
+    created_at: new Date(Date.now() - 20000),
+  },
+  {
+    slug: "creamy-sage",
+    name: "Creamy Sage",
+    tagline: "Warm & Botanical",
+    description:
+      "Perpaduan warna krem hangat dengan ornamen hijau daun sage yang menenangkan serta sentuhan emas elegan. Sangat cocok untuk konsep pernikahan outdoor maupun minimalis modern.",
+    colors: [
+      { name: "Cream", hex: "#F3F0E6" },
+      { name: "Sage Green", hex: "#708238" },
+      { name: "Rose Gold", hex: "#C39B78" },
+    ],
+    is_coming_soon: false,
+    settings: CREAMY_SAGE_DEFAULT_SETTINGS,
+    created_at: new Date(Date.now() - 10000),
+  },
+  {
+    slug: "rustic-wood",
+    name: "Rustic Wood",
+    tagline: "Earthy & Warm",
+    description:
+      "Nuansa kayu alami dengan perpaduan warna cokelat tanah yang hangat dan aksen bunga kering yang romantis. Cocok untuk konsep pernikahan bertema bohemian atau vintage rustic.",
+    colors: [
+      { name: "Brown", hex: "#5C4033" },
+      { name: "Earthy", hex: "#A57E58" },
+      { name: "Warm Cream", hex: "#F5EBE0" },
+    ],
+    is_coming_soon: true,
+    settings: null, // Coming Soon, no settings yet
+    created_at: new Date(),
+  },
+];
+
 async function seed() {
-  console.log("Seeding demo_themes table on Supabase sequentially...");
+  console.log("Seeding demo_themes table sequentially...");
 
   try {
-    // 1. Seed Emerald Elegance
-    console.log("Upserting Emerald Elegance...");
-    const { data: emeraldData, error: emeraldError } = await supabase
-      .from("demo_themes")
-      .upsert(
-        {
-          slug: "emerald-elegance",
-          name: "Emerald Elegance",
-          tagline: "Elegant & Botanical",
-          description:
-            "Perpaduan mewah mawar hijau emerald gelap dengan dedaunan bernuansa perunggu/bronze hangat dan aksen bunga putih bersih. Menghadirkan kesan romantis yang premium, elegan, dan abadi.",
-          colors: [
-            { name: "Emerald Green", hex: "#123F35" },
-            { name: "Bronze Brown", hex: "#B09B7C" },
-            { name: "Ivory White", hex: "#FAF9F5" },
-          ],
-          is_coming_soon: false,
-          settings: CREAMY_SAGE_DEFAULT_SETTINGS,
-          created_at: new Date(Date.now() - 20000).toISOString(),
-        },
-        { onConflict: "slug" }
-      )
-      .select();
-
-    if (emeraldError) {
-      throw emeraldError;
+    for (const theme of THEMES) {
+      console.log(`Upserting ${theme.name}...`);
+      const [row] = await sql`
+        INSERT INTO demo_themes
+          (slug, name, tagline, description, colors, is_coming_soon, settings, created_at)
+        VALUES (
+          ${theme.slug},
+          ${theme.name},
+          ${theme.tagline},
+          ${theme.description},
+          ${json(theme.colors)},
+          ${theme.is_coming_soon},
+          ${json(theme.settings)},
+          ${theme.created_at}
+        )
+        ON CONFLICT (slug) DO UPDATE SET
+          name = EXCLUDED.name,
+          tagline = EXCLUDED.tagline,
+          description = EXCLUDED.description,
+          colors = EXCLUDED.colors,
+          is_coming_soon = EXCLUDED.is_coming_soon,
+          settings = EXCLUDED.settings,
+          created_at = EXCLUDED.created_at
+        RETURNING slug
+      `;
+      console.log(`Successfully seeded ${theme.name}:`, row);
     }
-    console.log("Successfully seeded Emerald Elegance:", emeraldData);
-
-    // 2. Seed Creamy Sage
-    console.log("Upserting Creamy Sage...");
-    const { data: creamyData, error: creamyError } = await supabase
-      .from("demo_themes")
-      .upsert(
-        {
-          slug: "creamy-sage",
-          name: "Creamy Sage",
-          tagline: "Warm & Botanical",
-          description:
-            "Perpaduan warna krem hangat dengan ornamen hijau daun sage yang menenangkan serta sentuhan emas elegan. Sangat cocok untuk konsep pernikahan outdoor maupun minimalis modern.",
-          colors: [
-            { name: "Cream", hex: "#F3F0E6" },
-            { name: "Sage Green", hex: "#708238" },
-            { name: "Rose Gold", hex: "#C39B78" },
-          ],
-          is_coming_soon: false,
-          settings: CREAMY_SAGE_DEFAULT_SETTINGS,
-          created_at: new Date(Date.now() - 10000).toISOString(),
-        },
-        { onConflict: "slug" }
-      )
-      .select();
-
-    if (creamyError) {
-      throw creamyError;
-    }
-    console.log("Successfully seeded Creamy Sage:", creamyData);
-
-    // 3. Seed Rustic Wood
-    console.log("Upserting Rustic Wood...");
-    const { data: rusticData, error: rusticError } = await supabase
-      .from("demo_themes")
-      .upsert(
-        {
-          slug: "rustic-wood",
-          name: "Rustic Wood",
-          tagline: "Earthy & Warm",
-          description:
-            "Nuansa kayu alami dengan perpaduan warna cokelat tanah yang hangat dan aksen bunga kering yang romantis. Cocok untuk konsep pernikahan bertema bohemian atau vintage rustic.",
-          colors: [
-            { name: "Brown", hex: "#5C4033" },
-            { name: "Earthy", hex: "#A57E58" },
-            { name: "Warm Cream", hex: "#F5EBE0" },
-          ],
-          is_coming_soon: true,
-          settings: null, // Coming Soon, no settings yet
-          created_at: new Date().toISOString(),
-        },
-        { onConflict: "slug" }
-      )
-      .select();
-
-    if (rusticError) {
-      throw rusticError;
-    }
-    console.log("Successfully seeded Rustic Wood:", rusticData);
-
   } catch (error) {
     console.error("Failed to seed demo_themes table:", error);
-    process.exit(1);
+    process.exitCode = 1;
+  } finally {
+    await sql.end();
   }
 }
 

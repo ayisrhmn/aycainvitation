@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ensureSupabaseAdmin } from "@/lib/supabase";
+import { sql, json } from "@/lib/db";
 import { WeddingConfig } from "@/types";
 
 const ADMIN_PHONE = process.env.NEXT_PUBLIC_ADMIN_PHONE;
@@ -98,13 +98,9 @@ export async function POST(request: NextRequest) {
     // ========================================
     // 4. Periksa Slug Belum Terpakai (Active maupun Pending)
     // ========================================
-    const supabaseAdmin = ensureSupabaseAdmin();
-
-    const { data: existingClient } = await supabaseAdmin
-      .from("clients")
-      .select("slug")
-      .eq("slug", cleanSlug)
-      .maybeSingle();
+    const [existingClient] = await sql`
+      SELECT slug FROM clients WHERE slug = ${cleanSlug} LIMIT 1
+    `;
 
     if (existingClient) {
       return NextResponse.json(
@@ -117,7 +113,7 @@ export async function POST(request: NextRequest) {
     }
 
     // ========================================
-    // 5. Persiapan Settings Data untuk Supabase
+    // 5. Persiapan Settings Data untuk Database
     // ========================================
     const settingsData: WeddingConfig = {
       groom_nickname,
@@ -153,24 +149,24 @@ export async function POST(request: NextRequest) {
     };
 
     // ========================================
-    // 6. Insert Client Baru ke Supabase
+    // 6. Insert Client Baru ke Database
     // ========================================
-    const { data, error } = await supabaseAdmin
-      .from("clients")
-      .insert({
-        slug: cleanSlug,
-        email: clientEmail,
-        phone: clientPhone,
-        theme: theme,
-        status: "Pending",
-        settings: settingsData,
-      })
-      .select("slug, created_at")
-      .single();
-
-    if (error || !data) {
-      console.error("Supabase insert error:", error);
-      if (error?.code === "23505") {
+    try {
+      await sql`
+        INSERT INTO clients (slug, email, phone, theme, status, settings)
+        VALUES (
+          ${cleanSlug},
+          ${clientEmail},
+          ${clientPhone},
+          ${theme},
+          'Pending',
+          ${json(settingsData)}
+        )
+      `;
+    } catch (error) {
+      console.error("Database insert error:", error);
+      // 23505 = unique_violation (slug sudah dipakai, mis. dua order bersamaan)
+      if ((error as { code?: string }).code === "23505") {
         throw new Error(
           `Alamat web /${cleanSlug} sudah terdaftar (aktif atau dalam proses aktivasi). Silakan cari alamat lain.`
         );

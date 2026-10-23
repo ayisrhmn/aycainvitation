@@ -1,26 +1,17 @@
 import { NextResponse } from "next/server";
-import { ensureSupabaseAdmin } from "@/lib/supabase";
+import { sql } from "@/lib/db";
 
 export async function GET() {
   try {
-    const supabaseAdmin = ensureSupabaseAdmin();
-
-    const { data, error } = await supabaseAdmin
-      .from("demo_themes")
-      .select("slug, name, tagline, description, colors, is_coming_soon")
-      .order("created_at", { ascending: true });
-
-    if (error) {
-      console.error("Error fetching demo themes from Supabase:", error);
-      return NextResponse.json(
-        { status: "error", message: error.message },
-        { status: 500 }
-      );
-    }
+    const data = await sql`
+      SELECT slug, name, tagline, description, colors, is_coming_soon
+      FROM demo_themes
+      ORDER BY created_at ASC
+    `;
 
     return NextResponse.json({
       status: "success",
-      data: data || [],
+      data,
     });
   } catch (error) {
     console.error("Error in GET /api/demo-themes:", error);

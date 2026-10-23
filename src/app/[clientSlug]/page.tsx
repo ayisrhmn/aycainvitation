@@ -73,7 +73,7 @@ export async function generateMetadata({
 export default async function ClientPage({ params }: PageProps) {
   const { clientSlug } = await params;
 
-  // 1. Dapatkan konfigurasi klien berdasarkan slug dari Supabase
+  // 1. Dapatkan konfigurasi klien berdasarkan slug dari database
   const clientConfig = await getCachedClientConfig(clientSlug);
 
   // 2. Jika client tidak ditemukan, cek apakah slug adalah tema demo yang valid di database
@@ -152,7 +152,7 @@ export default async function ClientPage({ params }: PageProps) {
     );
   }
 
-  // 4. Fetch RSVPs from Supabase
+  // 4. Fetch RSVPs dari database
   let initialWishes = [];
   try {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:2931";
@@ -174,7 +174,7 @@ export default async function ClientPage({ params }: PageProps) {
     // Continue with empty wishes if fetch fails
   }
 
-  // 5. Gunakan settings dari Supabase (sudah embed di clientConfig)
+  // 5. Gunakan settings dari database (sudah embed di clientConfig)
   // Settings sudah berisi musik dan semua konfigurasi pernikahan
   const config: WeddingConfig = clientConfig.settings;
 

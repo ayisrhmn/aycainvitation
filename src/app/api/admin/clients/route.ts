@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ensureSupabaseAdmin } from "@/lib/supabase";
+import { sql } from "@/lib/db";
 
 /**
  * GET /api/admin/clients
@@ -9,26 +9,24 @@ import { ensureSupabaseAdmin } from "@/lib/supabase";
 export async function GET(request: NextRequest) {
   try {
     // ========================================
-    // 1. Fetch All Clients from Supabase
+    // 1. Fetch All Clients from Database
     // ========================================
-    const supabaseAdmin = ensureSupabaseAdmin();
-    const { data: clients, error } = await supabaseAdmin
-      .from("clients")
-      .select("slug, email, phone, theme, status, created_at")
-      .order("created_at", { ascending: false });
-
-    if (error) {
+    const clients = await sql`
+      SELECT slug, email, phone, theme, status, created_at
+      FROM clients
+      ORDER BY created_at DESC
+    `.catch((error) => {
       console.error("Error fetching clients:", error);
       throw new Error("Gagal mengambil data klien");
-    }
+    });
 
     // ========================================
     // 2. Return Clients
     // ========================================
     return NextResponse.json({
       status: "success",
-      clients: clients || [],
-      total: (clients || []).length,
+      clients,
+      total: clients.length,
     });
   } catch (error) {
     console.error("Error in GET /api/admin/clients:", error);

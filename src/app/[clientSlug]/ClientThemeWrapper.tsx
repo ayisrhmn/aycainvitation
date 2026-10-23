@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import CreamySageTheme from "@/themes/creamy-sage";
 import EmeraldEleganceTheme from "@/themes/emerald-elegance";
 import { WeddingConfig, RsvpWish } from "@/types";
-import { getClientMusic } from "@/lib/clients";
+import { getClientMusic } from "@/lib/client-music";
 import { Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
